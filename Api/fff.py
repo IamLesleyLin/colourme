@@ -10,7 +10,7 @@ CORS(app, resources={r"./*":{"origins":["http://127.0.0.1:5500"]}})
 
 @app.route('/sss',methods=['GET'])
 def home():
-    return render_template('../web/main_page.html')
+    return render_template('../templates/main_page.html')
 
 if __name__ == '__main__':
    app.run()
