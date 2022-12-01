@@ -1,10 +1,16 @@
 from flask import Flask
-app = Flask(__name__)
+from flask import Flask, jsonify, render_template #模板套件,
+from flask import request #解析套件
+from flask_cors import CORS
 
-@app.route('/')
-def hello_sneaker():
-   print('Sneaker recommand')
-   return 'Hello Sneaker'
+
+app = Flask(__name__)
+app.config["JSON_AS_ASCII"] = False
+CORS(app, resources={r"./*":{"origins":["http://127.0.0.1:5500"]}})
+
+@app.route('/sss',methods=['GET'])
+def home():
+    return render_template('../web/main_page.html')
 
 if __name__ == '__main__':
    app.run()
