@@ -68,13 +68,6 @@
             height: 100%;
             object-fit: cover;
         }
-        .footer{
-            width: 95%;
-            height: 200px;
-            border: solid red 1px;
-            background-color: navy;
-            margin: auto;
-        }
     </style>
 </head>
 <body>
@@ -85,14 +78,13 @@
         </div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></div>
         <div class="box_icon">789</div>
-        <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}">登入</a></div>
     </div>
     <div class="main">
             <div><img src="{{url_for('static', filename = 'shoes1.png')}}" alt=""></div>
             <div><img src="{{url_for('static', filename = 'shoes2.png')}}" alt=""></div>
             <div><img src="{{url_for('static', filename = 'shoes3.png')}}" alt=""></div>
     </div>
-    <div class="footer">Hello!!!</div>
 
     <!-- infro for slick -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -7,24 +7,23 @@ from flask import url_for, redirect, flash
 app = Flask(__name__)
 
 @app.route('/',methods=['GET'])
-def home():
-    return render_template('/main_page.html')
+def home_page():
+    return render_template('/home_page.html')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/log_in', methods=['GET', 'POST'])
+def log_in():
     error = None
-
     if request.method == 'POST':
-        if request.form['username'] != 'ITRI' or \
-           request.form['password'] != 'ITRI':
-                error = 'Invalid username or password. Please try again!'
+        if request.form['username'] != 'itri' or request.form['password'] != 'itri':
+            error = 'Invalid username or password. Please try again!'
         else:
-            flash('You were successfully logged in')
-            return redirect(url_for('index'))
-            # return render_template("index.html")
-    return render_template('login.html', error=error)
+            return redirect(url_for('main_page')) # return render_template('main_page.html')
+    return render_template('log_in.html', error=error)
 
-
+@app.route('/main_page',methods=['GET', 'POST'])
+def main_page():
+    if request.method == 'GET':
+        return render_template('main_page.html')
 
 if __name__ == '__main__':
    app.run()
