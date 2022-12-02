@@ -5,29 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    <!-- info for slick -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick-theme.css')}}">
     <style>
         *{margin: 0;}
         :root{
-            --background:beige
+            --background:white
         }
         
         .header{
-            width: 100%;
+            width: 95%;
             height: 100px;
             border: solid pink 1px;
             display:inline-flex;
             background-color: var(--background);
             position:sticky;
             top: 0;
-        }
-        #logo{
-            height: 97%;
-        }
-        #BrandName{
-            font-size: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0px 2.5%;
         }
         .box_logo{
             width: 70%;
@@ -37,36 +32,90 @@
             justify-content: center;
             align-items: center;
         }
+        .box_logo img{
+            height: 97%;
+        }
+        #BrandName{
+            font-size: 80px;
+        }
         .box_icon{
             width: 10%;
             height: 100%;
             border: solid blue 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box_icon img{
+            height: 97%;
         }
         .main{
-            width: 100%;
-            height: 1000px;
+            width: 95%;
+            height: 680px;
             border: solid green 1px;
             background-color: yellow;
+            margin: auto;
+        }
+        .slick-prev:before, .slick-next:before{
+            color: black;
+        }
+        .slick-slide{
+            width: 100%;
+            height: 680px;
+        }
+        .slick-slide img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .footer{
-            width: 100%;
+            width: 95%;
             height: 200px;
             border: solid red 1px;
             background-color: navy;
+            margin: auto;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="box_logo">
-            <img src="/Users/jackychen/Desktop/爬蟲基礎/example/img4.png" alt="" id="logo">
+            <img src="{{url_for('static', filename = 'logo.png')}}" alt="" id="logo">
             <p id="BrandName">踏破鐵鞋無覓處</p>
         </div>
-        <div class="box_icon">456</div>
+        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></div>
         <div class="box_icon">789</div>
         <div class="box_icon">111</div>
     </div>
-    <div class="main"></div>
+    <div class="main">
+            <div><img src="{{url_for('static', filename = 'shoes1.png')}}" alt=""></div>
+            <div><img src="{{url_for('static', filename = 'shoes2.png')}}" alt=""></div>
+            <div><img src="{{url_for('static', filename = 'shoes3.png')}}" alt=""></div>
+    </div>
     <div class="footer">Hello!!!</div>
+
+    <!-- infro for slick -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{url_for('static', filename = 'slick-1.8.1/slick/slick.min.js')}}"></script>
+    
+    <script>
+    // infro for slick
+        $('.main').slick({
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            speed: 300,
+            autoplayspeed: 1,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        });        
+    </script>
+    <script>
+        const search_icon = document.querySelector('#search_icon')
+        search_icon.addEventListener("click", function(){
+            alert('the function is not ready')
+        })
+    </script>
 </body>
 </html>
