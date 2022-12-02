@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            height: 700px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .log_in{
+            height: 30%;
+            width: 25%;
+            border: 1px solid blueviolet;
+        }
+        p{
+            margin: 30px 30%; 
+        }
+        .confirm{
+            margin: 30px 45%; 
+        }
+        .confirm:hover{
+            color: red; 
+        }
+        .status{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="log_in">
+            <p>會員帳號：<input type="text"></p>
+            <p>會員密碼：<input type="text"></p>
+            <div class="confirm">登入</div>
+        </div>
+    </div>
+
+    <script>
+        const log_in = document.querySelector('.confirm')
+        log_in.addEventListener('click', function(){
+            alert('you are not allowed')
+        })
+    </script>
+</body>
+</html>
