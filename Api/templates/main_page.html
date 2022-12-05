@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
     <!-- info for slick -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'main_style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick-theme.css')}}">
-    <style>
+    <!-- <style>
         *{margin: 0;}
         :root{
             --background:white
@@ -75,7 +76,7 @@
             background-color: navy;
             margin: auto;
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div class="header">
@@ -88,9 +89,9 @@
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
     <div class="main">
-            <div><img src="{{url_for('static', filename = 'shoes1.png')}}" alt=""></div>
-            <div><img src="{{url_for('static', filename = 'shoes2.png')}}" alt=""></div>
-            <div><img src="{{url_for('static', filename = 'shoes3.png')}}" alt=""></div>
+            <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
+            <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
+            <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div>
     </div>
     <div class="footer">Hello!!!</div>
 
