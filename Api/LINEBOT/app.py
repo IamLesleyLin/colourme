@@ -8,8 +8,6 @@ import json
 import configparser
 import os
 from urllib import parse
-import string
-import random
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -48,7 +46,7 @@ def index():
 
                 if text == "我的名字":
                     payload["messages"] = [getNameEmojiMessage()]
-                elif text == "播放聲音":
+                elif text == "捷運的聲音":
                     payload["messages"] = [getMRTSoundMessage()]
                 elif text == "出去玩囉":
                     payload["messages"] = [getPlayStickerMessage()]
@@ -56,7 +54,7 @@ def index():
                     payload["messages"] = [getTaipei101ImageMessage(),
                                            getTaipei101LocationMessage(),
                                            getMRTVideoMessage()]
-                elif text == "quoda":
+                elif text == "quota":
                     payload["messages"] = [
                             {
                                 "type": "text",
@@ -113,21 +111,13 @@ def index():
                 longitude = events[0]["message"]["longitude"]
                 payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
                 replyMessage(payload)
-            elif events[0]["message"]["type"]=='image':
-                image_name = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(4))
-                image_content = line_bot_api.get_message_content(events.message.id)
-                image_name = image_name.upper()+'.jpg'
-                path='./static/'+image_name
-                with open(path, 'wb') as fd:
-                    for chunk in image_content.iter_content():
-                        fd.write(chunk)
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
                 reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
                 payload["messages"] = [
                         {
                             "type": "text",
-                            "text": F"已完成預約於{reservedTime}的叫車服務"
+                            "text": f"已完成預約於{reservedTime}的叫車服務"
                         }
                     ]
                 replyMessage(payload)
@@ -180,153 +170,141 @@ def sendTextMessageToMe():
 def getNameEmojiMessage():
     lookUpStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     productId = "5ac21a8c040ab15980c9b43f"
-    name = "Roy"
+    name = "Jacky"
     message = dict()
     message['type'] = 'text'
     message['text'] = "".join('$' for _ in range(len(name)))
-    emoji_list = list()
-    for n_char_index in range(len(name)):
+    emoji_list = []
+    for i in name:
         emoji_list.append({
-         "index": n_char_index,
-         "emojiId": f"{lookUpStr.index(name[n_char_index]) + 1:03d}",
-         "productId": productId
-         })
-    message["emojis"] = emoji_list
-    print(emoji_list)
+            "index": str(name.index(i)),
+            "productId": productId,
+            "emojiId": str(lookUpStr.index(i)+1).zfill(3)
+            })
+    message['emojis'] = emoji_list
+    # print(message)
     return message
 
 
 def getCarouselMessage(data):
     message = {
-      "type": "template",
-      "altText": "this is a image carousel template",
-      "template": {
-          "type": "image_carousel",
-          "columns": [
-              {
-                "imageUrl": F"{end_point}/static/taipei_101.jpeg",
-                "action": {
-                  "type": "postback",
-                  "label": "台北101",
-                  "data": json.dumps(data)
+        "type": "template",
+        "altText": "this is a image carousel template",
+        "template": {
+            "type": "image_carousel",
+            "columns": [
+                {
+                    "imageUrl": f"{end_point}/static/taipei_101.jpeg",
+                    "action": {
+                        "type": "postback",
+                        "label": "101白天",
+                        "data": json.dumps(data)
+                        }
+                },
+                {
+                    "imageUrl": f"{end_point}/static/taipei_1.jpeg",
+                    "action": {
+                        "type": "postback",
+                        "label": "101夜晚",
+                        "data": json.dumps(data)
+                        }
+                }]
                 }
-              },
-              {
-                "imageUrl": F"{end_point}/static/taipei_1.jpeg",
-                "action": {
-                  "type": "postback",
-                  "label": "台北102",
-                  "data": json.dumps(data)
                 }
-              }
-          ]
-          }
-        }
     return message
 
 
 def getLocationConfirmMessage(title, latitude, longitude):
-    data = {'title': title,
-            'latitude': latitude,
-            'longitude': longitude,
-            'action': 'get_near'}
+    data = {'title':title, 'latitude':latitude, 'longitude':longitude, 'action':'get_near'}
+    print(data)
     message = {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-          "type": "confirm",
-          "text": f"確認是否搜尋 {title} 附近地點？",
-          "actions": [
-              {
-               "type": "postback",
-               "label": "是",
-               "data": json.dumps(data),
-               },
-              {
+        "type": "template",
+        "altText": "this is a confirm template",
+        "template": {
+            "type": "confirm",
+            "text": f"是否要規劃{title}附近的行程",
+            "actions": [{
+                "type": "postback",
+                "label": "Yes",
+                "data": json.dumps(data)
+                },
+                {
                 "type": "message",
-                "label": "否",
-                "text": "否"
-              }
-          ]
-      }
+                "label": "No",
+                "text": "no"
+                }]
+        }
     }
-
     return message
 
 
 def getCallCarMessage(data):
     message = {
-      "type": "template",
-      "altText": "this is a template",
-      "template": {
-          "type": "buttons",
-          "text": f"請選擇至 {data['title']} 預約叫車時間",
-          "actions": [
-              {
-               "type": "datetimepicker",
-               "label": "預約",
-               "data": json.dumps(data),
-               "mode": "datetime"
-               }
-          ]
-      }
+        "type": "template",
+        "altText": "This is a buttons template",
+        "template": {
+            "type": "buttons",
+            "text": f"請選擇至{data['title']}的預約叫車時間",
+            "actions":[{
+                "type": "datetimepicker",
+                "label": "請選擇時間",
+                "data": json.dumps(data),
+                "mode": "datetime"
+            }]
+        }
     }
     return message
 
 
 def getPlayStickerMessage():
-    message = {
-        "type": "sticker",
-        "packageId": "446",
-        "stickerId": "1988"
-    }
+    message = {"type":"sticker","packageId":"446", "stickerId":"1988"}
+    # print(message)
     return message
 
 
 def getTaipei101LocationMessage():
-    message = {
-      "type": "location",
-      "title": "台北101",
-      "address": "110台北市信義區信義路五段7號",
-      "latitude": 25.0334911,
-      "longitude": 121.5601863
-    }
+    message = dict()
+    message['type'] = 'location'
+    message['title'] = '台北101'
+    message['address'] = 'No 20, Xinyi Rd, Section 5, Xinyi District, 110, Taipei City'
+    message['latitude'] = 25.041460299999997
+    message['longitude'] = 121.57281100000002
     return message
 
 
 def getMRTVideoMessage():
-    message = {
-      "type": "video",
-      "originalContentUrl": F"{end_point}/static/taipei_101_video.mp4",
-      "previewImageUrl": F"{end_point}/static/taipei_101.jpeg"
-    }
+    message = dict()
+    message["type"] = "video"
+    message["originalContentUrl"] = f"{end_point}/static/taipei_101_video.mp4"
+    message["previewImageUrl"] = f"{end_point}/static/taipei_1.jpeg"
     return message
 
 
 def getMRTSoundMessage():
     message = dict()
     message["type"] = "audio"
-    message["originalContentUrl"] = F"{end_point}/static/mrt_sound.m4a"
-
-    message["duration"] = 30 * 1000
+    message["originalContentUrl"] = f"{end_point}/static/mrt_sound.m4a"
+    import audioread
+    with audioread.audio_open('static/mrt_sound.m4a') as f:
+        # totalsec contains the length in float
+        totalsec = f.duration
+    message["duration"] = totalsec * 1000
     return message
 
 
-def getTaipei101ImageMessage(originalContentUrl=F"{end_point}/static/taipei_101.jpeg"):
+def getTaipei101ImageMessage(originalContentUrl=f"{end_point}/static/taipei_101.jpeg"):
     return getImageMessage(originalContentUrl)
 
 
 def getImageMessage(originalContentUrl):
-    message = {
-      "type": "image",
-      "originalContentUrl": originalContentUrl,
-      "previewImageUrl": originalContentUrl
-    }
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] = str(originalContentUrl)
+    message['previewImageUrl'] = str(originalContentUrl)
     return message
 
 
 def replyMessage(payload):
-    print("payload:",payload)
     r = requests.post('https://api.line.me/v2/bot/message/reply', data=json.dumps(payload), headers=HEADER)
     print(r.content)
     return 'OK'
@@ -339,16 +317,16 @@ def pushMessage(payload):
 
 
 def getTotalSentMessageCount():
-    response = requests.get('https://api.line.me/v2/bot/message/quota/consumption', headers=HEADER)
-    return F"您總共使用了 {response.json()['totalUsage']} 則"
+    r = requests.get('https://api.line.me/v2/bot/message/quota/consumption', headers=HEADER)
+    return f"總共使用訊息:{r.json()['totalUsage']}"
 
 
 def getTodayCovid19Message():
-    response = requests.get('https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=3001&limited=TWN', headers=HEADER)
-    data = response.json()[0]
-    date = data['a04']
-    total_count = data['a05']
-    count = data['a06']
+    r = requests.get("https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=4051&limited=TWN")
+    data = r.json()[-1]
+    date = data["a04"]
+    total_count = data["a05"]
+    count = data["a06"]
     return F"日期：{date}, 人數：{count}, 確診總人數：{total_count}"
 
 
@@ -372,10 +350,10 @@ def upload_file():
             file.save(img_path)
             print(img_path)
             payload["to"] = my_line_id
-            payload["messages"] = [getImageMessage(F"{end_point}/{img_path}"),
+            payload["messages"] = [getImageMessage(f"{end_point}/{img_path}"),
                 {
                     "type": "text",
-                    "text": F"年紀：{age}\n性別：{gender}"
+                    "text": f"年紀：{age}\n性別：{gender}"
                 }
             ]
             pushMessage(payload)
@@ -402,7 +380,8 @@ def line_login():
             name = content["displayName"]
             userID = content["userId"]
             pictureURL = content["pictureUrl"]
-            statusMessage = content["statusMessage"]
+            # statusMessage = content["statusMessage"]
+            statusMessage = content.get("statusMessage", "")
             print(content)
             return render_template('profile.html', name=name, pictureURL=
                                    pictureURL, userID=userID, statusMessage=

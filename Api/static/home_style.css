@@ -1,7 +1,9 @@
 *{margin: 0;}
+
 :root{
     --background:white
 }
+
 .header{
     width: 95%;
     height: 100px;
