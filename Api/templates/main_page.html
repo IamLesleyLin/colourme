@@ -5,78 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <!-- info for slick -->
-    <link rel="stylesheet" href="{{url_for('static', filename = 'main_style.css')}}">
+    <!-- import css -->
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick-theme.css')}}">
-    <!-- <style>
-        *{margin: 0;}
-        :root{
-            --background:white
-        }
-        
-        .header{
-            width: 95%;
-            height: 100px;
-            border: solid pink 1px;
-            display:inline-flex;
-            background-color: var(--background);
-            position:sticky;
-            top: 0;
-            margin: 0px 2.5%;
-        }
-        .box_logo{
-            width: 70%;
-            height: 100%;
-            border: solid blue 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box_logo img{
-            height: 97%;
-        }
-        #BrandName{
-            font-size: 80px;
-        }
-        .box_icon{
-            width: 10%;
-            height: 100%;
-            border: solid blue 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box_icon img{
-            height: 97%;
-        }
-        .main{
-            width: 95%;
-            height: 680px;
-            border: solid green 1px;
-            background-color: yellow;
-            margin: auto;
-        }
-        .slick-prev:before, .slick-next:before{
-            color: black;
-        }
-        .slick-slide{
-            width: 100%;
-            height: 680px;
-        }
-        .slick-slide img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .footer{
-            width: 95%;
-            height: 200px;
-            border: solid red 1px;
-            background-color: navy;
-            margin: auto;
-        }
-    </style> -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'main_style.css')}}">
 </head>
 <body>
     <div class="header">
@@ -88,12 +20,47 @@
         <div class="box_icon">789</div>
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
+
     <div class="main">
             <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
             <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
             <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div>
     </div>
-    <div class="footer">Hello!!!</div>
+
+    <div class="recommendation">
+        <table>
+            <caption>熱門鞋款</caption>
+            <tr>
+                <th></th>
+                <th>鞋款１</th>
+                <th>鞋款２</th>
+                <th>鞋款３</th>
+            </tr>
+            <tr>
+                <td>圖片</td>
+                <td>35</td>
+                <td>467</td>
+                <td>467</td>
+            </tr>
+            <tr>
+                <td>說明</td>
+                <td>35</td>
+                <td>467</td>
+                <td>467</td>
+            </tr>
+            <tr>
+                <td>導購</td>
+                <td>35</td>
+                <td>467</td>
+                <td>467</td>
+            </tr>
+          </table>
+    </div>
+
+    <div class="footer">
+        <h1>關於我們</h1>
+        <img src="{{url_for('static', filename = 'Linebot QRcode.png')}}" alt="">
+    </div>
 
     <!-- infro for slick -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -107,7 +74,7 @@
             infinite: true,
             autoplay: true,
             speed: 300,
-            autoplayspeed: 1,
+            autoplayspeed: 2,
             slidesToShow: 1,
             adaptiveHeight: true
         });        

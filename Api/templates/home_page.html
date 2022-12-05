@@ -4,84 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'home_style.css')}}">
-    <!-- info for slick -->
+    <title>Home Page</title>
+    <!-- import css -->
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick-theme.css')}}">
-    <!-- <style>
-        *{margin: 0;}
-        :root{
-            --background:white
-        }
-        
-        .header{
-            width: 95%;
-            height: 100px;
-            border: solid pink 1px;
-            display:inline-flex;
-            background-color: var(--background);
-            position:sticky;
-            top: 0;
-            margin: 0px 2.5%;
-        }
-        .box_logo{
-            width: 70%;
-            height: 100%;
-            border: solid blue 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box_logo img{
-            height: 97%;
-        }
-        #BrandName{
-            font-size: 80px;
-        }
-        .box_icon{
-            width: 10%;
-            height: 100%;
-            border: solid blue 1px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box_icon img{
-            height: 97%;
-        }
-        .main{
-            width: 95%;
-            height: 680px;
-            border: solid green 1px;
-            background-color: yellow;
-            margin: auto;
-        }
-        .slick-prev:before, .slick-next:before{
-            color: black;
-        }
-        .slick-slide{
-            width: 100%;
-            height: 680px;
-        }
-        .slick-slide img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style> -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'home_style.css')}}">
 </head>
 <body>
     <div class="header">
         <div class="box_logo">
             <img src="{{url_for('static', filename = 'logo.png')}}" alt="" id="logo">
-            <p id="BrandName"></p>
-            <div style="font-style: fantasy;">踏破鐵鞋無覓處</div>
-            <!-- <span face="font-family:fantasy;">踏破鐵鞋無覓處</span> -->
+            <p id="BrandName">踏破鐵鞋無覓處</p>
         </div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"><a href="{{url_for('log_in')}}">登入</a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a></div>
     </div>
     <div class="main">
         <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
@@ -101,16 +38,16 @@
             infinite: true,
             autoplay: true,
             speed: 300,
-            autoplayspeed: 300,
+            autoplayspeed: 2,
             slidesToShow: 1,
             adaptiveHeight: true
         });        
     </script>
     <script>
-        const search_icon = document.querySelector('#search_icon')
-        search_icon.addEventListener("click", function(){
-            alert('the function is not ready')
-        })
+        {#const search_icon = document.querySelector('.box_icon')#}
+        {#search_icon.addEventListener("click", function(){#}
+        {#    alert('the function is not ready')#}
+        {#})#}
     </script>
 </body>
 </html>
