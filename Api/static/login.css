@@ -1,0 +1,18 @@
+.main{
+    height: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.log_in{
+    height: 30%;
+    width: 25%;
+    border: 1px solid blueviolet;
+}
+p{
+    margin: 30px 30%; 
+}
+#login_btn:hover{
+    color: red; 
+}
