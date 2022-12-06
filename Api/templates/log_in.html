@@ -21,16 +21,8 @@
         p{
             margin: 30px 30%; 
         }
-        .confirm{
-            margin: 30px 45%; 
-        }
-        .confirm:hover{
+        #login_btn:hover{
             color: red; 
-        }
-        .status{
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
     </style>
 </head>
@@ -42,16 +34,11 @@
                 {% endif %}
             <form action = "log_in" method = post>
                 <dl>
-                    <dt>Username:</dt>
-                    <dd><input type = text name = username value = "{{request.form.username}}"></dd>
-                    <dt>Password:</dt>
-                    <dd><input type = password name = password value = "{{request.form.password}}""></dd>
+                    <dt>Username:<input type = text name = username value = "{{request.form.username}}"></dt>
+                    <dt>Password:<input type = password name = password value = "{{request.form.password}}"></dt>
                 </dl>
-                <p><input type = submit value = Login></p>
+                <dl><input type = submit value = Login id = "login_btn"></dl>
             </form>
-            <!-- <p>會員帳號：<input type="text" name="username"></p>
-            <p>會員密碼：<input type="text" name="password"></p>
-            <a href="{{url_for('main_page')}}">登入</a> -->
         </div>
     </div>
 

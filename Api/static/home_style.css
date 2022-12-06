@@ -1,0 +1,61 @@
+*{margin: 0;}
+
+:root{
+    --background:white
+}
+
+.header{
+    width: 95%;
+    height: 100px;
+    border: solid pink 1px;
+    display:inline-flex;
+    background-color: var(--background);
+    position:sticky;
+    top: 0;
+    margin: 0px 2.5%;
+    z-index: 9999;
+}
+.box_logo{
+    width: 70%;
+    height: 100%;
+    border: solid blue 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_logo img{
+    height: 97%;
+}
+#BrandName{
+    font-size: 80px;
+    font-style: fantasy;
+}
+.box_icon{
+    width: 10%;
+    height: 100%;
+    border: solid blue 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_icon img{
+    height: 97px;
+}
+.main{
+    width: 95%;
+    height: 680px;
+    border: solid green 1px;
+    margin: auto;
+}
+.slick-prev:before, .slick-next:before{
+    color: black;
+}
+.slick-slide{
+    width: 100%;
+    height: 680px;
+}
+.slick-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
