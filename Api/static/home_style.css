@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Cookie&family=Diplomata+SC&family=Encode+Sans&family=Indie+Flower&family=La+Belle+Aurore&family=Lobster+Two&family=Nerko+One&family=Permanent+Marker&family=Yellowtail&display=swap');
+
 *{margin: 0;}
 
 :root{
@@ -34,7 +36,7 @@
 #BrandName{
     font-size: 80px;
     margin: 0 auto;
-    /* font-style: fantasy; */
+    font-family:'Cookie', cursive;
 }
 .box_icon{
     width: 10%;
@@ -49,7 +51,7 @@
 }
 .main{
     width: 95%;
-    height: 680px;
+    height: 580px;
     border: solid green 1px;
     margin: auto;
 }
@@ -58,10 +60,16 @@
 }
 .slick-slide{
     width: 100%;
-    height: 680px;
+    height: 580px;
 }
 .slick-slide img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+/* ============footer============= */
+.footer_group{
+    width: 100%;
+    height: 50px;
+    background-color: yellowgreen;
 }
