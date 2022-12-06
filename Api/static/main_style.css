@@ -92,13 +92,32 @@ td{
 }
 .footer{
     width: 95%;
-    height: 200px;
-    border: solid red 1px;
-    background-color: navy;
     margin: auto;
+}
+.footer div{
+    width: 100%;
+    border: 1px solid red;
+}
+.footer box{
+    width: 100%;
     display: flex;
 }
-.footer img{
-    width: 20%;
-    height: 100%;
+.footer box1{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer box1 img{
+    width: 50%;
+}
+.footer box2{
+    width: 33%;
+}
+.footer box2 p{
+    margin-top: 15px;
+    margin-left: 15%;
+}
+.footer box3{
+    width: 33%;
 }
