@@ -20,15 +20,21 @@
     height: 100%;
     border: solid blue 1px;
     display: flex;
-    justify-content: center;
+    /* 垂直方向 */
     align-items: center;
 }
 .box_logo img{
     height: 97%;
+    object-fit: cover;
+}
+.logo_img{
+    margin-left: 0;
+    height: 100%;
 }
 #BrandName{
     font-size: 80px;
-    font-style: fantasy;
+    margin: 0 auto;
+    /* font-style: fantasy; */
 }
 .box_icon{
     width: 10%;
