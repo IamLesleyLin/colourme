@@ -1,9 +1,11 @@
+*{margin: 0;}
 .main{
-    height: 700px;
+    height:100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: cover;
 }
 .log_in{
     height: 30%;
