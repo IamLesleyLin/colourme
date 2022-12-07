@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'login.css')}}">
 </head>
 <body>
-    <div class="main">
+    <div class="main" style="background-image: url('../static/login_background.png');">
         <div class="log_in">
             {% if error %}
             <p><strong>Error:</strong> {{ error }}</p>
