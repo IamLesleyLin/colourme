@@ -25,10 +25,13 @@
         {% for i in data %}
         <img src="{{i['url']}}" alt="">
         {% endfor %}
+    </div>
+
+    <div class="input_files">
+        <form action="main_page" method="post" enctype="multipart/form-data">
+            請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png"><br>
+            <input type="submit" name="" id="">
         </form>
-        <!-- <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
-        <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
-        <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div> -->
     </div>
 
     <div class="recommendation">

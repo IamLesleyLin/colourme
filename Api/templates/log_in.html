@@ -10,24 +10,17 @@
 <body>
     <div class="main">
         <div class="log_in">
-            {% if error %}
-            <p><strong>Error:</strong> {{ error }}</p>
-                {% endif %}
             <form action = "log_in" method = post>
                 <dl>
                     <dt>Username:<input type = text name = username value = "{{request.form.username}}"></dt>
                     <dt>Password:<input type = password name = password value = "{{request.form.password}}"></dt>
                 </dl>
+                {% if error %}
+                <p><strong>Error:</strong> {{ error }}</p>
+                {% endif %}
                 <dl><input type = submit value = Login id = "login_btn"></dl>
             </form>
         </div>
     </div>
-
-    <!-- <script>
-        const log_in = document.querySelector('.confirm')
-        log_in.addEventListener('click', function(){
-            alert('you are not allowed')
-        })
-    </script> -->
 </body>
 </html>
