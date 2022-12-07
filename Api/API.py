@@ -10,26 +10,6 @@ app = Flask(__name__)
 
 CORS(app, resources={r"./*":{"origins":["*"]}})
 
-db = pymysql.connect(
-    host='localhost',
-    port=3306,
-    user='root',
-    passwd='',
-    database='colourme',
-    charset='utf8mb4'
-)
-
-cursor = db.cursor()
-sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
-INNER JOIN `productid_imgurl` WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND Hot > 0
-ORDER BY Hot DESC"""
-
-cursor.execute(sql)   
-db.commit()               
-cursor.close()
-db.close() 
-
-
 @app.route('/',methods=['GET'])
 def home_page():
     return render_template('/home_page.html')
@@ -47,7 +27,38 @@ def log_in():
 @app.route('/main_page',methods=['GET', 'POST'])
 def main_page():
     if request.method == 'GET':
-        return render_template('main_page.html')
+        db = pymysql.connect(
+            host='localhost',
+            port=3306,
+            user='root',
+            passwd='',
+            database='colourme',
+            charset='utf8mb4',
+        )
+
+        cursor = db.cursor()
+        sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
+        INNER JOIN `productid_imgurl` WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND Hot > 0
+        ORDER BY Hot DESC"""
+        cursor.execute(sql)
+
+        if cursor.rowcount > 0:
+            results = cursor.fetchall()
+
+        result_list = []
+        for i in results:
+            numbers = i[0]
+            ids = i[1]
+            hot = i[2]
+            url = i[3]
+            print(numbers, ids, hot, url)
+            result_list.append({"numbers": numbers, "id": ids, "hot": hot, "url": url})
+
+        cursor.close()
+        db.close()
+        return render_template('main_page.html',data = result_list)
+
+
 
 if __name__ == '__main__':
    app.run()

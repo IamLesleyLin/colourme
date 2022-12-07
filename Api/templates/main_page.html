@@ -22,9 +22,13 @@
     </div>
 
     <div class="main">
-            <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
-            <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
-            <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div>
+        {% for i in data %}
+        <img src="{{i['url']}}" alt="">
+        {% endfor %}
+        </form>
+        <!-- <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
+        <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
+        <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div> -->
     </div>
 
     <div class="recommendation">
@@ -67,7 +71,7 @@
                 <p>日期：</p>
                 <p>週一至週五</p>
                 <p>時間：</p>
-                <p>9 AM ~ 12PM ／ 1 PM ~ 5:30 PM</p>
+                <p>9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM</p>
                 <p>電話：</p>
                 <p>(02)-2737-7300</p>
                 <p>地址：</p>
@@ -88,12 +92,12 @@
     <script>
     // infro for slick
         $('.main').slick({
-            dots: true,
+            dots: false,
             infinite: true,
             autoplay: true,
             speed: 300,
             autoplayspeed: 2,
-            slidesToShow: 1,
+            slidesToShow: 3,
             adaptiveHeight: true
         });        
     </script>
