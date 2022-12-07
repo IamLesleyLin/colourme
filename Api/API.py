@@ -10,28 +10,6 @@ app = Flask(__name__)
 
 CORS(app, resources={r"./*":{"origins":["*"]}})
 
-# db = pymysql.connect(
-#     host='localhost',
-#     port=3306,
-#     user='root',
-#     passwd='',
-#     database='colourme',
-#     charset='utf8mb4',
-#     cursorclass=pymysql.cursors.DictCursor
-# )
-#
-# cursor = db.cursor()
-# sql = """SELECT * FROM `parser_hot_list`
-# INNER JOIN `productid_imgurl`
-# WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND `parser_hot_list`.`Hot` > 0
-# ORDER BY `parser_hot_list`.`Hot` DESC"""
-
-# cursor.execute(sql)
-# db.commit()
-# cursor.close()
-# db.close()
-
-
 @app.route('/',methods=['GET'])
 def home_page():
     return render_template('/home_page.html')
