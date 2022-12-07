@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import time
 import pandas as pd
 import numpy as np
+import pymysql
 
 df_50=pd.read_csv('df_50.csv')
 df_50
@@ -49,3 +50,21 @@ for i in html:
 
     df_text=df_text.append({"id":ID,'name':name,"text":f_list,'price':TWD,'number':number,'url':url},ignore_index=True)
 df_text.to_csv('df_text.csv')
+
+try:
+    connection = pymysql.connect(host='localhost',user='root', password='',database="colourme",cursorclass=pymysql.cursors.DictCursor)
+    with connection.cursor() as cursor:
+        command_table = "CREATE TABLE IF NOT EXISTS parser_text(numbers CHAR(8) NOT NULL,id CHAR(6) NOT NULL,name VARCHAR(15) NOT NULL,text VARCHAR(50) NULL,price INT(5) NOT NULL,url VARCHAR(150) NULL,PRIMARY KEY(numbers))"
+        cursor.execute(command_table)
+
+        command_insert = "INSERT INTO parser_text(numbers,id,name,text,price,url)VALUES(%s, %s, %s,%s,%s,%s)"
+
+        for i in df_text.index:
+            text=str(df_text.loc[i,'text'])
+            text=text.replace('[','').replace(']','')
+            cursor.execute(
+                command_insert, (df_text.loc[i,'number'], df_text.loc[i,'id'], df_text.loc[i,'name'],text,df_text.loc[i,'price'],df_text.loc[i,'url']))
+    connection.commit()
+    connection.close()
+except Exception as ex:
+    print(ex)
