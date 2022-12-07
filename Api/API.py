@@ -1,10 +1,34 @@
 from flask import Flask
 from flask import Flask, jsonify, render_template #模板套件,
 from flask import request #解析套件
+from flask_cors import CORS
+import pymysql
 
 from flask import url_for, redirect, flash
 
 app = Flask(__name__)
+
+CORS(app, resources={r"./*":{"origins":["*"]}})
+
+db = pymysql.connect(
+    host='localhost',
+    port=3306,
+    user='root',
+    passwd='',
+    database='colourme',
+    charset='utf8mb4'
+)
+
+cursor = db.cursor()
+sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
+INNER JOIN `productid_imgurl` WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND Hot > 0
+ORDER BY Hot DESC"""
+
+cursor.execute(sql)   
+db.commit()               
+cursor.close()
+db.close() 
+
 
 @app.route('/',methods=['GET'])
 def home_page():
@@ -27,6 +51,7 @@ def main_page():
 
 if __name__ == '__main__':
    app.run()
+
 
 #http://127.0.0.1:5000 = http://localhost:5000
 
