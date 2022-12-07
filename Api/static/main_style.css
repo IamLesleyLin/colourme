@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Cookie&family=Diplomata+SC&family=Encode+Sans&family=Indie+Flower&family=La+Belle+Aurore&family=Lobster+Two&family=Nerko+One&family=Permanent+Marker&family=Yellowtail&display=swap');
+/* font-family: 'Amatic SC', cursive;
+font-family: 'Caveat', cursive;
+font-family: 'Cookie', cursive;
+font-family: 'Diplomata SC', cursive;
+font-family: 'Encode Sans', sans-serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'La Belle Aurore', cursive;
+font-family: 'Lobster Two', cursive;
+font-family: 'Nerko One', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Yellowtail', cursive; */
+
 *{margin: 0;}
 
 :root{
@@ -33,7 +46,7 @@
 #BrandName{
     font-size: 80px;
     margin: 0 auto;
-    /* font-style: fantasy; */
+    font-family:'Cookie', cursive;
 }
 .box_icon{
     width: 10%;
