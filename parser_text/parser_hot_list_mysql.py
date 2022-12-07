@@ -45,7 +45,7 @@ df_hot
 try:
     connection = pymysql.connect(host='localhost',user='root', password='',database="colourme",cursorclass=pymysql.cursors.DictCursor)
     with connection.cursor() as cursor:
-        command_table = "CREATE TABLE IF NOT EXISTS parser_Hot_list(numbers CHAR(8) NOT NULL,id CHAR(6) NOT NULL,Hot INT(5) NOT NULL)"
+        command_table = "CREATE TABLE IF NOT EXISTS parser_Hot_list(numbers CHAR(8) NOT NULL,id CHAR(6) NOT NULL,hot INT(5) NOT NULL)"
         cursor.execute(command_table)
 
         command_insert = "INSERT INTO parser_Hot_list(numbers,id,hot)VALUES(%s, %s, %s)"
