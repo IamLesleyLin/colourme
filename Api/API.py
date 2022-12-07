@@ -20,9 +20,9 @@ db = pymysql.connect(
 )
 
 cursor = db.cursor()
-sql = """SELECT * FROM `parser_hot_list`
-INNER JOIN `productid_imgurl` ON `parser_hot_list`.`id` = `productid_imgurl`.`id`
-ORDER BY Hot DESC WHERE Hot > 0"""
+sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
+INNER JOIN `productid_imgurl` WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND Hot > 0
+ORDER BY Hot DESC"""
 
 cursor.execute(sql)   
 db.commit()               
