@@ -8,26 +8,19 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'login.css')}}">
 </head>
 <body>
-    <div class="main">
+    <div class="main" style="background-image: url('../static/login_background.png');">
         <div class="log_in">
-            {% if error %}
-            <p><strong>Error:</strong> {{ error }}</p>
-                {% endif %}
             <form action = "log_in" method = post>
                 <dl>
                     <dt>Username:<input type = text name = username value = "{{request.form.username}}"></dt>
                     <dt>Password:<input type = password name = password value = "{{request.form.password}}"></dt>
                 </dl>
+                {% if error %}
+                <p><strong>Error:</strong> {{ error }}</p>
+                {% endif %}
                 <dl><input type = submit value = Login id = "login_btn"></dl>
             </form>
         </div>
     </div>
-
-    <!-- <script>
-        const log_in = document.querySelector('.confirm')
-        log_in.addEventListener('click', function(){
-            alert('you are not allowed')
-        })
-    </script> -->
 </body>
 </html>
