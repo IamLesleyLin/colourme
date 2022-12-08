@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/logtest.css">
+</head>
+<body>
+
+        <div class="Right_login">
+            <img src="../static/login_background.png" alt="">
+            <div class="card_login">
+                <h1>Login</h1>
+                <form action = "log_in" method = post>
+                    <div class="textfield">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="Type your username" value = "{{request.form.username}}">
+                    </div>
+                    <div class="textfield">
+                        <label for="password">Password</label>
+                        <input type="password" name="Password" placeholder="Type your password" value = "{{request.form.password}}">
+                    </div>
+                    <div>
+                        <input class="btnlogin" type = submit value = Login id = "login_btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

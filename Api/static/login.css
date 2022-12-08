@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
+
 *{margin: 0;}
-.main{
+.container_login{
     height:100vh;
     width: 100%;
     display: flex;
@@ -7,7 +9,38 @@
     align-items: center;
     background-size: cover;
 }
-.log_in{
+.wrap_login{
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.loginform{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    justify-content: center;
+    align-items:center;
+    /* display:inline-flex; */
+}
+.loginform_title{
+    display: block;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 40px;
+    color: #333;
+    text-align: center;
+}
+.log_in dt{
+    /* padding: 30%;
+    display: block;
+    justify-content: center;
+    align-items: center; */
+    margin: auto;
+    /* position: relative; */
+    display: flex;
+    
+}
+/* .log_in{
     height: 30%;
     width: 25%;
     border: 1px solid blueviolet;
@@ -17,4 +50,4 @@ p{
 }
 #login_btn:hover{
     color: red; 
-}
+} */
