@@ -8,17 +8,24 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'login.css')}}">
 </head>
 <body>
-    <div class="main" style="background-image: url('../static/login_background.png');">
-        <div class="log_in">
-            <form action = "log_in" method = post>
-                <dl>
-                    <dt>Username:<input type = text name = username value = "{{request.form.username}}"></dt>
-                    <dt>Password:<input type = password name = password value = "{{request.form.password}}"></dt>
-                </dl>
-                {% if error %}
-                <p><strong>Error:</strong> {{ error }}</p>
-                {% endif %}
-                <dl><input type = submit value = Login id = "login_btn"></dl>
+    <div class="container_login" style="background-image: url('../static/login_background.png');">
+        <div class = "wrap_login">
+            <form class="loginform">
+                <span class="loginform_title">LOGIN</span>
+                <!-- <div class="log_in"> -->
+                <form action = "log_in" method = post>
+                    <dl>
+                        <dt>Username:<input type = text name = username value = "{{request.form.username}}"></dt>
+                        <dt>Password:<input type = password name = password value = "{{request.form.password}}"></dt>
+                    </dl>
+                    <!-- <div classname = "User">Username:<input type = text name = username style = "text-align: center;" value = "{{request.form.username}}"></div> -->
+                    <!-- <div>Password:<input type = password name = password value = "{{request.form.password}}"></div>
+                        {% if error %}
+                    <p><strong>Error:</strong> {{ error }}</p>
+                        {% endif %} -->
+                    <dl><input type = submit value = Login id = "login_btn"></dl>
+                </form>
+                <!-- </div> -->
             </form>
         </div>
     </div>

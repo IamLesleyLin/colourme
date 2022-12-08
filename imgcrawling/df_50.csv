@@ -1,51 +1,51 @@
-productID,colorID,imgURL
-50237232,GY4656,https://images.adidas.com.tw/57/imageQC2000059257_2000_1.jpg
-50237188,H03424,https://images.adidas.com.tw/46/imageQC2000059246_2000_1.jpg
-50234336,GY0025,https://images.adidas.com.tw/33/imageQC2000058533_2000_1.jpg
-50224852,GZ5230,https://images.adidas.com.tw/90/imageQC2000029290_2000_1.jpg
-50224644,GX7330,https://images.adidas.com.tw/15/imageQC2000056115_2000_1.jpg
-50219804,HR1481,https://images.adidas.com.tw/07/imageQC2000054907_2000_1.jpg
-50219392,GY4559,https://images.adidas.com.tw/04/imageQC2000054804_2000_1.jpg
-50209912,GX2214,https://images.adidas.com.tw/31/imageQC2000052431_2000_1.jpg
-50209824,GX2215,https://images.adidas.com.tw/13/imageQC2000052413_2000_1.jpg
-50209624,HP9845,https://images.adidas.com.tw/65/imageQC2000052365_2000_1.jpg
-50208548,HP8021,https://images.adidas.com.tw/96/imageQC2000052096_2000_1.jpg
-50206900,FZ5594,https://images.adidas.com.tw/84/imageQC2000051684_2000_1.jpg
-50200284,GW4354,https://images.adidas.com.tw/51/imageQC2000056151_2000_1.jpg
-50199182,GX4582,https://images.adidas.com.tw/43/imageQC2000049743_2000_1.jpg
-50191748,HP5501,https://images.adidas.com.tw/55/imageQC2000059155_2000_1.jpg
-50191324,HP5498,https://images.adidas.com.tw/80/imageQC2000047780_2000_1.jpg
-50191184,HP7833,https://images.adidas.com.tw/45/imageQC2000047745_2000_1.jpg
-50189240,GW9367,https://images.adidas.com.tw/59/imageQC2000047259_2000_1.jpg
-50188936,GY7005,https://images.adidas.com.tw/77/imageQC2000047177_2000_1.jpg
-50188848,GY7006,https://images.adidas.com.tw/55/imageQC2000047155_2000_1.jpg
-50188528,GW9358,https://images.adidas.com.tw/81/imageQC2000047081_2000_1.jpg
-50188204,GX7087,https://images.adidas.com.tw/00/imageQC2000047000_2000_1.jpg
-50175270,GX9405,https://images.adidas.com.tw/55/imageQC2000043755_2000_1.jpg
-50175146,GX9406,https://images.adidas.com.tw/27/imageQC2000043727_2000_1.jpg
-50174722,GY4586,https://images.adidas.com.tw/19/imageQC2000043619_2000_1.jpg
-50162782,FZ6154,https://images.adidas.com.tw/16/imageQC2000040616_2000_1.jpg
-50162730,FZ6153,https://images.adidas.com.tw/02/imageQC2000040602_2000_1.jpg
-50162666,FZ6152,https://images.adidas.com.tw/87/imageQC2000040587_2000_1.jpg
-50149300,GW0490,https://images.adidas.com.tw/37/imageQC2000037237_2000_1.jpg
-50143776,HP5500,https://images.adidas.com.tw/57/imageQC2000035857_2000_1.jpg
-50142448,GZ2202,https://images.adidas.com.tw/24/imageQC2000035524_2000_1.jpg
-50141920,GW6776,https://images.adidas.com.tw/92/imageQC2000035392_2000_1.jpg
-50141244,GW9354,https://images.adidas.com.tw/22/imageQC2000035222_2000_1.jpg
-50141060,HQ6334,https://images.adidas.com.tw/73/imageQC2000035173_2000_1.jpg
-50140976,GX4499,https://images.adidas.com.tw/55/imageQC2000035155_2000_1.jpg
-50139956,GZ6422,https://images.adidas.com.tw/78/imageQC2000048678_2000_1.jpg
-50134278,GZ1604,https://images.adidas.com.tw/14/imageQC2000033414_2000_1.jpg
-50134130,GZ1603,https://images.adidas.com.tw/78/imageQC2000033378_2000_1.jpg
-50129334,GY0362,https://images.adidas.com.tw/75/imageQC2000032175_2000_1.jpg
-50128810,GW3958,https://images.adidas.com.tw/41/imageQC2000032041_2000_1.jpg
-50125546,GW0562,https://images.adidas.com.tw/21/imageQC2000031221_2000_1.jpg
-50125266,GX6320,https://images.adidas.com.tw/63/imageQC2000031163_2000_1.jpg
-50124206,GV9116,https://images.adidas.com.tw/90/imageQC2000030890_2000_1.jpg
-50116870,FX5119,https://images.adidas.com.tw/63/imageQC2000029063_2000_1.jpg
-50108918,GY6697,https://images.adidas.com.tw/04/imageQC2000027104_2000_1.jpg
-50108334,GY6067,https://images.adidas.com.tw/60/imageQC2000026960_2000_1.jpg
-50107234,GV7608,https://images.adidas.com.tw/79/imageQC2000026679_2000_1.jpg
-50106926,GV7610,https://images.adidas.com.tw/08/imageQC2000026608_2000_1.jpg
-50106858,GV7615,https://images.adidas.com.tw/90/imageQC2000026590_2000_1.jpg
-50106054,GW9740,https://images.adidas.com.tw/90/imageQC2000026390_2000_1.jpg
+name,productID,colorID,imgURL
+Adiease 經典鞋,50237800,HQ6432,https://images.adidas.com.tw/99/imageQC2000059399_2000_1.jpg
+Adiease 經典鞋,50237732,HQ6433,https://images.adidas.com.tw/82/imageQC2000059382_2000_1.jpg
+Superstar Vegan 經典鞋,50237232,GY4656,https://images.adidas.com.tw/57/imageQC2000059257_2000_1.jpg
+Forum 經典鞋,50237188,H03424,https://images.adidas.com.tw/46/imageQC2000059246_2000_1.jpg
+T-Mac 3 Restomod 籃球鞋,50237088,GY2395,https://images.adidas.com.tw/21/imageQC2000059221_2000_1.jpg
+Gazelle 經典鞋,50234676,GY7339,https://images.adidas.com.tw/18/imageQC2000058618_2000_1.jpg
+Gazelle 經典鞋,50234584,GY7338,https://images.adidas.com.tw/95/imageQC2000058595_2000_1.jpg
+Superstar 經典鞋,50234336,GY0025,https://images.adidas.com.tw/33/imageQC2000058533_2000_1.jpg
+OZWEEGO CELOX 經典鞋,50224852,GZ5230,https://images.adidas.com.tw/90/imageQC2000029290_2000_1.jpg
+Campus 80s 經典鞋,50224644,GX7330,https://images.adidas.com.tw/15/imageQC2000056115_2000_1.jpg
+Puffylette 運動拖鞋,50219804,HR1481,https://images.adidas.com.tw/07/imageQC2000054907_2000_1.jpg
+Puffylette 運動拖鞋,50219396,GY4559,https://images.adidas.com.tw/04/imageQC2000054804_2000_1.jpg
+Centennial 85 經典鞋,50209920,GX2214,https://images.adidas.com.tw/31/imageQC2000052431_2000_1.jpg
+Centennial 85 經典鞋,50209852,GX2215,https://images.adidas.com.tw/13/imageQC2000052413_2000_1.jpg
+Superstar 經典鞋,50209628,HP9845,https://images.adidas.com.tw/65/imageQC2000052365_2000_1.jpg
+Retropy F90 經典鞋,50208548,HP8021,https://images.adidas.com.tw/96/imageQC2000052096_2000_1.jpg
+Gazelle 85 經典鞋,50206908,FZ5594,https://images.adidas.com.tw/84/imageQC2000051684_2000_1.jpg
+Superstar 經典鞋,50191748,HP5501,https://images.adidas.com.tw/55/imageQC2000059155_2000_1.jpg
+Superstar 經典鞋,50191328,HP5498,https://images.adidas.com.tw/80/imageQC2000047780_2000_1.jpg
+Retropy F2 經典鞋,50189244,GW9367,https://images.adidas.com.tw/59/imageQC2000047259_2000_1.jpg
+COOK x Campus 80s 經典鞋,50188936,GY7005,https://images.adidas.com.tw/77/imageQC2000047177_2000_1.jpg
+COOK x Campus 80s 經典鞋,50188848,GY7006,https://images.adidas.com.tw/55/imageQC2000047155_2000_1.jpg
+Retropy F2 經典鞋,50188560,GW9358,https://images.adidas.com.tw/81/imageQC2000047081_2000_1.jpg
+Campus 80s 經典鞋,50175146,GX9406,https://images.adidas.com.tw/27/imageQC2000043727_2000_1.jpg
+Campus 80s 經典鞋,50174742,GY4586,https://images.adidas.com.tw/19/imageQC2000043619_2000_1.jpg
+Abaca 經典鞋,50151900,GY7135,https://images.adidas.com.tw/94/imageQC2000037894_2000_1.jpg
+Swift Run 22 經典鞋,50149782,GW6822,https://images.adidas.com.tw/58/imageQC2000037358_2000_1.jpg
+Superstar 經典鞋,50143780,HP5500,https://images.adidas.com.tw/57/imageQC2000035857_2000_1.jpg
+Abaca 經典鞋,50142544,GY7136,https://images.adidas.com.tw/49/imageQC2000035549_2000_1.jpg
+Andre Saraiva x Stan Smith 經典鞋,50142448,GZ2202,https://images.adidas.com.tw/24/imageQC2000035524_2000_1.jpg
+Retropy F2 經典鞋,50141280,GW9354,https://images.adidas.com.tw/22/imageQC2000035222_2000_1.jpg
+OZELIA 經典鞋,50140972,GX4499,https://images.adidas.com.tw/55/imageQC2000035155_2000_1.jpg
+Agent Gil Restomod 籃球鞋,50139960,GZ6422,https://images.adidas.com.tw/78/imageQC2000048678_2000_1.jpg
+Superstar 經典鞋,50134278,GZ1604,https://images.adidas.com.tw/14/imageQC2000033414_2000_1.jpg
+Superstar 經典鞋,50134130,GZ1603,https://images.adidas.com.tw/78/imageQC2000033378_2000_1.jpg
+Agent Gil Restomod 籃球鞋,50129334,GY0362,https://images.adidas.com.tw/75/imageQC2000032175_2000_1.jpg
+Retropy E5 經典鞋,50125546,GW0562,https://images.adidas.com.tw/21/imageQC2000031221_2000_1.jpg
+Pride X Retropy E5 經典鞋,50124222,GV9116,https://images.adidas.com.tw/90/imageQC2000030890_2000_1.jpg
+Multix 經典鞋,50116870,FX5119,https://images.adidas.com.tw/63/imageQC2000029063_2000_1.jpg
+ZX 22 BOOST 經典鞋,50108922,GY6697,https://images.adidas.com.tw/04/imageQC2000027104_2000_1.jpg
+NMD_R1 PARLEY 經典鞋,50108334,GY6067,https://images.adidas.com.tw/60/imageQC2000026960_2000_1.jpg
+Superstar PARLEY 經典鞋,50106926,GV7610,https://images.adidas.com.tw/08/imageQC2000026608_2000_1.jpg
+Superstar Parley 經典鞋,50106866,GV7615,https://images.adidas.com.tw/90/imageQC2000026590_2000_1.jpg
+OZWEEGO Meta 經典鞋,50106054,GW9740,https://images.adidas.com.tw/90/imageQC2000026390_2000_1.jpg
+Retropy F2 經典鞋,50105662,GW5473,https://images.adidas.com.tw/91/imageQC2000026291_2000_1.jpg
+Retropy F2 經典鞋,50105590,GW5472,https://images.adidas.com.tw/72/imageQC2000026272_2000_1.jpg
+Retropy E5 經典鞋,50099596,GW0559,https://images.adidas.com.tw/81/imageQC2000024781_2000_1.jpg
+OZWEEGO Celox 經典鞋,50099400,GZ5231,https://images.adidas.com.tw/31/imageQC2000005131_2000_1.jpg
+NMD_R1 經典鞋,50083566,GY6058,https://images.adidas.com.tw/86/imageQC2000020786_2000_1.jpg
+Retropy E5 經典鞋,50082382,GY1034,https://images.adidas.com.tw/80/imageQC2000020480_2000_1.jpg
