@@ -62,7 +62,7 @@ font-family: 'Yellowtail', cursive; */
 }
 .main{
     width: 95%;
-    height: 680px;
+    height: 380px;
     border: solid green 1px;
     margin: auto;
 }
@@ -71,12 +71,23 @@ font-family: 'Yellowtail', cursive; */
 }
 .slick-slide{
     width: 100%;
-    height: 680px;
+    height: 380px;
 }
 .slick-slide img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.input_files{
+    margin-top: 30px;
+    font-size: 30px;
+}
+.input_files form{
+    border: 1px dotted black;
+    text-align:center;
+}
+.input_files input{
+    font-size: 30px;
 }
 .recommendation{
     display: flex;

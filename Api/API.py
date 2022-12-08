@@ -5,7 +5,7 @@ from flask_cors import CORS
 import pymysql
 import os
 import pathlib
-import cv2
+# import cv2
 import numpy as np
 
 from flask import url_for, redirect, flash
@@ -67,11 +67,7 @@ def main_page():
         img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
         img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
         print(img_gray.shape)
-        # if img.filename != '':
-        #     img.save(os.path.join(pathlib.Path(__file__).parent.absolute(), img.filename))
         return redirect(url_for('main_page'))
-
-
 
 if __name__ == '__main__':
    app.run()
