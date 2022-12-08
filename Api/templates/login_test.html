@@ -13,15 +13,19 @@
             <img src="../static/login_background.png" alt="">
             <div class="card_login">
                 <h1>Login</h1>
-                <div class="textfield">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="Type your username">
-                </div>
-                <div class="textfield">
-                    <label for="password">Password</label>
-                    <input type="password" name="Password" placeholder="Type your password">
-                </div>
-                <button class="btnlogin">Login</button>
+                <form action = "log_in" method = post>
+                    <div class="textfield">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="Type your username" value = "{{request.form.username}}">
+                    </div>
+                    <div class="textfield">
+                        <label for="password">Password</label>
+                        <input type="password" name="Password" placeholder="Type your password" value = "{{request.form.password}}">
+                    </div>
+                    <div>
+                        <input class="btnlogin" type = submit value = Login id = "login_btn">
+                    </div>
+                </form>
             </div>
         </div>
 
