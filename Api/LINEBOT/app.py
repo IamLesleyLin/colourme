@@ -7,6 +7,11 @@ import requests
 import json
 import configparser
 import os
+import string
+import random
+import cv2
+import numpy as np
+
 from urllib import parse
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
@@ -105,6 +110,9 @@ def index():
                             }
                         ]
                 replyMessage(payload)
+            elif events[0]["message"]["type"]=="image":
+                payload["messages"] = [getMessageImage()]
+                replyMessage(payload)
             elif events[0]["message"]["type"] == "location":
                 title = events[0]["message"]["title"]
                 latitude = events[0]["message"]["latitude"]
@@ -161,10 +169,12 @@ def pretty_echo(event):
         )
 
 
+
 @app.route("/sendTextMessageToMe", methods=['POST'])
 def sendTextMessageToMe():
     pushMessage({})
     return 'OK'
+
 
 
 def getNameEmojiMessage():
@@ -302,6 +312,71 @@ def getImageMessage(originalContentUrl):
     message['originalContentUrl'] = str(originalContentUrl)
     message['previewImageUrl'] = str(originalContentUrl)
     return message
+
+def getMessageImage():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    print(img_data['events'][0]['message']['id'])
+
+    if request.method == 'POST':
+        image_content = line_bot_api.get_message_content(img_data['events'][0]['message']['id'])
+        
+        img_read = []
+        for i_content in image_content.iter_content():
+            img_read.append(i_content)
+
+        for i in img_read:
+            img_decoded = cv2.imdecode(np.frombuffer(i, np.uint8), 1)
+            img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+            print(img_gray.shape)
+
+        
+
+        # img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
+        # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+        # print(img_gray.shape)
+        
+   
+
+    # if request.method == 'POST':
+    #     image_name = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(4))
+    #     image_content = line_bot_api.get_message_content(img_data['events'][0]['message']['id'])
+    #     image_name = image_name.upper()+'.jpg'
+    #     path='./static/'+ image_name
+    #     with open(path, 'wb') as fd:
+    #         for chunk in image_content.iter_content():
+    #             fd.write(chunk)
+    #     img = request.files.image_content
+    #     img_read = img.stream.read()
+    #     img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
+    #     img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+    #     print(img_gray.shape)
+# def image_processing_1(image_name,image_path):
+#     #讀取照片原圖
+#     img = cv2.imread(image_path)
+    
+#     #將原圖轉為灰階圖
+#     gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    
+#     #將灰階圖進行二值化處理
+#     ret,binary=cv.threshold(gray,127,255,cv.THRESH_BINARY)
+    
+#     #將灰階圖與二值化處理圖存為實體檔案
+#     gray_path = './static/gray_'+image_name
+#     binary_path = './static/binary_'+image_name
+#     cv.imwrite(gray_path,gray)
+#     cv.imwrite(binary_path,binary)
+
+#     return gray_path, binary_path
+# if request.method == 'POST':
+#         img = request.files.image_content
+#         img_read = img.stream.read()
+#         img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
+#         img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+#         print(img_gray.shape)
+#         # if img.filename != '':
+#         #     img.save(os.path.join(pathlib.Path(__file__).parent.absolute(), img.filename))
+#         return redirect(url_for('main_page'))
 
 
 def replyMessage(payload):
