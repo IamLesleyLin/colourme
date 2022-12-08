@@ -5,7 +5,7 @@ from flask_cors import CORS
 import pymysql
 import os
 import pathlib
-# import cv2
+import cv2
 import numpy as np
 
 from flask import url_for, redirect, flash
@@ -25,7 +25,7 @@ def log_in():
         if request.form['username'] != 'itri' or request.form['password'] != 'itri':
             error = 'Invalid username or password. Please try again!'
         else:
-            return redirect(url_for('main_page')) # return render_template('main_page.html')
+            return redirect(url_for('main_page')) #return render_template('main_page.html')
     return render_template('log_in.html', error=error)
 
 @app.route('/main_page',methods=['GET', 'POST'])

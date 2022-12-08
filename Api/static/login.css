@@ -1,53 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
 
-*{margin: 0;}
-.container_login{
-    height:100vh;
-    width: 100%;
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'noto sans', sans-serif    ;
+}
+
+body * {
+    box-sizing: border-box;
+}
+.Right_login{
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
 }
-.wrap_login{
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-}
-.loginform{
+.Right_login img{
+    object-fit: cover;
+    z-index: 1;
     width: 100%;
-    height: 100%;
-    margin-top: 10px;
-    justify-content: center;
-    align-items:center;
-    /* display:inline-flex; */
+    position: absolute;
 }
-.loginform_title{
-    display: block;
-    font-family: 'Caveat Brush', cursive;
-    font-size: 40px;
-    color: #333;
-    text-align: center;
-}
-.log_in dt{
-    /* padding: 30%;
-    display: block;
-    justify-content: center;
-    align-items: center; */
-    margin: auto;
-    /* position: relative; */
+.card_login{
+    width: 30%;
     display: flex;
-    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background:#b2d5e6;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    z-index: 3;
 }
-/* .log_in{
-    height: 30%;
-    width: 25%;
-    border: 1px solid blueviolet;
+
+.card_login{
+    color: #000;
+    font-weight: 800;
+    margin: 0;
 }
-p{
-    margin: 30px 30%; 
+.card_login h1{
+    color: #FFFFFF;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0;
 }
-#login_btn:hover{
-    color: red; 
-} */
+.textfield{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0;
+    width: 100%;
+}
+.textfield > label{
+    color: #1b5895e0;
+    font-family: 'Caveat Brush', cursive;
+    font-size:20px;
+    margin-bottom: 10px;
+}
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background:#F0FFFF;
+    color:lightseagreen;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+.textfield > input::placeholder{
+    color: 	#DDDDDD;
+}
+.btnlogin{
+    width: 100%;
+    padding: 16px 0px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #fff;
+    background: #2c79c6b8;
+    box-shadow: 0px 10px 40px -12px #02c5f652;
+}
+
+@media only screen and (max-width: 950px){
+    .card_login{
+        width: 85%;
+    }
+}
+@media only screen and (max-width: 600px){
+    .main{
+        flex-direction: column;
+    }
+    .Left_login > h1{
+        display: none;
+    }
+    .Left_login{
+        width: 100%;
+        height: auto;
+    }
+    .Right_login{
+        width: 100%;
+        height: auto;
+    }
+    .Left_login > .imagem{
+        width: 40vh;
+    }
+    .card_login{
+        width: 90%;
+    }
+
+}
