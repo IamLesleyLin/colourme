@@ -3,6 +3,10 @@ from flask import Flask, jsonify, render_template #模板套件,
 from flask import request #解析套件
 from flask_cors import CORS
 import pymysql
+import os
+import pathlib
+import cv2
+import numpy as np
 
 from flask import url_for, redirect, flash
 
@@ -51,12 +55,21 @@ def main_page():
             ids = i[1]
             hot = i[2]
             url = i[3]
-            print(numbers, ids, hot, url)
             result_list.append({"numbers": numbers, "id": ids, "hot": hot, "url": url})
 
         cursor.close()
         db.close()
-        return render_template('main_page.html',data = result_list)
+        return render_template('main_page.html', data=result_list)
+
+    if request.method == 'POST':
+        img = request.files['photo']
+        img_read = img.stream.read()
+        img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
+        img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+        print(img_gray.shape)
+        # if img.filename != '':
+        #     img.save(os.path.join(pathlib.Path(__file__).parent.absolute(), img.filename))
+        return redirect(url_for('main_page'))
 
 
 
