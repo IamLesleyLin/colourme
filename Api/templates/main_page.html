@@ -20,13 +20,17 @@
         <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
-
-    <div class="main">
-        {% for i in data %}
-        <img src="{{i['url']}}" alt="">
-        {% endfor %}
+    <div class = "hot">
+        <ul class="main">
+            {% for i in data %}
+                <li>
+                    <p>{{i['name']}}</p>
+                    <img src="{{i['url']}}" alt="">
+                    <p>{{i['numbers']}}-{{i['id']}}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
-
     <div class="input_files">
         <form action="main_page" method="post" enctype="multipart/form-data">
             請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">

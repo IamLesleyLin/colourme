@@ -60,22 +60,37 @@ font-family: 'Yellowtail', cursive; */
 .box_icon img{
     height: 97%;
 }
-.main{
+.hot{
     width: 95%;
     height: 380px;
-    border: solid green 1px;
     margin: auto;
+    padding: 0px;
+    text-align: center;
+}
+.main{
+    margin-top: 10px;
+    padding: 0px;
+    background-color: #EFEDEC;
+}
+.main li{
+    margin: auto;
+    padding: 5px;
+    border: 25px solid lightblue;
+}
+.main p{
+    font-size: 30px;
+    font-family: 'Cookie', cursive;
 }
 .slick-prev:before, .slick-next:before{
     color: black;
 }
-.slick-slide{
-    width: 100%;
-    height: 380px;
-}
+/*.slick-slide{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 .slick-slide img{
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
 }
 .input_files{
