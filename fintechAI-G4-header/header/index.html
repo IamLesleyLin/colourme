@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <title>Responsive website food</title>
+  </head>
+  <body>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+      <nav class="nav bd-container">
+        <img src="https://tw.buy.yahoo.com/act/assets/shopping/--albee/adidaslogo.jpg" alt="">
+        <a href="#" class="nav_logo">踏破鐵鞋?</a>
+
+        <div class="nav_menu" id="nav-menu">
+          <ul class="nav_list">
+            <li class="nav_item">
+              <a href="#home" class="nav_link active-link">首頁</a>
+            </li>
+            <li class="nav_item">
+              <a href="#about" class="nav_link">關於</a>
+            </li>
+            <li class="nav_item">
+              <a href="#services" class="nav_link">收藏</a>
+            </li>
+            <li class="nav_item">
+              <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
+            </li>
+            <li class="nav_item">
+              <a href="#contact" class="nav_link">登入</a>
+            </li>
+
+
+          </ul>
+        </div>
+
+        <div class="nav_toggle" id="nav-toggle">
+          <iconify-icon icon="bx:menu"></iconify-icon>
+        </div>
+
+
+        <div class="search-overlay" id="overlay">
+          <form action="">
+            <input type="search" placeholder="search...">
+            <button type="submit">search</button>
+          <i class="fa-solid fa-x" id="close"></i>
+          </form>
+
+
+        </div>
+      </nav>
+    </header>
+
+
+
+
+
+    <script src="assets/js/main.js"></script>
+    <!-- 手機板選單按鈕圖的來源 -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- 搜尋按鈕 -->
+    <script>
+      $(document).ready(function(){
+        $("#search-btn").click(function(){
+          $("#overlay").show(200);
+       })
+        $("#close").click(function(){
+          $("#overlay").hide(200);
+       })
+      })
+    </script>
+  </body>
+</html>
