@@ -348,22 +348,25 @@ def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
     message['text'] = "".join()
+    return message
 
 def getMessageContactUs():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "".join()
+    message['text'] = 
+    return message
 
 def getMessagePIC():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "".join()
+    message['text'] = "12345678"
+    return message
 
 def getMessageSite():
     message = dict()
     message['type'] = 'text'
     message['text'] = "".join()
-
+    return message
 
 
 def replyMessage(payload):
