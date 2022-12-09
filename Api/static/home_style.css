@@ -64,8 +64,8 @@
 }
 .slick-slide img{
     width: 100%;
-    height: 100%;
-    object-fit:contain;
+    height: 520px;
+    object-fit:fill;
     /* object-position: 50%; */
 }
 /* .slick-slide img{

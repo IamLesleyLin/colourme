@@ -41,8 +41,11 @@ def main_page():
         )
 
         cursor = db.cursor()
-        sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
-        INNER JOIN `productid_imgurl` WHERE `parser_hot_list`.`id` = `productid_imgurl`.`id` AND Hot > 0
+        sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_text`.`name`, 
+        `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list` 
+        INNER JOIN `productid_imgurl` ON `parser_hot_list`.`id` = `productid_imgurl`.`id` 
+        INNER JOIN `parser_text` ON `parser_hot_list`.`id` = `parser_text`.`id` 
+        WHERE Hot > 0 
         ORDER BY Hot DESC"""
         cursor.execute(sql)
 
@@ -53,9 +56,10 @@ def main_page():
         for i in results:
             numbers = i[0]
             ids = i[1]
-            hot = i[2]
-            url = i[3]
-            result_list.append({"numbers": numbers, "id": ids, "hot": hot, "url": url})
+            names = i[2]
+            hot = i[3]
+            url = i[4]
+            result_list.append({"numbers": numbers, "id": ids, "name": names, "hot": hot, "url": url})
 
         cursor.close()
         db.close()
