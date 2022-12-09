@@ -59,6 +59,18 @@ def index():
                     payload["messages"] = [getTaipei101ImageMessage(),
                                            getTaipei101LocationMessage(),
                                            getMRTVideoMessage()]
+
+
+                elif text == "About Us":
+                    payload["messages"] = [getMessageAboutUS()]
+                elif text == "Contact Us":
+                    payload["messages"] = [getMessageContactUs()]
+                elif text == "以圖搜圖":
+                    payload["messages"] = [getMessagePIC()]
+                elif text == "官網":
+                    payload["messages"] = [getMessageSite()]
+
+
                 elif text == "quota":
                     payload["messages"] = [
                             {
@@ -332,6 +344,25 @@ def getMessageImage():
         print(img_gray.shape)
 
     return str(img_gray.shape)
+def getMessageAboutUS():
+    message = dict()
+    message['type'] = 'text'
+    message['text'] = "".join()
+
+def getMessageContactUs():
+    message = dict()
+    message['type'] = 'text'
+    message['text'] = "".join()
+
+def getMessagePIC():
+    message = dict()
+    message['type'] = 'text'
+    message['text'] = "".join()
+
+def getMessageSite():
+    message = dict()
+    message['type'] = 'text'
+    message['text'] = "".join()
 
 
 
