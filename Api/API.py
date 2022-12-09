@@ -7,6 +7,7 @@ import os
 import pathlib
 import cv2
 import numpy as np
+import re
 
 from flask import url_for, redirect, flash
 
@@ -56,7 +57,7 @@ def main_page():
         for i in results:
             numbers = i[0]
             ids = i[1]
-            names = i[2]
+            names = " ".join(re.findall("\w+\s+", i[2]))
             hot = i[3]
             url = i[4]
             result_list.append({"numbers": numbers, "id": ids, "name": names, "hot": hot, "url": url})

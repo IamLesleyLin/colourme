@@ -13,32 +13,49 @@
 <body>
     <div class="header">
         <div class="box_logo">
-            <img src="{{url_for('static', filename = 'logo.png')}}" alt="" id="logo">
+            <img src="{{url_for('static', filename = 'Colour Logo.png')}}" alt="" id="logo">
             <p id="BrandName">Colour Me</p>
         </div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></div>
+        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="myFunction()"></div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
     <div class = "hot">
+        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
         <ul class="main">
             {% for i in data %}
                 <li>
-                    <p>{{i['name']}}</p>
                     <img src="{{i['url']}}" alt="">
-                    <p>{{i['numbers']}}-{{i['id']}}</p>
+                    <div>
+                        <p>{{i['name']}}</p>
+                        <img src="{{url_for('static', filename = 'collection.png')}}" alt="">
+                    </div>
                 </li>
             {% endfor %}
         </ul>
+    </div><br><br><br>
+
+    <div class="popup" onclick="myFunction()">點擊我去搜尋！！！
+        <span class="popuptext" id="myPopup" onclick="myFunction()">
+            <form action="main_page" method="post" enctype="multipart/form-data">
+                請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">
+                <input type="submit" name="" id="submit">
+                <input type="reset" name="" id="reset">
+                <input type="button" name="" id="cancel" value="取消" onclick="myFunction()">
+            </form>
+        </span>
     </div>
-    <div class="input_files">
+
+
+
+    <!-- <div class="input_files">
         <form action="main_page" method="post" enctype="multipart/form-data">
             請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">
             <input type="submit" name="" id="submit">
         </form>
-    </div>
+    </div> -->
 
-    <div class="recommendation">
+    <!-- <div class="recommendation">
         <table>
             <caption>熱門鞋款</caption>
             <tr>
@@ -66,7 +83,7 @@
                 <td>467</td>
             </tr>
           </table>
-    </div>
+    </div> -->
 
     <div class="footer">
         <div><h1>關於我們</h1></div>
@@ -108,7 +125,7 @@
             adaptiveHeight: true
         });        
     </script>
-    <script> 
+    <!-- <script> 
         const search_icon = document.querySelector('#search_icon')
         search_icon.addEventListener("click", function promptEvent(){
             const product = prompt("Which products are you looking for?");
@@ -120,6 +137,13 @@
                 alert(message);
             }
         })
-    </script>
+    </script> -->
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+          const popup = document.querySelector("#myPopup");
+          popup.classList.toggle("show");
+        }
+        </script>
 </body>
 </html>

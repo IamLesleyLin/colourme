@@ -108,7 +108,7 @@ def index():
                                       {
                                         "type": "uri",
                                         "label": "聯絡我",
-                                        "uri": f"tel:{my_phone}"
+                                        "uri": f"tel:0987654321"
                                       }
                                   ]
                               }
@@ -241,63 +241,6 @@ def getCarouselMessage(data):
     return message
 
 
-def getLocationConfirmMessage(title, latitude, longitude):
-    data = {'title':title, 'latitude':latitude, 'longitude':longitude, 'action':'get_near'}
-    print(data)
-    message = {
-        "type": "template",
-        "altText": "this is a confirm template",
-        "template": {
-            "type": "confirm",
-            "text": f"是否要規劃{title}附近的行程",
-            "actions": [{
-                "type": "postback",
-                "label": "Yes",
-                "data": json.dumps(data)
-                },
-                {
-                "type": "message",
-                "label": "No",
-                "text": "no"
-                }]
-        }
-    }
-    return message
-
-
-def getCallCarMessage(data):
-    message = {
-        "type": "template",
-        "altText": "This is a buttons template",
-        "template": {
-            "type": "buttons",
-            "text": f"請選擇至{data['title']}的預約叫車時間",
-            "actions":[{
-                "type": "datetimepicker",
-                "label": "請選擇時間",
-                "data": json.dumps(data),
-                "mode": "datetime"
-            }]
-        }
-    }
-    return message
-
-
-def getPlayStickerMessage():
-    message = {"type":"sticker","packageId":"446", "stickerId":"1988"}
-    # print(message)
-    return message
-
-
-def getTaipei101LocationMessage():
-    message = dict()
-    message['type'] = 'location'
-    message['title'] = '台北101'
-    message['address'] = 'No 20, Xinyi Rd, Section 5, Xinyi District, 110, Taipei City'
-    message['latitude'] = 25.041460299999997
-    message['longitude'] = 121.57281100000002
-    return message
-
 
 def getMRTVideoMessage():
     message = dict()
@@ -343,7 +286,7 @@ def getMessageImage():
         img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
         print(img_gray.shape)
 
-    return str(img_gray.shape)
+    return f'像素尺寸為：{str(img_gray.shape)}'
 def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
@@ -353,7 +296,7 @@ def getMessageAboutUS():
 def getMessageContactUs():
     message = dict()
     message['type'] = 'text'
-    message['text'] = 
+    message['text'] = ""
     return message
 
 def getMessagePIC():
