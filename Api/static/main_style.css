@@ -86,7 +86,7 @@
     height: 40px;
     width: 10%;
     object-fit: contain;
-    background-color: black;
+    background-color: #EFEDEC;
 }
 .slick-prev:before, .slick-next:before{
     color: black;
@@ -100,43 +100,70 @@
     height: 250px;
     object-fit: cover;
 }
-/*.popup{*/
-/*    margin-top: 30px;*/
-/*    font-size: 30px;*/
-/*}*/
-/*.popup form{*/
-/*    border: 1px dotted black;*/
-/*    text-align:center;*/
-/*}*/
-/*.popup input{*/
-/*    font-size: 30px;*/
-/*}*/
-.recommendation{
+.result{
+    height: 400px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+.result .original{
+    height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0px;
+    border: 1px solid red;
 }
-table{
-    border: 0;
-    border-collapse: collapse;
-    border-radius: 8px;
-    width: 95%;
+.result .original #preview_img{
+    height: 80%;
+    width: 80%;
+    border: 1px solid blue;
 }
-caption{
-    font-size: 30px;
-    margin-bottom: 10px;
+.result .comparison{
+    height: 100%;
+    width: 50%;
+    border: 1px solid red;
 }
-th{
-    border: solid 5px #5ceffe;
-    padding: 16px 8px;
+.result .comparison .img{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-td{
-    border: solid 3px #5ceffe;
-    text-align: center;
-    padding: 8px;
-    color: #757575;
+.result .comparison .text{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+/*.recommendation{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin: 50px 0px;*/
+/*}*/
+/*table{*/
+/*    border: 0;*/
+/*    border-collapse: collapse;*/
+/*    border-radius: 8px;*/
+/*    width: 95%;*/
+/*}*/
+/*caption{*/
+/*    font-size: 30px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+/*th{*/
+/*    border: solid 5px #5ceffe;*/
+/*    padding: 16px 8px;*/
+/*}*/
+/*td{*/
+/*    border: solid 3px #5ceffe;*/
+/*    text-align: center;*/
+/*    padding: 8px;*/
+/*    color: #757575;*/
+/*}*/
 .footer{
     width: 95%;
     margin: auto;

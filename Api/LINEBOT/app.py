@@ -49,19 +49,7 @@ def index():
             if events[0]["message"]["type"] == "text":
                 text = events[0]["message"]["text"]
 
-                if text == "我的名字":
-                    payload["messages"] = [getNameEmojiMessage()]
-                elif text == "捷運的聲音":
-                    payload["messages"] = [getMRTSoundMessage()]
-                elif text == "出去玩囉":
-                    payload["messages"] = [getPlayStickerMessage()]
-                elif text == "台北101":
-                    payload["messages"] = [getTaipei101ImageMessage(),
-                                           getTaipei101LocationMessage(),
-                                           getMRTVideoMessage()]
-
-
-                elif text == "About Us":
+                if text == "About Us":
                     payload["messages"] = [getMessageAboutUS()]
                 elif text == "Contact Us":
                     payload["messages"] = [getMessageContactUs()]
@@ -70,21 +58,6 @@ def index():
                 elif text == "官網":
                     payload["messages"] = [getMessageSite()]
 
-
-                elif text == "quota":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTotalSentMessageCount()
-                            }
-                        ]
-                elif text == "今日確診人數":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTodayCovid19Message()
-                            }
-                        ]
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -92,23 +65,28 @@ def index():
                                 "altText": "This is a buttons template",
                                 "template": {
                                   "type": "buttons",
-                                  "title": "Menu",
+                                  "title": "主選單",
                                   "text": "Please select",
                                   "actions": [
                                       {
                                         "type": "message",
-                                        "label": "我的名字",
-                                        "text": "我的名字"
+                                        "label": "以圖搜圖",
+                                        "text": "以圖搜圖"
                                       },
                                       {
                                         "type": "message",
-                                        "label": "今日確診人數",
-                                        "text": "今日確診人數"
+                                        "label": "官網",
+                                        "text": "官網"
                                       },
                                       {
-                                        "type": "uri",
-                                        "label": "聯絡我",
-                                        "uri": f"tel:0987654321"
+                                        "type": "message",
+                                        "label": "Contact Us",
+                                        "text": "Contact Us"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "label": "About Us",
+                                        "text": "About Us"
                                       }
                                   ]
                               }
@@ -279,14 +257,22 @@ def getMessageImage():
     print(img_data['events'][0]['message']['id'])
 
     if request.method == 'POST':
+        image_name = str(img_data['events'][0]['source']['userId'])
         image = line_bot_api.get_message_content(img_data['events'][0]['message']['id'])
         image_content = image.content
 
-        img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
-        img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
-        print(img_gray.shape)
+        pic_out = open(f'./static/{image_name}.jpg', 'wb')  # img1.png為預存檔的圖片名稱
+        pic_out.write(image_content)  # 將get圖片存入img1.png
+        pic_out.close()  # 關閉檔案(很重要)
+        return '儲存成功'
 
-    return f'像素尺寸為：{str(img_gray.shape)}'
+        # img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
+        # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+        # print(img_gray.shape)
+        # return f'像素尺寸為：{str(img_gray.shape)}'
+
+
+
 def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
