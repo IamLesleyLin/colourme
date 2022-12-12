@@ -18,7 +18,7 @@
     z-index: 9999;
 }
 .box_logo{
-    width: 70%;
+    width: 60%;
     height: 100%;
     border: solid blue 1px;
     display: flex;
@@ -46,6 +46,12 @@
     align-items: center;
 }
 .box_icon img{
+    height: 97%;
+}
+.box_icon a{
+    height: 100%;
+}
+.box_icon a img{
     height: 97%;
 }
 .hot{

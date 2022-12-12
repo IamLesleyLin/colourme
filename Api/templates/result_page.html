@@ -17,6 +17,7 @@
             <p id="BrandName">Colour Me</p>
         </div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></div>
+        <div class="box_icon">< href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
@@ -39,7 +40,7 @@
         <span class="popuptext" id="search" onclick="popup_search()">
             <form action="main_page" method="post" enctype="multipart/form-data">
                 請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
-                <img id="preview_img" src="#" />
+                <img id="preview_img" src="#" alt=""/>
                 <input type="submit" name="" id="submit">
                 <input type="reset" name="" id="reset">
                 <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
@@ -114,7 +115,6 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115687.73633497348!2d121.47363185395893!3d25.025868290442194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a98c743d3bb5%3A0x93fb4e641c4e5ed6!2z5bel56CU6Zmi55Si5qWt5Lq65omN6KiT57e05LiA6YOoLeWPsOWMlyAo5Y-w5YyX5a2457-S5Lit5b-DKQ!5e0!3m2!1sen!2stw!4v1670309831994!5m2!1sen!2stw" width="400" height="300" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </box3>
         </box>
-        
     </div>
 
     <!-- infro for slick -->
