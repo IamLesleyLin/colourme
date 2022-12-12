@@ -13,28 +13,48 @@
 <body>
     <div class="header">
         <div class="box_logo">
-            <img src="{{url_for('static', filename = 'logo.png')}}" alt="" id="logo">
+            <img src="{{url_for('static', filename = 'Colour Logo.png')}}" alt="" id="logo">
             <p id="BrandName">Colour Me</p>
         </div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></div>
+        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}">登出</a></div>
     </div>
+    <div class = "hot">
+        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
+        <ul class="main">
+            {% for i in slick_list %}
+                <li>
+                    <img src="{{i['url']}}" alt="">
+                    <div>
+                        <p>{{i['name']}}</p>
+                        <img src="{{url_for('static', filename = 'collection.png')}}" alt="">
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div><br><br><br>
 
-    <div class="main">
-        {% for i in data %}
-        <img src="{{i['url']}}" alt="">
-        {% endfor %}
+    <div class="popup" onclick="popup_search()">點擊我去搜尋！！！
+        <span class="popuptext" id="search" onclick="popup_search()">
+            <form action="main_page" method="post" enctype="multipart/form-data">
+                請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
+                <img id="preview_img" src="#" />
+                <input type="submit" name="" id="submit">
+                <input type="reset" name="" id="reset">
+                <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
+            </form>
+        </span>
     </div>
 
-    <div class="input_files">
+    <!-- <div class="input_files">
         <form action="main_page" method="post" enctype="multipart/form-data">
-            請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png"><br>
-            <input type="submit" name="" id="">
+            請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">
+            <input type="submit" name="" id="submit">
         </form>
-    </div>
+    </div> -->
 
-    <div class="recommendation">
+    <!-- <div class="recommendation">
         <table>
             <caption>熱門鞋款</caption>
             <tr>
@@ -62,7 +82,7 @@
                 <td>467</td>
             </tr>
           </table>
-    </div>
+    </div> -->
 
     <div class="footer">
         <div><h1>關於我們</h1></div>
@@ -104,7 +124,7 @@
             adaptiveHeight: true
         });        
     </script>
-    <script> 
+    <!-- <script> 
         const search_icon = document.querySelector('#search_icon')
         search_icon.addEventListener("click", function promptEvent(){
             const product = prompt("Which products are you looking for?");
@@ -116,6 +136,27 @@
                 alert(message);
             }
         })
+    </script> -->
+    <script>
+        // When the user clicks on div, open the popup
+        function popup_search() {
+          const search = document.querySelector("#search");
+          search.classList.toggle("show");
+        }
     </script>
+    <script>
+        function readURL(input){
+          if(input.files && input.files[0]){
+            const imageTagID = input.getAttribute("targetID");
+            console.log(imageTagID);
+            const reader = new FileReader();
+            reader.onload = function (e) {
+               const img = document.getElementById(imageTagID);
+               img.setAttribute("src", e.target.result)
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        </script>
 </body>
 </html>
