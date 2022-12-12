@@ -84,6 +84,10 @@ def main_page():
         # print(img_gray.shape)
         return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded)
 
+@app.route('/product_page',methods=['GET'])
+def product_page():
+    return render_template('product_page.html')
+
 if __name__ == '__main__':
    app.run()
 
