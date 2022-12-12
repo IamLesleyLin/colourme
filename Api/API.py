@@ -82,7 +82,11 @@ def main_page():
         # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
         # result = img_gray.shape
         # print(img_gray.shape)
-        return render_template('main_page.html', slick_list=slick_list, img_encoded=img_encoded)
+        return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded)
+
+@app.route('/product_page',methods=['GET'])
+def product_page():
+    return render_template('product_page.html')
 
 if __name__ == '__main__':
    app.run()
