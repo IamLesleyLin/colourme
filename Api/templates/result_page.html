@@ -47,12 +47,22 @@
         </span>
     </div>
 
-    <!-- <div class="input_files">
-        <form action="main_page" method="post" enctype="multipart/form-data">
-            請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">
-            <input type="submit" name="" id="submit">
-        </form>
-    </div> -->
+    <div class="result">
+        <div class="original">
+            <img id="preview_img" src="data:;base64,{{img_encoded}}"/>
+        </div>
+        <div class="comparison">
+            <div class="img">123</div>
+            <div class="text">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- <div class="recommendation">
         <table>
@@ -124,19 +134,6 @@
             adaptiveHeight: true
         });        
     </script>
-    <!-- <script> 
-        const search_icon = document.querySelector('#search_icon')
-        search_icon.addEventListener("click", function promptEvent(){
-            const product = prompt("Which products are you looking for?");
-            if (product == null || product == "") {
-                alert("Sorry, I don't know what you want!");
-            }
-            else {
-                const message = "Here's your, " + product + "!";
-                alert(message);
-            }
-        })
-    </script> -->
     <script>
         // When the user clicks on div, open the popup
         function popup_search() {
