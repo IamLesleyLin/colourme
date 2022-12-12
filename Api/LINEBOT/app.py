@@ -11,7 +11,6 @@ import string
 import random
 import cv2
 import numpy as np
-
 from urllib import parse
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
@@ -58,7 +57,26 @@ def index():
                 elif text == "官網":
                     payload["messages"] = [getMessageSite()]
 
+<<<<<<< Updated upstream
                 elif text == "主選單":
+=======
+
+                elif text == "quota":
+                    payload["messages"] = [
+                            {
+                                "type": "text",
+                                "text": getTotalSentMessageCount()
+                            }
+                        ]
+                elif text == "今日確診人數":
+                    payload["messages"] = [
+                            {
+                                "type": "text",
+                                "text": getTodayCovid19Message()
+                            }
+                        ]
+                elif text == "儲存成功":
+>>>>>>> Stashed changes
                     payload["messages"] = [
                             {
                                 "type": "template",
@@ -265,6 +283,7 @@ def getMessageImage():
         pic_out.write(image_content)  # 將get圖片存入img1.png
         pic_out.close()  # 關閉檔案(很重要)
         return '儲存成功'
+        ...
 
         # img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
         # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
