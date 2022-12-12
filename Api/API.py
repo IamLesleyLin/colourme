@@ -27,13 +27,13 @@ db = pymysql.connect(
         )
 
 cursor = db.cursor()
-sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_text`.`name`, 
+slick_sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_text`.`name`, 
         `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list` 
         INNER JOIN `productid_imgurl` ON `parser_hot_list`.`id` = `productid_imgurl`.`id` 
         INNER JOIN `parser_text` ON `parser_hot_list`.`id` = `parser_text`.`id` 
         WHERE Hot > 0 
         ORDER BY Hot DESC"""
-cursor.execute(sql)
+cursor.execute(slick_sql)
 
 if cursor.rowcount > 0:
     results = cursor.fetchall()
@@ -47,8 +47,28 @@ if cursor.rowcount > 0:
         url = i[4]
         slick_list.append({"numbers": numbers, "id": ids, "name": names, "hot": hot, "url": url})
 
-    cursor.close()
-    db.close()
+cursor.close()
+
+################
+cursor = db.cursor()
+product_sql = """SELECT `category`.`id`, `category`.`name`, `productid_imgurl`.`imgURL` 
+            FROM `category` 
+            INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`"""
+cursor.execute(product_sql)
+
+if cursor.rowcount > 0:
+    results = cursor.fetchall()
+
+    product_list = []
+    for i in results:
+        ids = i[0]
+        # names = " ".join(re.findall("\w+\s+", i[2]))
+        names = i[1]
+        url = i[2]
+        product_list.append({"id": ids, "name": names, "url": url})
+
+cursor.close()
+db.close()
 
 @app.route('/',methods=['GET'])
 def home_page():
@@ -86,7 +106,7 @@ def main_page():
 
 @app.route('/product_page',methods=['GET'])
 def product_page():
-    return render_template('product_page.html')
+    return render_template('product_page.html', product_list=product_list)
 
 if __name__ == '__main__':
    app.run()
