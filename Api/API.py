@@ -1,12 +1,8 @@
 import base64
-
-from flask import Flask
 from flask import Flask, jsonify, render_template #模板套件,
 from flask import request #解析套件
 from flask_cors import CORS
 import pymysql
-import os
-import pathlib
 import cv2
 import numpy as np
 import re

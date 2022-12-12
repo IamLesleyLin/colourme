@@ -140,17 +140,17 @@
     </script>
     <script>
         function readURL(input){
-          if(input.files && input.files[0]){
-            const imageTagID = input.getAttribute("targetID");
-            console.log(imageTagID);
-            const reader = new FileReader();
-            reader.onload = function (e) {
-               const img = document.getElementById(imageTagID);
-               img.setAttribute("src", e.target.result)
+            if(input.files && input.files[0]){
+                const imageTagID = input.getAttribute("targetID");
+                console.log(imageTagID);
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.getElementById(imageTagID);
+                    img.setAttribute("src", e.target.result)
+                }
+                reader.readAsDataURL(input.files[0]);
             }
-            reader.readAsDataURL(input.files[0]);
-          }
         }
-        </script>
+    </script>
 </body>
 </html>
