@@ -1,16 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Caveat+Brush&family=Cookie&family=Diplomata+SC&family=Encode+Sans&family=Indie+Flower&family=La+Belle+Aurore&family=Lobster+Two&family=Nerko+One&family=Noto+Sans+TC&family=Permanent+Marker&family=Yellowtail&display=swap');
-
-/* font-family: 'Amatic SC', cursive;
-font-family: 'Caveat', cursive;
-font-family: 'Cookie', cursive;
-font-family: 'Diplomata SC', cursive;
-font-family: 'Encode Sans', sans-serif;
-font-family: 'Indie Flower', cursive;
-font-family: 'La Belle Aurore', cursive;
-font-family: 'Lobster Two', cursive;
-font-family: 'Nerko One', cursive;
-font-family: 'Permanent Marker', cursive;
-font-family: 'Yellowtail', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
 
 *{margin: 0;}
 
@@ -67,19 +55,38 @@ font-family: 'Yellowtail', cursive; */
     padding: 0px;
     text-align: center;
 }
+.hot h1{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hot h1 img{
+    height: 50px;
+}
 .main{
     margin-top: 10px;
     padding: 0px;
-    background-color: #EFEDEC;
+    background-color: #EFEDEC; /*格式不能改 #EFEDEC */
 }
 .main li{
     margin: auto;
     padding: 5px;
     border: 25px solid lightblue;
 }
-.main p{
+.main li div{
+    display: flex;
+}
+.main li div p{
     font-size: 30px;
-    font-family: 'Cookie', cursive;
+    width: 90%;
+    /*font-family: 'Cookie', cursive;*/
+}
+.main li div img{
+    height: 40px;
+    width: 10%;
+    object-fit: contain;
+    background-color: #EFEDEC;
 }
 .slick-prev:before, .slick-next:before{
     color: black;
@@ -93,43 +100,70 @@ font-family: 'Yellowtail', cursive; */
     height: 250px;
     object-fit: cover;
 }
-.input_files{
-    margin-top: 30px;
-    font-size: 30px;
+.result{
+    height: 400px;
+    width: 90%;
+    margin: auto;
+    display: flex;
 }
-.input_files form{
-    border: 1px dotted black;
-    text-align:center;
-}
-.input_files input{
-    font-size: 30px;
-}
-.recommendation{
+.result .original{
+    height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0px;
+    border: 1px solid red;
 }
-table{
-    border: 0;
-    border-collapse: collapse;
-    border-radius: 8px;
-    width: 95%;
+.result .original #preview_img{
+    height: 80%;
+    width: 80%;
+    border: 1px solid blue;
 }
-caption{
-    font-size: 30px;
-    margin-bottom: 10px;
+.result .comparison{
+    height: 100%;
+    width: 50%;
+    border: 1px solid red;
 }
-th{
-    border: solid 5px #5ceffe;
-    padding: 16px 8px;
+.result .comparison .img{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-td{
-    border: solid 3px #5ceffe;
-    text-align: center;
-    padding: 8px;
-    color: #757575;
+.result .comparison .text{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+/*.recommendation{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin: 50px 0px;*/
+/*}*/
+/*table{*/
+/*    border: 0;*/
+/*    border-collapse: collapse;*/
+/*    border-radius: 8px;*/
+/*    width: 95%;*/
+/*}*/
+/*caption{*/
+/*    font-size: 30px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+/*th{*/
+/*    border: solid 5px #5ceffe;*/
+/*    padding: 16px 8px;*/
+/*}*/
+/*td{*/
+/*    border: solid 3px #5ceffe;*/
+/*    text-align: center;*/
+/*    padding: 8px;*/
+/*    color: #757575;*/
+/*}*/
 .footer{
     width: 95%;
     margin: auto;
@@ -160,4 +194,74 @@ td{
 }
 .footer box3{
     width: 33%;
+}
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup*/
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    cursor: pointer;
+    width: 95%;
+    height: 300px;
+    border: 3px solid black;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 80%; /*格式不動*/
+    height: 600px; /*格式不動*/
+    background-color: lightblue;
+    color: #fff;
+    border-radius: 60px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 100000;
+    margin: auto;
+    top: -145%; /*格式不動*/
+    left: 10%; /*格式不動*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup form{
+    font-size: 30px;
+    border: 3px solid red;
+
+}
+.popup input{
+    font-size: 20px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
