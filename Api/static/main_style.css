@@ -32,11 +32,6 @@
     margin-left: 0;
     height: 100%;
 }
-#BrandName{
-    font-size: 80px;
-    margin: 0 auto;
-    font-family:'Cookie', cursive;
-}
 .box_icon{
     width: 10%;
     height: 100%;
@@ -192,7 +187,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     border-top: solid #555;
     border-bottom: solid #555;
 }
@@ -201,6 +196,11 @@
     max-height: 150px;
     max-width: 150px;
     object-fit: contain;
+}
+#BrandName{
+    font-size: 80px;
+    font-family:'Cookie', cursive;
+    margin-left: 30px;
 }
 .footer_sections{
     /* margin-bottom: 4vw; */
@@ -227,6 +227,8 @@
     align-items: center;
 }
 .footer_sec3{
+    display: flex;
+
     justify-content: center;
     align-items: center;
     height: 100%;
