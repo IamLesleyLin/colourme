@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
+
+*{margin: 0;}
+
+:root{
+    --background:white
+}
+
+.header{
+    width: 95%;
+    height: 100px;
+    border: solid pink 1px;
+    display:inline-flex;
+    background-color: var(--background);
+    position:relative;
+    top: 0;
+    margin: 0px 2.5%;
+    z-index: 9999;
+}
+.box_logo{
+    width: 60%;
+    height: 100%;
+    border: solid blue 1px;
+    display: flex;
+    /* 垂直方向 */
+    align-items: center;
+}
+.box_logo img{
+    height: 97%;
+    object-fit: cover;
+}
+.logo_img{
+    margin-left: 0;
+    height: 100%;
+}
+#BrandName{
+    font-size: 80px;
+    margin: 0 auto;
+    font-family:'Cookie', cursive;
+}
+.box_icon{
+    cursor: pointer;
+    width: 10%;
+    height: 100%;
+    border: solid blue 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_icon img{
+    height: 97px;
+}
+.main{
+    width: 95%;
+    height: 520px;
+    border: solid green 1px;
+    margin:auto;
+}
+.slick-prev:before, .slick-next:before{
+    color: black;
+}
+.slick-slide{
+    width: 100%;
+    /* height: 40px; */
+}
+.slick-slide img{
+    width: 100%;
+    height: 520px;
+    object-fit:fill;
+    /* object-position: 50%; */
+}
+/* .slick-slide img{
+    max-width:600px;
+    myimg:expression(onload=function(){
+    this.style.width=(this.offsetWidth > 600)?"600px":"auto"});
+    } */
+/* ============footer============ */
+.footer_group{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 3px;
+    background-color: #f4f4f4;
+    justify-content: center;
+    align-items: center;
+}
+.footer_li{
+    list-style-type: none;
+    font-size: 14px;
+    font-family: 'Noto Sans TC', sans-serif;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.copyright{
+    background-color: #333333;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+.copyright_text{
+    font-size: 10px;
+    color: white;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+}
