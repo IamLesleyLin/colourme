@@ -254,8 +254,8 @@ def getMessageImage():
                                 },
                                 {
                                 "type": "message",
-                                "label": "刪除圖片",
-                                "text": "刪除圖片"
+                                "label": "rescale",
+                                "text": "rescale"
                                 }]}
     return message
 
@@ -315,8 +315,20 @@ def turnPicnFlip():
     message['originalContentUrl'] = f"{end_point}/static/3{image_name}.jpg"
     message['previewImageUrl'] = f"{end_point}/static/3{image_name}.jpg"
     return message
-# def turnPicnRescale():
-    
+
+def turnPicnRescale():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    image = cv2.resize(imgg,None, fx=0.5,fy=0.5 , interpolation=cv2.INTER_AREA)
+    cv2.imwrite(f'./static/4{image_name}.jpg', image)
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] = f"{end_point}/static/4{image_name}.jpg"
+    message['previewImageUrl'] = f"{end_point}/static/4{image_name}.jpg"
+    return message
+
 def turnPicnDelete():
     img = request.get_data(as_text=True)
     img_data = json.loads(img)
@@ -327,7 +339,14 @@ def turnPicnDelete():
         print('刪除成功')
     else :
         print('刪除失敗')
-        
+
+def backgroundDelete():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    img_decoded = cv2.imdecode(np.frombuffer(imgg, np.uint8), 1) 
+
 def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
@@ -343,7 +362,7 @@ def getMessageContactUs():
 def getMessagePIC():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "12345678"
+    message['text'] = "請上傳圖片"
     return message
 
 def getMessageSite():
