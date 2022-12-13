@@ -115,12 +115,14 @@ def product_page():
         return render_template('product_page.html', product_list=product_list)
 
     if request.method == 'POST':
-        p_id = request.values.get('p_id')
+
 
         cursor = db.cursor()
 
         cllection_insert = """INSERT INTO `collection` VALUES (%s);"""
-        cursor.execute(cllection_insert, (p_id))  # request.json是保護機制，不讓別人拿到資料
+        # p_id = request.values.get('p_id') # 用 form 的方法
+        # cursor.execute(cllection_insert, (p_id))
+        cursor.execute(cllection_insert, (request.json["id"])) # 用 js 的方法
 
         db.commit()
         cursor.close()

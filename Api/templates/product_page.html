@@ -75,10 +75,10 @@
                     <td>{{i['name']}}</td>
                     <td><img src="{{i['url']}}" alt="" class="image"></td>
                     <td>
-                        <form action="product_page" method="post">
+                        <!-- <form action="product_page" method="post"> -->
                             <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
                             <input type="submit" class="collection" value="&#10084">
-                        </form>
+                        <!-- </form> -->
                     </td>
                 </tr>
             {% endfor %}
@@ -103,5 +103,16 @@
             </div>
         </div>
     </div>
+    <script>
+        for (i=0; i< 50; i++){
+            let btn = document.querySelectorAll('.collection')[i]
+            let p_id = document.querySelectorAll('.p_id')[i]
+            btn.addEventListener('click', function(e) {
+                e.preventDefault()
+                fetch(`http://127.0.0.1:5000/product_page`, {method:'POST', body: JSON.stringify({id:p_id.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+                .then((response) => response.json())
+            });
+        }
+    </script>
 </body>
 </html>
