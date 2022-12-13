@@ -6,16 +6,58 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'collection_style.css')}}">
 </head>
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <div class="box_logo">
-            <img src="{{url_for('static', filename = 'Colour Logo.png')}}" alt="" id="logo">
+            <img src="{{url_for('static', filename = 'colour logo.png')}}" alt="" id="logo">
             <p id="BrandName">Colour Me</p>
         </div>
-        <div class="box_icon"><a href="{{url_for('main_page')}}"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('main_page')}}"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="search_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
-    </div>
+    </div> -->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+          <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" class="nav_photo">
+
+          <div style="display: block;"></div>
+          <a href="" class="nav_logo">colourme</a>
+ 
+          <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list">
+              <li class="nav_item">
+                <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+              </li>
+              <li class="nav_item">
+                <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a></li>
+              <li class="nav_item">
+                <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
+              </li>
+              <!-- <li class="nav_item">
+                <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
+              </li> -->
+              <li class="nav_item">
+                <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="nav_toggle" id="nav-toggle">
+            <iconify-icon icon="bx:menu"></iconify-icon>
+          </div>
+  
+  
+          <!-- <div class="search-overlay" id="overlay">
+            <form>
+              <input type="search" placeholder="search...">
+              <button type="submit">search</button>
+            <i class="fa-solid fa-x" id="close"></i>
+            </form>
+  
+  
+          </div> -->
+        </nav>
+    </header>
     <div class="product">
         <table>
             <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">選擇鞋款</marquee></strong></caption>
@@ -36,7 +78,7 @@
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">
-                <img src="{{url_for('static',filename = 'Colour Logo.png')}}">
+                <img src="{{url_for('static',filename = 'colourme logo1.png')}}">
             </div>
         </div>
         <div class="footer_sections">
