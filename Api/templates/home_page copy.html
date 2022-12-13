@@ -34,22 +34,24 @@
           <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
               <li class="nav_item">
+<<<<<<< Updated upstream
                 <a href="#home" class="nav_link">首頁</a>
+=======
+                <a href="{{url_for('log_in')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+>>>>>>> Stashed changes
               </li>
               <li class="nav_item">
-                <a href="#about" class="nav_link">關於</a>
+                <a href="{{url_for('log_in')}}" class="nav_link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></a>
               </li>
               <li class="nav_item">
-                <a href="#services" class="nav_link">收藏</a>
+                <a href="{{url_for('log_in')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
               </li>
-              <li class="nav_item">
+              <!-- <li class="nav_item">
                 <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
-              </li>
+              </li> -->
               <li class="nav_item">
-                <a href="#contact" class="nav_link">登入</a>
+                <a href="{{url_for('log_in')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
               </li>
-  
-  
             </ul>
           </div>
   
@@ -58,7 +60,7 @@
           </div>
   
   
-          <div class="search-overlay" id="overlay">
+          <!-- <div class="search-overlay" id="overlay">
             <form>
               <input type="search" placeholder="search...">
               <button type="submit">search</button>
@@ -66,7 +68,7 @@
             </form>
   
   
-          </div>
+          </div> -->
         </nav>
       </header>
     
@@ -97,7 +99,7 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- 搜尋按鈕 -->
-    <script>
+    <!-- <script>
       $(document).ready(function(){
         $("#search-btn").click(function(){
           $("#overlay").show(200);
@@ -106,12 +108,13 @@
           $("#overlay").hide(200);
        })
       })
-    </script>
+    </script> -->
 
     <!-- infro for slick -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{url_for('static', filename = 'slick-1.8.1/slick/slick.min.js')}}"></script>
+    <script src="../static/main.js"></script>
 
     <script>
     // infro for slick

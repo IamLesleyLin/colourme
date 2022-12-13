@@ -60,9 +60,17 @@ def index():
                     payload["messages"] = [getMessageSite()]
                 elif text == "負片":
                     payload["messages"] = [turnPicnNegative()]
-                elif text == "灰階/翻轉/RGB/rescale/刪除圖片":
+                elif text == "灰階":
+                    payload["messages"] = [turnPicnGray()]
+                elif text == "翻轉":
+                    payload["messages"] = [turnPicnFlip()]
+                elif text == "rescale":
+                    payload["messages"] = [turnPicnRescale()]
+                elif text == "刪除圖片":
+                    payload["messages"] = [turnPicnDelete()]
+                elif text == "灰階/翻轉/rescale/刪除圖片":
                     payload["messages"] = [pushMessagePIC()]
-                
+
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -227,27 +235,27 @@ def getMessageImage():
     message['altText'] = 'This is a buttons template'
     message['template'] =  {
                     "type": "buttons",
-                    "title": "主選單",
+                    "title": "上傳成功",
                     "text": "Please select",
                     "actions": [{
                                 "type": "message",
-                                "label": "zj4qu",
-                                "text": "以圖搜圖"
+                                "label": "負片",
+                                "text": "負片"
                                 },
                                 {
                                 "type": "message",
-                                "label": "官網",
-                                "text": "官網"
+                                "label": "灰階",
+                                "text": "灰階"
                                 },
                                 {
                                 "type": "message",
-                                "label": "Contact Us",
-                                "text": "Contact Us"
+                                "label": "翻轉",
+                                "text": "翻轉"
                                 },
                                 {
                                 "type": "message",
-                                "label": "About Us",
-                                "text": "About Us"
+                                "label": "刪除圖片",
+                                "text": "刪除圖片"
                                 }]}
     return message
 
@@ -278,15 +286,41 @@ def turnPicnNegative():
     message['type'] = 'image'
     message['originalContentUrl'] = f"{end_point}/static/1{image_name}.jpg"
     message['previewImageUrl'] = f"{end_point}/static/1{image_name}.jpg"
-
     return message
     # img_negative_tolist = img_negative.tolist()
     # imm = json.dumps(img_negative_tolist)
     # print(imm)
+def turnPicnGray():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    img_gray = cv2.cvtColor(imgg, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite(f'./static/2{image_name}.jpg', img_gray)
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] = f"{end_point}/static/2{image_name}.jpg"
+    message['previewImageUrl'] = f"{end_point}/static/2{image_name}.jpg"
+    return message
+
+def turnPicnFlip():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    image2 = cv2.flip(imgg, 1)
+    cv2.imwrite(f'./static/3{image_name}.jpg', image2)
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] = f"{end_point}/static/3{image_name}.jpg"
+    message['previewImageUrl'] = f"{end_point}/static/3{image_name}.jpg"
+    return message
+# def turnPicnRescale():
     
+# def turnPicnDelete():
 
 
-def getMessageAboutUS():
+# def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
     message['text'] = "".join()
