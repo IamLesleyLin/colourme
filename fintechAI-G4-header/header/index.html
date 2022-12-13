@@ -17,8 +17,8 @@
     <!--========== HEADER ==========-->
     <header class="l-header" id="header">
       <nav class="nav bd-container">
-        <img src="https://tw.buy.yahoo.com/act/assets/shopping/--albee/adidaslogo.jpg" alt="">
-        <a href="#" class="nav_logo">踏破鐵鞋?</a>
+        <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="">
+        <a href="#" class="nav_logo">colourme</a>
 
         <div class="nav_menu" id="nav-menu">
           <ul class="nav_list">
@@ -32,7 +32,7 @@
               <a href="#services" class="nav_link">收藏</a>
             </li>
             <li class="nav_item">
-              <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
+              <a href="#menu" class="nav_link" id="search-btn"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt=""></a>
             </li>
             <li class="nav_item">
               <a href="#contact" class="nav_link">登入</a>
@@ -59,24 +59,61 @@
       </nav>
     </header>
 
+    <div class="main">
+      <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
+      <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
+      <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div>
+  </div>
+  <!-- 把壞壞slick跟footer隔開 -->
+  <div style="height: 200px;"></div>
 
+  <footer class = "footer">
+      <div class = "footer_group">
+           <li class = "footer_li">
+              Follow Us | Contact Us
+          </li>
+          <li class = "footer_li">公司概要 | 使用條款 | 隱私權政策
+          </li>
+      </div>
 
+      <div class = "copyright">
+          <p class="copyright_text">&copy;Colour Me inc. All Rights Reserved.</p>
+      </div>
+  </footer>
 
+  <script src="assets/js/main.js"></script>
+  <!-- 手機板選單按鈕圖的來源 -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- 搜尋按鈕 -->
+  <script>
+    $(document).ready(function(){
+      $("#search-btn").click(function(){
+        $("#overlay").show(200);
+     })
+      $("#close").click(function(){
+        $("#overlay").hide(200);
+     })
+    })
+  </script>
 
-    <script src="assets/js/main.js"></script>
-    <!-- 手機板選單按鈕圖的來源 -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!-- 搜尋按鈕 -->
-    <script>
-      $(document).ready(function(){
-        $("#search-btn").click(function(){
-          $("#overlay").show(200);
-       })
-        $("#close").click(function(){
-          $("#overlay").hide(200);
-       })
-      })
-    </script>
-  </body>
+  <!-- infro for slick -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="{{url_for('static', filename = 'slick-1.8.1/slick/slick.min.js')}}"></script>
+  <script src="../static/main.js"></script>
+
+  <script>
+  // infro for slick
+      $('.main').slick({
+          dots: true,
+          infinite: true,
+          autoplay: true,
+          speed: 300,
+          autoplayspeed: 2,
+          slidesToShow: 1,
+          adaptiveHeight: true
+      });        
+  </script>
+</body>
 </html>

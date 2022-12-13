@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- import css -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'slick-1.8.1/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'home_style.css')}}">
+</head>
+<body>
+    <div class="header">
+        <div class="box_logo">
+            <div class = "logo_img"><img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" id="logo"></div>
+            <p id="BrandName">Colour Me</p>
+        </div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('log_in')}}"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a></div>
+    </div>
+    
+    <div class="main">
+        <div><img src="{{url_for('static', filename = 'slick1.png')}}" alt=""></div>
+        <div><img src="{{url_for('static', filename = 'slick2.jpg')}}" alt=""></div>
+        <div><img src="{{url_for('static', filename = 'slick3.jpg')}}" alt=""></div>
+    </div>
+
+    <footer class = "footer">
+        <div class = "footer_group">
+             <li class = "footer_li">
+                Follow Us | Contact Us
+            </li>
+            <li class = "footer_li">公司概要 | 使用條款 | 隱私權政策
+            </li>
+        </div>
+
+        <div class = "copyright">
+            <p class="copyright_text">&copy;Colour Me inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- infro for slick -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{url_for('static', filename = 'slick-1.8.1/slick/slick.min.js')}}"></script>
+
+    <script>
+    // infro for slick
+        $('.main').slick({
+            dots: true,
+            infinite: true,
+            autoplay: true,
+            speed: 300,
+            autoplayspeed: 2,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        });        
+    </script>
+</body>
+</html>
