@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'product_style.css')}}">
+    <title>Collection Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'collection_style.css')}}">
 </head>
 <body>
     <div class="header">
@@ -18,32 +16,23 @@
         <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
     </div>
-
     <div class="product">
         <table>
-            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">所有鞋款</marquee></strong></caption>
+            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">選擇鞋款</marquee></strong></caption>
             <tr>
                 <th>代號</th>
                 <th>品名</th>
                 <th>圖片</th>
-                <th>收藏</th>
             </tr>
-            {% for i in product_list %}
+            {% for i in collection_list %}
                 <tr>
                     <td>{{i['id']}}</td>
                     <td>{{i['name']}}</td>
                     <td><img src="{{i['url']}}" alt="" class="image"></td>
-                    <td>
-                        <form action="product_page" method="post">
-                            <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
-                            <input type="submit" class="collection" value="&#10084">
-                        </form>
-                    </td>
                 </tr>
             {% endfor %}
           </table>
     </div>
-
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">
