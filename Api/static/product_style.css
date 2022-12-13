@@ -1,9 +1,254 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
 
-*{margin: 0;}
 
-:root{
-    --background:white
+/*===== VARIABLES CSS =====*/
+:root {
+  /* 導覽列高度 */
+  --header-height: 5rem;
+  /* 字型 */
+  --font-C-normal: 'Noto Sans TC', sans-serif;
+  --font-C-thick: 'Noto Serif TC', serif;
+  --font-E-normal: 'Poppins', sans-serif;
+  --font-E-cute: 'Roboto', sans-serif;
+  --font-E-logo:'Cookie', cursive;
+  /* 顏色 */
+  --first-color: blue;
+  --title-color: #393939;
+  --text-color: #707070;
+  --text-color-light: #A6A6A6;
+  --body-color: #FBFEFD;
+  --container-color: #FFFFFF;
+
+  /*========== Font and typography ==========*/
+
+  --big-font-size: 2.25rem;
+  --normal-font-size: 1.2rem;
+  --small-font-size: .8rem;
+
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 768px){
+  :root{
+    --biggest-font-size: 4rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*========== BASE ==========*/
+*,::before,::after{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+body{
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--font-E-normal);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,h2,h3,p,ul{
+  margin: 0;
+}
+
+ul{
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/*========== LAYOUT ==========*/
+.bd-container{
+  max-width: 95vw;
+  /* width: calc(100% - 2rem); */
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+
+.l-header{
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
+/*========== NAV ==========*/
+.nav{
+  max-width: 90vw;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+@media screen and (max-width: 768px){
+  .nav_menu{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    background-color: var(--body-color);
+    transition: .4s;
+    box-shadow: 0 4px 4px rgba(0,0,0,.1);
+    border-radius: 0 0 1rem 1rem;
+    z-index: var(--z-fixed);
+  }
+}
+.nav_logo{
+  font-family: var(--font-E-logo);
+  font-size: 4rem;
+}
+.nav_photo{
+  height:100px;
+  width:100px;
+  position: absolute;
+  top: 3px;
+}
+.nav_item{
+  height:50px;
+  width:50px;
+  margin-bottom: 1rem;
+}
+
+.nav_link, .nav_logo, .nav_toggle{
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.nav_logo:hover{
+  color: var(--first-color);
+}
+
+.nav_link{
+  transition: .3s;
+}
+
+.nav_link:hover{
+  color: var(--first-color);
+}
+
+.nav_toggle{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Show menu */
+.show-menu{
+  top: var(--header-height);
+}
+
+/* Active menu */
+.active-link{
+  color: var(--first-color);
+}
+/* 搜尋 */
+.search-overlay{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 102;
+}
+.search-overlay form{
+  padding: 0px 300px;
+  margin-top: 380px;
+  display: flex;
+}
+.search-overlay input{
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  font-size: var(--small-font-size);
+}
+.search-overlay button{
+  background-color: #393939;
+  font-size: var(--normal-font-size);
+  font-weight:hold;
+  padding: 10px 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+}
+.fa-x{
+  position: absolute;
+  top: calc(var(--header-height) + 0.8rem);
+  right: 5%;
+}
+
+/*========== RWD ==========*/
+@media screen and (min-width: 576px){
+  .contact__container{
+    grid-template-columns: 1.75fr 1fr;
+    align-items: center;
+  }
+  .contact__button{
+    justify-self: center;
+  }
+}
+
+@media screen and (min-width: 768px){
+  body{
+    margin: 0;
+  }
+
+  .section{
+    padding-top: 8rem;
+  }
+
+  .nav{
+    height: var(--header-height);
+  }
+  .nav_list{
+    display: flex;
+  }
+  .nav_item{
+    margin-left: 2.5rem;
+    margin-bottom: 0;
+  }
+  .nav_toggle{
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 960px){
+  .bd-container{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .header{
     width: 95%;
@@ -72,20 +317,24 @@
     font-size: 30px;
     background-color: #EFEDEC;
 }
-/*.product td.collection:hover{*/
-/*    background-color: silver;*/
-/*}*/
 .product img.image{
     height: 300px;
 }
-/*.product img.collection{*/
-/*    height: 100px;*/
-/*}*/
 .product .collection{
     font-size: 100px;
     color: white;
     cursor: pointer;
     transition: .5s;
+    border: 0px;
+    background-color: #EFEDEC;
+}
+.p_id{
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 .product .collection:hover{
     color: red;

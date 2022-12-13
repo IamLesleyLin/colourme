@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'main_style.css')}}">
 </head>
 <body>
-    <header class="l-header" id="header">
+    <!-- <header class="l-header" id="header">
         <nav class="nav bd-container">
           <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" class="nav_photo">
 
@@ -57,9 +57,9 @@
         </div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></div>
         <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
+        <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
-    </div> -->
+    </div>
     <div class = "hot">
         <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
         <ul class="main">
