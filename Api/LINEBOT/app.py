@@ -317,10 +317,18 @@ def turnPicnFlip():
     return message
 # def turnPicnRescale():
     
-# def turnPicnDelete():
-
-
-# def getMessageAboutUS():
+def turnPicnDelete():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    if os.path.exists(f'./static/{image_name}.jpg'):
+        os.remove(f'./static/{image_name}.jpg')
+        print('刪除成功')
+    else :
+        print('刪除失敗')
+        
+def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
     message['text'] = "".join()
