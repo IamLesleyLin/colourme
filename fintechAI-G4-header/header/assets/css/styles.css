@@ -6,7 +6,10 @@
   /* 導覽列高度 */
   --header-height: 5rem;
   /* 自形 */
-  --body-font: 'Poppins', sans-serif;
+  --font-C-normal: 'Noto Sans TC', sans-serif;
+  --font-C-thick: 'Noto Serif TC', serif;
+  --font-E-normal: 'Poppins', sans-serif;
+  --font-E-cute: 'Roboto', sans-serif;
   /* 顏色 */
   --first-color: blue;
   --title-color: #393939;
@@ -47,7 +50,7 @@ html{
 
 body{
   margin: var(--header-height) 0 0 0;
-  font-family: var(--body-font);
+  font-family: var(--font-E-normal);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);

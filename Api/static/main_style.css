@@ -18,7 +18,7 @@
     z-index: 9999;
 }
 .box_logo{
-    width: 70%;
+    width: 60%;
     height: 100%;
     border: solid blue 1px;
     display: flex;
@@ -32,12 +32,8 @@
     margin-left: 0;
     height: 100%;
 }
-#BrandName{
-    font-size: 80px;
-    margin: 0 auto;
-    font-family:'Cookie', cursive;
-}
 .box_icon{
+    cursor: pointer;
     width: 10%;
     height: 100%;
     border: solid blue 1px;
@@ -46,6 +42,12 @@
     align-items: center;
 }
 .box_icon img{
+    height: 97%;
+}
+.box_icon a{
+    height: 100%;
+}
+.box_icon a img{
     height: 97%;
 }
 .hot{
@@ -164,36 +166,79 @@
 /*    padding: 8px;*/
 /*    color: #757575;*/
 /*}*/
+
+/* ====style==== */
 .footer{
     width: 95%;
     margin: auto;
 }
 .footer div{
     width: 100%;
-    border: 1px solid red;
-}
-.footer box{
-    width: 100%;
-    display: flex;
-}
-.footer box1{
-    width: 33%;
-    display: flex;
+    min-height: 100px;
+    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
 }
-.footer box1 img{
-    width: 50%;
+.footer_box{
+    margin-top: 1vw;
+    padding: 1.5vw 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    height: 50px;
 }
-.footer box2{
-    width: 33%;
+.footer_logo{
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* flex-direction: column; */
+    border-top: solid #555;
+    border-bottom: solid #555;
 }
-.footer box2 p{
-    margin-top: 15px;
-    margin-left: 15%;
+.footer_logo img{
+    display: flex;
+    max-height: 150px;
+    max-width: 150px;
+    object-fit: contain;
 }
-.footer box3{
-    width: 33%;
+#BrandName{
+    font-size: 80px;
+    font-family:'Cookie', cursive;
+    margin-left: 30px;
+}
+.footer_sections{
+    /* margin-bottom: 4vw; */
+    justify-content: space-between;
+    /* padding: 10px 0; */
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+.footer_sec1{
+    margin: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    display: flex;
+    text-align: left;
+    line-height: 3rem;
+    font-family: 'Caveat Brush','Noto Sans TC', sans-serif;
+}
+.footer_sec2 img{
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.footer_sec3{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup*/

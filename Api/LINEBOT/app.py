@@ -11,6 +11,8 @@ import string
 import random
 import cv2
 import numpy as np
+import base64
+import io
 from urllib import parse
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
@@ -56,27 +58,12 @@ def index():
                     payload["messages"] = [getMessagePIC()]
                 elif text == "官網":
                     payload["messages"] = [getMessageSite()]
-
-<<<<<<< Updated upstream
+                elif text == "負片":
+                    payload["messages"] = [turnPicnNegative()]
+                elif text == "灰階/翻轉/RGB/rescale/刪除圖片":
+                    payload["messages"] = [pushMessagePIC()]
+                
                 elif text == "主選單":
-=======
-
-                elif text == "quota":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTotalSentMessageCount()
-                            }
-                        ]
-                elif text == "今日確診人數":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTodayCovid19Message()
-                            }
-                        ]
-                elif text == "儲存成功":
->>>>>>> Stashed changes
                     payload["messages"] = [
                             {
                                 "type": "template",
@@ -120,17 +107,11 @@ def index():
                 replyMessage(payload)
             elif events[0]["message"]["type"]=="image":
                 payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getMessageImage()
-                            }
+                            # {
+                                # "type": "text",
+                                getMessageImage()
+                            # }
                         ]
-                replyMessage(payload)
-            elif events[0]["message"]["type"] == "location":
-                title = events[0]["message"]["title"]
-                latitude = events[0]["message"]["latitude"]
-                longitude = events[0]["message"]["longitude"]
-                payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
@@ -150,28 +131,11 @@ def index():
                     payload["messages"] = [getCarouselMessage(data)]
                 elif action == "get_detail":
                     del data["action"]
-                    payload["messages"] = [getTaipei101ImageMessage(),
-                                           getTaipei101LocationMessage(),
-                                           getMRTVideoMessage(),
-                                           getCallCarMessage(data)]
+                    payload["messages"] = [getTaipei101ImageMessage()]
                 replyMessage(payload)
 
     return 'OK'
 
-
-@app.route("/callback", methods=['POST'])
-def callback():
-    signature = request.headers['X-Line-Signature']
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
-
-    try:
-        handler.handle(body, signature)
-
-    except InvalidSignatureError:
-        abort(400)
-
-    return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -211,7 +175,7 @@ def getNameEmojiMessage():
 
 def getCarouselMessage(data):
     message = {
-        "type": "template",
+         "type": "template",
         "altText": "this is a image carousel template",
         "template": {
             "type": "image_carousel",
@@ -233,33 +197,8 @@ def getCarouselMessage(data):
                         }
                 }]
                 }
-                }
+                }    
     return message
-
-
-
-def getMRTVideoMessage():
-    message = dict()
-    message["type"] = "video"
-    message["originalContentUrl"] = f"{end_point}/static/taipei_101_video.mp4"
-    message["previewImageUrl"] = f"{end_point}/static/taipei_1.jpeg"
-    return message
-
-
-def getMRTSoundMessage():
-    message = dict()
-    message["type"] = "audio"
-    message["originalContentUrl"] = f"{end_point}/static/mrt_sound.m4a"
-    import audioread
-    with audioread.audio_open('static/mrt_sound.m4a') as f:
-        # totalsec contains the length in float
-        totalsec = f.duration
-    message["duration"] = totalsec * 1000
-    return message
-
-
-def getTaipei101ImageMessage(originalContentUrl=f"{end_point}/static/taipei_101.jpeg"):
-    return getImageMessage(originalContentUrl)
 
 
 def getImageMessage(originalContentUrl):
@@ -282,14 +221,69 @@ def getMessageImage():
         pic_out = open(f'./static/{image_name}.jpg', 'wb')  # img1.png為預存檔的圖片名稱
         pic_out.write(image_content)  # 將get圖片存入img1.png
         pic_out.close()  # 關閉檔案(很重要)
-        return '儲存成功'
-        ...
+
+    message = dict()
+    message['type'] = 'template' 
+    message['altText'] = 'This is a buttons template'
+    message['template'] =  {
+                    "type": "buttons",
+                    "title": "主選單",
+                    "text": "Please select",
+                    "actions": [{
+                                "type": "message",
+                                "label": "zj4qu",
+                                "text": "以圖搜圖"
+                                },
+                                {
+                                "type": "message",
+                                "label": "官網",
+                                "text": "官網"
+                                },
+                                {
+                                "type": "message",
+                                "label": "Contact Us",
+                                "text": "Contact Us"
+                                },
+                                {
+                                "type": "message",
+                                "label": "About Us",
+                                "text": "About Us"
+                                }]}
+    return message
+
+        
 
         # img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
         # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
         # print(img_gray.shape)
         # return f'像素尺寸為：{str(img_gray.shape)}'
 
+def turnPicnNegative():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+    # imm4 = io.BytesIO(cv2.imencode('.jpg',imgg)[1]).read()
+    # imdddd = base64.b64encode(imm4).decode('ascii')
+    # print(imdddd)
+    # img_decoded = cv2.imdecode(np.frombuffer(imgg, np.uint8), 1)
+    # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+    # print(imgg)
+    img_negative = 255 - imgg
+    cv2.imwrite(f'./static/1{image_name}.jpg', img_negative)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] = f"{end_point}/static/1{image_name}.jpg"
+    message['previewImageUrl'] = f"{end_point}/static/1{image_name}.jpg"
+
+    return message
+    # img_negative_tolist = img_negative.tolist()
+    # imm = json.dumps(img_negative_tolist)
+    # print(imm)
+    
 
 
 def getMessageAboutUS():
@@ -320,6 +314,7 @@ def getMessageSite():
 def replyMessage(payload):
     r = requests.post('https://api.line.me/v2/bot/message/reply', data=json.dumps(payload), headers=HEADER)
     print(r.content)
+
     return 'OK'
 
 
@@ -329,48 +324,7 @@ def pushMessage(payload):
     return 'OK'
 
 
-def getTotalSentMessageCount():
-    r = requests.get('https://api.line.me/v2/bot/message/quota/consumption', headers=HEADER)
-    return f"總共使用訊息:{r.json()['totalUsage']}"
 
-
-def getTodayCovid19Message():
-    r = requests.get("https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=4051&limited=TWN")
-    data = r.json()[-1]
-    date = data["a04"]
-    total_count = data["a05"]
-    count = data["a06"]
-    return F"日期：{date}, 人數：{count}, 確診總人數：{total_count}"
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-
-@app.route('/upload_file', methods=['POST'])
-def upload_file():
-    payload = dict()
-    if request.method == 'POST':
-        file = request.files['file']
-        print("json:", request.json)
-        form = request.form
-        age = form['age']
-        gender = ("男" if form['gender'] == "M" else "女") + "性"
-        if file:
-            filename = file.filename
-            img_path = os.path.join(UPLOAD_FOLDER, filename)
-            file.save(img_path)
-            print(img_path)
-            payload["to"] = my_line_id
-            payload["messages"] = [getImageMessage(f"{end_point}/{img_path}"),
-                {
-                    "type": "text",
-                    "text": f"年紀：{age}\n性別：{gender}"
-                }
-            ]
-            pushMessage(payload)
-    return 'OK'
 
 
 @app.route('/line_login', methods=['GET'])

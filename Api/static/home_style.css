@@ -18,7 +18,7 @@
     z-index: 9999;
 }
 .box_logo{
-    width: 70%;
+    width: 60%;
     height: 100%;
     border: solid blue 1px;
     display: flex;
@@ -39,6 +39,7 @@
     font-family:'Cookie', cursive;
 }
 .box_icon{
+    cursor: pointer;
     width: 10%;
     height: 100%;
     border: solid blue 1px;
