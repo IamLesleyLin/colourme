@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Caveat+Brush&family=Cookie&family=Encode+Sans&family=Nerko+One&family=Noto+Sans+TC&display=swap');
 
+
 *{margin: 0;}
 
 :root{
@@ -11,6 +12,7 @@
     --font-C-thick: 'Noto Serif TC', serif;
     --font-E-normal: 'Poppins', sans-serif;
     --font-E-cute: 'Roboto', sans-serif;
+    --font-E-logo:'Cookie', cursive;
     /* 顏色 */
     --first-color: blue;
     --title-color: #393939;
@@ -80,7 +82,7 @@
   
   .l-header{
     width: 100%;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: var(--z-fixed);
@@ -92,9 +94,24 @@
     max-width: 90vw;
     height: var(--header-height);
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-  
+
+    margin-top: 20px;
+
+  }
+  .logo_photo{
+    /* height: 100px; */
+    /* position: absolute; */
+    height: 160px; /*can be anything*/
+    width: 160px; /*can be anything*/
+
+    
+  }
+  .logo_photo img{
+    width: 100%;
+    height: 100%;
+    object-fit:fill
   }
   
   @media screen and (max-width: 768px){
@@ -124,6 +141,11 @@
   .nav_link, .nav_logo, .nav_toggle{
     color: var(--text-color);
     font-weight: 500;
+    font-family: var(--font-C-normal);
+  }
+  .nav_logo{
+    font-family:var(--font-E-logo);
+    font-size: var(--big-font-size);
   }
   
   .nav_logo:hover{
@@ -283,7 +305,7 @@
   border: solid green 1px;
   margin:auto;
   position: relative;
-  top: calc(var(--header-height)+1000px);
+  top:6rem;
 }
 .slick-prev:before, .slick-next:before{
     color: black;
@@ -304,6 +326,10 @@
     this.style.width=(this.offsetWidth > 600)?"600px":"auto"});
     } */
 /* ============footer============ */
+.footer{
+  position: relative;
+  /* top: 25vh; */
+}
 .footer_group{
     width: 100%;
     height: 50px;
