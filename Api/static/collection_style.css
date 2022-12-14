@@ -276,6 +276,11 @@ img{
     margin-left: 0;
     height: 100%;
 }
+#BrandName{
+    font-size: 80px;
+    margin: 0 auto;
+    font-family:'Cookie', cursive;
+}
 .box_icon{
     cursor: pointer;
     width: 10%;
@@ -294,124 +299,27 @@ img{
 .box_icon a img{
     height: 97%;
 }
-.hot{
-    width: 95%;
-    height: 380px;
-    margin: auto;
-    padding: 0px;
-    text-align: center;
-}
-.hot h1{
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.hot h1 img{
-    height: 50px;
-}
-.main{
-    margin-top: 10px;
-    padding: 0px;
-    background-color: #EFEDEC; /*格式不能改 #EFEDEC */
-}
-.main li{
-    margin: auto;
-    padding: 5px;
-    border: 25px solid lightblue;
-}
-.main li div{
-    display: flex;
-}
-.main li div p{
-    font-size: 30px;
+.product table{
     width: 90%;
-    /*font-family: 'Cookie', cursive;*/
+    text-align: center;
+    margin: auto;
 }
-.main li div img{
-    height: 40px;
-    width: 10%;
-    object-fit: contain;
+.product caption{
+    font-size: 50px;
+    margin: 10px;
+}
+.product th{
+    font-size: 40px;
+    color: lightsteelblue;
+    background-color: #393939;
+}
+.product td{
+    font-size: 30px;
     background-color: #EFEDEC;
 }
-.slick-prev:before, .slick-next:before{
-    color: black;
+.product img.image{
+    height: 300px;
 }
-/*.slick-slide{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-.slick-slide img{
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-.result{
-    height: 400px;
-    width: 90%;
-    margin: auto;
-    display: flex;
-}
-.result .original{
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red;
-}
-.result .original #preview_img{
-    height: 80%;
-    width: 80%;
-    border: 1px solid blue;
-}
-.result .comparison{
-    height: 100%;
-    width: 50%;
-    border: 1px solid red;
-}
-.result .comparison .img{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.result .comparison .text{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/*.recommendation{*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    margin: 50px 0px;*/
-/*}*/
-/*table{*/
-/*    border: 0;*/
-/*    border-collapse: collapse;*/
-/*    border-radius: 8px;*/
-/*    width: 95%;*/
-/*}*/
-/*caption{*/
-/*    font-size: 30px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-/*th{*/
-/*    border: solid 5px #5ceffe;*/
-/*    padding: 16px 8px;*/
-/*}*/
-/*td{*/
-/*    border: solid 3px #5ceffe;*/
-/*    text-align: center;*/
-/*    padding: 8px;*/
-/*    color: #757575;*/
-/*}*/
-
-/* ====footer style==== */
 .footer{
     width: 95%;
     margin: auto;
@@ -431,14 +339,14 @@ img{
     justify-content: center;
     align-items: center;
     /* width: 100%; */
-    /* height: 100px; */
+    height: 50px;
 }
 .footer_logo{
     height: 80%;
     justify-content: center;
     align-items: center;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     border-top: solid #555;
     border-bottom: solid #555;
 }
@@ -447,11 +355,6 @@ img{
     max-height: 150px;
     max-width: 150px;
     object-fit: contain;
-}
-#BrandName{
-    font-size: 80px;
-    font-family:'Cookie', cursive;
-    margin-left: 30px;
 }
 .footer_sections{
     /* margin-bottom: 4vw; */
@@ -478,79 +381,7 @@ img{
     align-items: center;
 }
 .footer_sec3{
-    display: flex;
-
     justify-content: center;
     align-items: center;
     height: 100%;
-}
-
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup*/
-/* Popup container - can be anything you want */
-.popup {
-    position: relative;
-    cursor: pointer;
-    width: 95%;
-    height: 300px;
-    border: 3px solid black;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* The actual popup */
-.popup .popuptext {
-    visibility: hidden;
-    width: 80%; /*格式不動*/
-    height: 600px; /*格式不動*/
-    background-color: lightblue;
-    color: #fff;
-    border-radius: 60px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 100000;
-    margin: auto;
-    top: -145%; /*格式不動*/
-    left: 10%; /*格式不動*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.popup form{
-    font-size: 30px;
-    border: 3px solid red;
-    text-align: center;
-}
-.popup input{
-    font-size: 30px;
-}
-.popup img{
-    height: 30%;
-    width: 30%;
-}
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
 }

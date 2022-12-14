@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'product_style.css')}}">
+    <title>Collection Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'collection_style.css')}}">
 </head>
 <body>
     <!-- <div class="header">
         <div class="box_logo">
-            <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" id="logo">
+            <img src="{{url_for('static', filename = 'colour logo.png')}}" alt="" id="logo">
             <p id="BrandName">Colour Me</p>
         </div>
-        <div class="box_icon"><a href="{{url_for('main_page')}}"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="home_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('main_page')}}"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="search_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
@@ -62,29 +60,21 @@
     </header>
     <div class="product">
         <table>
-            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">所有鞋款</marquee></strong></caption>
+            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">選擇鞋款</marquee></strong></caption>
             <tr>
                 <th>代號</th>
                 <th>品名</th>
                 <th>圖片</th>
-                <th>收藏</th>
             </tr>
-            {% for i in product_list %}
+            {% for i in collection_list %}
                 <tr>
                     <td>{{i['id']}}</td>
                     <td>{{i['name']}}</td>
                     <td><img src="{{i['url']}}" alt="" class="image"></td>
-                    <td>
-                        <!-- <form action="product_page" method="post"> -->
-                            <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
-                            <input type="submit" class="collection" value="&#10084">
-                        <!-- </form> -->
-                    </td>
                 </tr>
             {% endfor %}
           </table>
     </div>
-
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">
@@ -103,16 +93,5 @@
             </div>
         </div>
     </div>
-    <script>
-        for (i=0; i< 50; i++){
-            let btn = document.querySelectorAll('.collection')[i]
-            let p_id = document.querySelectorAll('.p_id')[i]
-            btn.addEventListener('click', function(e) {
-                e.preventDefault()
-                fetch(`http://127.0.0.1:5000/product_page`, {method:'POST', body: JSON.stringify({id:p_id.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
-                .then((response) => response.json())
-            });
-        }
-    </script>
 </body>
 </html>

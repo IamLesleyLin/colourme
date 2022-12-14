@@ -11,15 +11,55 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'main_style.css')}}">
 </head>
 <body>
-    <div class="header">
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+          <img src="{{url_for('static', filename = 'colourme logo small.png')}}" alt="" class="nav_photo">
+
+          <div style="display: block;"></div>
+          <p class="nav_logo">colour me</p>
+ 
+          <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list">
+              <li class="nav_item">
+                <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+              </li>
+              <li class="nav_item">
+                <a href="{{url_for('log_in')}}" class="nav_link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></a>
+              </li>
+              <li class="nav_item">
+                <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
+              </li>
+              <li class="nav_item">
+                <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="user_icon"></a>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="nav_toggle" id="nav-toggle">
+            <iconify-icon icon="bx:menu"></iconify-icon>
+          </div>
+  
+  
+          <div class="search-overlay" id="overlay">
+            <form>
+              <input type="search" placeholder="search...">
+              <button type="submit">search</button>
+            <i class="fa-solid fa-x" id="close"></i>
+            </form>
+  
+  
+          </div>
+        </nav>
+      </header>
+    <!-- <div class="header">
         <div class="box_logo">
             <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" id="logo">
         </div>
         <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></div>
         <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></div>
+        <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
         <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
-    </div>
+    </div> -->
     <div class = "hot">
         <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
         <ul class="main">
@@ -87,8 +127,8 @@
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">
-                <img src="{{url_for('static',filename = 'colourme logo1.png')}}">
-            <p id="BrandName">Colour Me</p>
+                <img src="{{url_for('static',filename = 'colourme logo small.png')}}">
+            <!-- <p id="BrandName">Colour Me</p> -->
             </div>
         </div>
         <div class="footer_sections">
@@ -155,5 +195,9 @@
           }
         }
     </script>
+    <script src="assets/js/main.js"></script>
+    <!-- 手機板選單按鈕圖的來源 -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 </html>
