@@ -300,6 +300,20 @@ img{
 .box_icon a img{
     height: 97%;
 }
+.selection{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+.sel_sel{
+    font-size: 50px;
+}
+.sel_sub{
+    font-size: 50px;
+}
 .product table{
     width: 90%;
     text-align: center;

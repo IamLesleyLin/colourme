@@ -119,9 +119,9 @@ def main_page():
         img_encoded2 = cv2.imencode('.jpg', df)[1]
         img_encoded3 = io.BytesIO(img_encoded2).read()
 
-        pic_out = open('img.jpg', 'wb')
-        pic_out.write(img_encoded3)
-        pic_out.close()
+        # pic_out = open('img.jpg', 'wb')
+        # pic_out.write(img_encoded3)
+        # pic_out.close()
     
         
         # imgGraySmall = []
