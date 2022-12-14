@@ -25,20 +25,18 @@
  
           <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
-              <li class="nav_item">
-                <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
-              </li>
-              <li class="nav_item">
-                <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a></li>
-              <li class="nav_item">
-                <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
-              </li>
-              <!-- <li class="nav_item">
-                <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
-              </li> -->
-              <li class="nav_item">
-                <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
-              </li>
+                <li class="nav_item">
+                    <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
+                </li>
             </ul>
           </div>
   
@@ -57,7 +55,7 @@
   
           </div> -->
         </nav>
-    </header>
+    </header><br><br><br><br>
     <div class="product">
         <table>
             <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">選擇鞋款</marquee></strong></caption>
@@ -65,12 +63,19 @@
                 <th>代號</th>
                 <th>品名</th>
                 <th>圖片</th>
+                <th>取消</th>
             </tr>
             {% for i in collection_list %}
                 <tr>
                     <td>{{i['id']}}</td>
                     <td>{{i['name']}}</td>
                     <td><img src="{{i['url']}}" alt="" class="image"></td>
+                    <td>
+                        <form action="collection_page" method="post">
+                            <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
+                            <input type="submit" class="collection" value="&#10008">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
           </table>

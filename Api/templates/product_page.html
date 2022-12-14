@@ -20,46 +20,51 @@
     </div> -->
     <header class="l-header" id="header">
         <nav class="nav bd-container">
-          <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" class="nav_photo">
+            <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" class="nav_photo">
 
-          <div style="display: block;"></div>
-          <a href="" class="nav_logo">colourme</a>
+            <div style="display: block;"></div>
+            <a href="" class="nav_logo">colourme</a>
  
-          <div class="nav_menu" id="nav-menu">
-            <ul class="nav_list">
-              <li class="nav_item">
-                <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
-              </li>
-              <li class="nav_item">
-                <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a></li>
-              <li class="nav_item">
-                <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
-              </li>
-              <!-- <li class="nav_item">
-                <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
-              </li> -->
-              <li class="nav_item">
-                <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
-              </li>
-            </ul>
-          </div>
+            <div class="nav_menu" id="nav-menu">
+                <ul class="nav_list">
+                    <li class="nav_item">
+                        <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
+                    </li>
+                </ul>
+            </div>
   
-          <div class="nav_toggle" id="nav-toggle">
-            <iconify-icon icon="bx:menu"></iconify-icon>
-          </div>
-  
-  
-          <!-- <div class="search-overlay" id="overlay">
-            <form>
-              <input type="search" placeholder="search...">
-              <button type="submit">search</button>
-            <i class="fa-solid fa-x" id="close"></i>
-            </form>
-  
-  
-          </div> -->
+            <div class="nav_toggle" id="nav-toggle">
+                <iconify-icon icon="bx:menu"></iconify-icon>
+            </div>
         </nav>
-    </header>
+    </header><br><br><br><br>
+    <div class="selection">
+        <form action="product_page" method="post">
+            <label for="" class="sel_lab">感興趣的鞋款</label>
+            <select name="c_id" id="" class="sel_sel">
+                <option value="" disabled>請選擇你感興趣的鞋款</option>
+                <option value="Campus">Campus</option>
+                <option value="Forum">Forum</option>
+                <option value="OZWEEGO">Ozweego</option>
+                <option value="Others">Others</option>
+                <option value="Puffylette">Puffylette</option>
+                <option value="Retropy">Retropy</option>
+                <option value="Stan Smith">Stan Smith</option>
+                <option value="Superstar">Superstar</option>
+            </select>
+            <input type="submit" class="sel_sub" value="送出">
+        </form>    
+
+    </div>
     <div class="product">
         <table>
             <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">所有鞋款</marquee></strong></caption>
