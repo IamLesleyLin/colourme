@@ -297,7 +297,7 @@ img{
 .main{
 width: 95%;
 height: 520px;
-border: solid green 1px;
+/* border: solid green 1px; */
 margin:auto;
 position: relative;
 top:8rem;
