@@ -8,6 +8,7 @@ import numpy as np
 import re
 import pandas as pd
 import urllib
+import io
 
 from flask import url_for, redirect, flash
 
@@ -115,9 +116,13 @@ def main_page():
         # print(df)
         df = df.reshape(100, 100)
         print(df)
-        img_encoded2 = cv2.imencode('.jpg', df)
+        img_encoded2 = cv2.imencode('.jpg', df)[1]
+        img_encoded3 = io.BytesIO(img_encoded2).read()
 
-        cv2.imwrite = ("123455.jpg",img_encoded2 )
+        pic_out = open('img.jpg', 'wb')
+        pic_out.write(img_encoded3)
+        pic_out.close()
+    
         
         # imgGraySmall = []
         # imgGraySmall.insert(0, img_01)
