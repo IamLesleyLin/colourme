@@ -65,12 +65,19 @@
                 <th>代號</th>
                 <th>品名</th>
                 <th>圖片</th>
+                <th>取消</th>
             </tr>
             {% for i in collection_list %}
                 <tr>
                     <td>{{i['id']}}</td>
                     <td>{{i['name']}}</td>
                     <td><img src="{{i['url']}}" alt="" class="image"></td>
+                    <td>
+                        <form action="collection_page" method="post">
+                            <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
+                            <input type="submit" class="collection" value="&#10008">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
           </table>
