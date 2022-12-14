@@ -28,10 +28,10 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a>
+                        <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="search_icon"  onclick="popup_search()"></a>
                     </li>
                     <li class="nav_item">
-                        <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+                        <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="home_icon"></a>
                     </li>
                     <li class="nav_item">
                         <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
@@ -46,7 +46,7 @@
                 <iconify-icon icon="bx:menu"></iconify-icon>
             </div>
         </nav>
-    </header><br><br><br><br>
+    </header><br><br><br><br><br>
     <div class="selection">
         <form action="product_page" method="post">
             <label for="" class="sel_lab">感興趣的鞋款</label>

@@ -11,6 +11,7 @@
   --font-E-normal: 'Poppins', sans-serif;
   --font-E-cute: 'Roboto', sans-serif;
   --font-E-logo:'Cookie', cursive;
+    --font-total:'Caveat Brush','Noto Sans TC', sans-serif;
   /* 顏色 */
   --first-color: blue;
   --title-color: #393939;
@@ -51,7 +52,7 @@ html{
 
 body{
   margin: var(--header-height) 0 0 0;
-  font-family: var(--font-E-normal);
+  font-family: var(--font-total);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
@@ -91,7 +92,7 @@ img{
   width: 100%;
   height: 100px;
   position: fixed;
-  top: 0;
+  top: 10px;
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
@@ -130,7 +131,7 @@ img{
   height:100px;
   width:100px;
   position: absolute;
-  top: 3px;
+  top: 1px;
 }
 .nav_item{
   height:50px;
