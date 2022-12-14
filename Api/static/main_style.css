@@ -411,7 +411,7 @@ img{
 /*    color: #757575;*/
 /*}*/
 
-/* ====style==== */
+/* ====footer style==== */
 .footer{
     width: 95%;
     margin: auto;
@@ -431,7 +431,7 @@ img{
     justify-content: center;
     align-items: center;
     /* width: 100%; */
-    height: 50px;
+    /* height: 100px; */
 }
 .footer_logo{
     height: 80%;
