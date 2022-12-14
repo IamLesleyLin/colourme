@@ -31,10 +31,10 @@
           <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
                 <li class="nav_item">
-                    <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+                    <img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()">
                 </li>
                 <li class="nav_item">
-                    <img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon"  onclick="popup_search()">
+                    <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
                 </li>
                 <li class="nav_item">
                     <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
