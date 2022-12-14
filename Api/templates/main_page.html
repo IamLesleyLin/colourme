@@ -78,11 +78,23 @@
     <div class="popup" onclick="popup_search()">點擊我去搜尋！！！
         <span class="popuptext" id="search" onclick="popup_search()">
             <form action="main_page" method="post" enctype="multipart/form-data">
-                請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
-                <img id="preview_img" src="#" />
-                <input type="submit" name="" id="submit">
-                <input type="reset" name="" id="reset">
-                <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
+                <div class="form_header">
+                    請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
+                </div>
+                <div>
+                    <img id="preview_img" src="#" />
+                </div>
+                <div class="form_btns">
+                    <div>
+                        <input type="submit" name="" id="submit">
+                    </div>
+                    <div>
+                        <input type="reset" name="" id="reset">
+                    </div>
+                    <div>
+                        <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
+                    </div>
+                </div>
             </form>
         </span>
     </div>
