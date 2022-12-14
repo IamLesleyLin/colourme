@@ -353,7 +353,7 @@ img{
 }
 .product td{
     font-size: 30px;
-    background-color: #EFEDEC;
+    background-color: #ECEDEF;
 }
 .product td.a{
     width: 10%;
@@ -384,7 +384,7 @@ img{
     cursor: pointer;
     transition: .5s;
     border: 0px;
-    background-color: #EFEDEC;
+    background-color: #ECEDEF;
 }
 .p_id{
     visibility: hidden;
