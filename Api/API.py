@@ -129,29 +129,57 @@ def product_page():
 
         return render_template('product_page.html', product_list=product_list)
 
-@app.route('/collection_page',methods=['GET'])
+@app.route('/collection_page',methods=['GET', 'POST'])
 def collection_page():
-    collection_list = []
+    if request.method == 'GET':
+        collection_list = []
 
-    cursor = db.cursor()
-    collection_sql = """SELECT DISTINCT(`collection`.`id`), `category`.`name`, `productid_imgurl`.`imgURL` 
-                    FROM `collection` 
-                    INNER JOIN `category` ON `collection`.`id` = `category`.`id`
-                    INNER JOIN `productid_imgurl` ON `collection`.`id` = `productid_imgurl`.`id`"""
-    cursor.execute(collection_sql)
+        cursor = db.cursor()
+        collection_sql = """SELECT DISTINCT(`collection`.`id`), `category`.`name`, `productid_imgurl`.`imgURL` 
+                            FROM `collection` 
+                            INNER JOIN `category` ON `collection`.`id` = `category`.`id`
+                            INNER JOIN `productid_imgurl` ON `collection`.`id` = `productid_imgurl`.`id`"""
+        cursor.execute(collection_sql)
 
-    if cursor.rowcount > 0:
-        results = cursor.fetchall()
+        if cursor.rowcount > 0:
+            results = cursor.fetchall()
 
-        for i in results:
-            ids = i[0]
-            # names = " ".join(re.findall("\w+\s+", i[2]))
-            names = i[1]
-            url = i[2]
-            collection_list.append({"id": ids, "name": names, "url": url})
+            for i in results:
+                ids = i[0]
+                # names = " ".join(re.findall("\w+\s+", i[2]))
+                names = i[1]
+                url = i[2]
+                collection_list.append({"id": ids, "name": names, "url": url})
 
-    cursor.close()
-    return render_template('collection_page.html', collection_list = collection_list)
+        cursor.close()
+        return render_template('collection_page.html', collection_list = collection_list)
+
+    if request.method == 'POST':
+        collection_list = []
+
+        cursor = db.cursor()
+
+        p_id = request.values.get('p_id')
+        deletion_sql = f"""DELETE FROM `collection` WHERE `id` = '{p_id}'"""
+        cursor.execute(deletion_sql)
+
+        collection_sql = """SELECT DISTINCT(`collection`.`id`), `category`.`name`, `productid_imgurl`.`imgURL`
+                            FROM `collection`
+                            INNER JOIN `category` ON `collection`.`id` = `category`.`id`
+                            INNER JOIN `productid_imgurl` ON `collection`.`id` = `productid_imgurl`.`id`"""
+        cursor.execute(collection_sql)
+
+        if cursor.rowcount > 0:
+            results = cursor.fetchall()
+
+            for i in results:
+                ids = i[0]
+                # names = " ".join(re.findall("\w+\s+", i[2]))
+                names = i[1]
+                url = i[2]
+                collection_list.append({"id": ids, "name": names, "url": url})
+
+        return render_template('collection_page.html', collection_list=collection_list)
 
 if __name__ == '__main__':
    app.run()
