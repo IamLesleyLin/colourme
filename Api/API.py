@@ -6,6 +6,8 @@ import pymysql
 import cv2
 import numpy as np
 import re
+import pandas as pd
+import urllib
 
 from flask import url_for, redirect, flash
 
@@ -97,14 +99,28 @@ def main_page():
     if request.method == 'POST':
         img = request.files['photo']
         img_read = img.read() #img_read = img.stream.read()
-
         # present preview img on the website
         img_encoded = base64.b64encode(img_read).decode('ascii')
 
         # execute back-end operations
         img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
-        print(img_decoded)
-        # img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+        # print(img_decoded)
+        img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+        imagg = cv2.resize(img_gray, (100 , 100) , interpolation=cv2.INTER_AREA)
+        imgggg = imagg.flatten()
+        df=imgggg
+        # df = pd.DataFrame(imgggg)
+        # print (df)
+        df[ df == np.argmax(np.bincount(df))]= 255 #找出背景最多的數字，再指定成255
+        # print(df)
+        df = df.reshape(100, 100)
+        print(df)
+        img_encoded2 = cv2.imencode('.jpg', df)
+
+        cv2.imwrite = ("123455.jpg",img_encoded2 )
+        
+        # imgGraySmall = []
+        # imgGraySmall.insert(0, img_01)
         # result = img_gray.shape
         # print(img_gray.shape)
         return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded)
