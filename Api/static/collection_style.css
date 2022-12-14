@@ -310,14 +310,57 @@ img{
     margin: 10px;
     font-family: 'Caveat', cursive;
 }
+.product tr{
+    width: 100%;
+}
 .product th{
     font-size: 40px;
     color: lightsteelblue;
     background-color: #393939;
 }
+.product th.a{
+    width: 10%;
+    padding: 0;
+    margin: 0;
+}
+.product th.b{
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.product th.c{
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.product th.d{
+    width: 10%;
+    padding: 0;
+    margin: 0;
+}
 .product td{
     font-size: 30px;
     background-color: #EFEDEC;
+}
+.product td.a{
+    width: 10%;
+    padding: 0;
+    margin: 0;
+}
+.product td.b{
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.product td.c{
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.product td.d{
+    width: 10%;
+    padding: 0;
+    margin: 0;
 }
 .product img.image{
     height: 300px;

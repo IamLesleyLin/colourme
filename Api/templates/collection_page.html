@@ -58,19 +58,19 @@
     </header><br><br><br><br>
     <div class="product">
         <table>
-            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">選擇鞋款</marquee></strong></caption>
+            <caption><strong><marquee behavior="alternate" direction="" scrollamount="15">收藏清單</marquee></strong></caption>
             <tr>
-                <th>代號</th>
-                <th>品名</th>
-                <th>圖片</th>
-                <th>取消</th>
+                <th class="a">代號</th>
+                <th class="b">品名</th>
+                <th class="c">圖片</th>
+                <th class="d">取消</th>
             </tr>
             {% for i in collection_list %}
                 <tr>
-                    <td>{{i['id']}}</td>
-                    <td>{{i['name']}}</td>
-                    <td><img src="{{i['url']}}" alt="" class="image"></td>
-                    <td>
+                    <td class="a">{{i['id']}}</td>
+                    <td class="b">{{i['name']}}</td>
+                    <td class="c"><img src="{{i['url']}}" alt="" class="image"></td>
+                    <td class="d">
                         <form action="collection_page" method="post">
                             <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
                             <input type="submit" class="collection" value="&#10008">
