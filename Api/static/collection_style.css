@@ -11,6 +11,7 @@
   --font-E-normal: 'Poppins', sans-serif;
   --font-E-cute: 'Roboto', sans-serif;
   --font-E-logo:'Cookie', cursive;
+    --font-total:'Caveat Brush','Noto Sans TC', sans-serif;
   /* 顏色 */
   --first-color: blue;
   --title-color: #393939;
@@ -51,7 +52,7 @@ html{
 
 body{
   margin: var(--header-height) 0 0 0;
-  font-family: var(--font-E-normal);
+  font-family: var(--font-total);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
@@ -279,7 +280,7 @@ img{
 #BrandName{
     font-size: 80px;
     margin: 0 auto;
-    font-family:'Cookie', cursive;
+    font-family: 'Caveat', cursive;
 }
 .box_icon{
     cursor: pointer;
@@ -307,6 +308,7 @@ img{
 .product caption{
     font-size: 50px;
     margin: 10px;
+    font-family: 'Caveat', cursive;
 }
 .product th{
     font-size: 40px;

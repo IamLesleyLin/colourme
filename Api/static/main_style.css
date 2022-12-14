@@ -11,6 +11,7 @@
   --font-E-normal: 'Poppins', sans-serif;
   --font-E-cute: 'Roboto', sans-serif;
   --font-E-logo:'Cookie', cursive;
+    --font-total:'Caveat Brush','Noto Sans TC', sans-serif;
   /* 顏色 */
   --first-color: blue;
   --title-color: #393939;
@@ -51,7 +52,7 @@ html{
 
 body{
   margin: var(--header-height) 0 0 0;
-  font-family: var(--font-E-normal);
+  font-family: var(--font-total);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
@@ -306,6 +307,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Caveat', cursive;
 }
 .hot h1 img{
     height: 50px;
@@ -325,15 +327,15 @@ img{
 }
 .main li div p{
     font-size: 30px;
-    width: 90%;
-    /*font-family: 'Cookie', cursive;*/
+    width: 100%;
+    font-family: 'Caveat', cursive;
 }
-.main li div img{
-    height: 40px;
-    width: 10%;
-    object-fit: contain;
-    background-color: #EFEDEC;
-}
+/*.main li div img{*/
+/*    height: 40px;*/
+/*    width: 10%;*/
+/*    object-fit: contain;*/
+/*    background-color: #EFEDEC;*/
+/*}*/
 .slick-prev:before, .slick-next:before{
     color: black;
 }
@@ -383,6 +385,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Caveat', cursive;
 }
 /*.recommendation{*/
 /*    display: flex;*/
@@ -515,6 +518,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Caveat', cursive;
 }
 .popup form{
     font-size: 30px;
