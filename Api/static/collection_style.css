@@ -450,14 +450,9 @@ img{
 .footer_sec2{
   display: grid;
   padding-top: 2%;
-  justify-content: center;
-  align-items: center;
 }
-.footer_sec2 img{
-    /* width: 100px;
-    height: 100px; */
-    /* justify-content: center;
-    align-items: center; */
+.footer_sec2 #line_code{
+    margin: auto;
 }
 .footer_sec3{
     justify-content: center;
