@@ -314,8 +314,8 @@ img{
 .main{
     margin-top: 10px;
     padding: 0px;
-    background-image: url(./main_background.jpg);
-    /* background-color: #ECEDEF; 格式不能改 #ECEDEF */
+    /* background-image: url(./background_white.jpg); */
+    background-color: #ECEDEF; /*格式不能改 #ECEDEF*/
 }
 .main li{
     margin: auto;
@@ -418,6 +418,7 @@ img{
 .footer{
     width: 95%;
     margin: auto;
+    /* background-image: url(./24980636_m.jpg); */
 }
 .footer div{
     width: 100%;
@@ -428,7 +429,7 @@ img{
 }
 .footer_box{
     margin-top: 1vw;
-    padding: 1.5vw 0;
+    padding: 1.5vw 0 0 0;
     position: relative;
     display: flex;
     justify-content: center;
@@ -443,7 +444,7 @@ img{
     display: flex;
     /* flex-direction: column; */
     /* border-top: solid #555; */
-    border-bottom: solid #555;
+    /* border-bottom: solid #555; */
 }
 .footer_logo img{
     display: flex;
@@ -475,11 +476,14 @@ img{
     font-family: 'Caveat Brush','Noto Sans TC', sans-serif;
 }
 .footer_sec2{
-  display: grid;
-  padding-top: 2%;
+    display: grid;
+    padding-top: 2%;
 }
 .footer_sec2 #line_code{
     margin: auto;
+}
+.sec2_img{
+    margin-bottom: 20px;
 }
 .footer_sec3{
     display: flex;
