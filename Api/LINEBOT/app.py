@@ -68,8 +68,8 @@ def index():
                     payload["messages"] = [turnPicnRescale()]
                 elif text == "刪除圖片":
                     payload["messages"] = [turnPicnDelete()]
-                # elif text == "灰階/翻轉/rescale/刪除圖片":
-                #     payload["messages"] = [pushMessagePIC()]
+                elif text == "圖片大小":
+                    payload["messages"] = [sizeMessagePIC()]
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -92,8 +92,8 @@ def index():
                                         },
                                         {
                                         "type": "message",
-                                        "label": "翻轉",
-                                        "text": "翻轉"
+                                        "label": "圖片大小",
+                                        "text": "圖片大小"
                                         },
                                         {
                                         "type": "message",
@@ -120,11 +120,11 @@ def index():
                                         "label": "灰階",
                                         "text": "灰階"
                                         },
-                                        # {
-                                        # "type": "message",
-                                        # "label": "翻轉",
-                                        # "text": "翻轉"
-                                        # },
+                                        {
+                                        "type": "message",
+                                        "label": "翻轉",
+                                        "text": "翻轉"
+                                        },
                                         {
                                         "type": "message",
                                         "label": "縮放",
@@ -315,6 +315,16 @@ def turnPicnNegative():
     # img_negative_tolist = img_negative.tolist()
     # imm = json.dumps(img_negative_tolist)
     # print(imm)
+def sizeMessagePIC():
+    img = request.get_data(as_text=True)
+    img_data = json.loads(img)
+    image_name = str(img_data['events'][0]['source']['userId'])
+    imgg = cv2.imread(f'./static/{image_name}.jpg')
+
+    img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
+    img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+    print(img_gray.shape)
+    return f'像素尺寸為：{str(img_gray.shape)}'
 def turnPicnGray():
     img = request.get_data(as_text=True)
     img_data = json.loads(img)

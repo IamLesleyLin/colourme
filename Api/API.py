@@ -9,6 +9,9 @@ import re
 import pandas as pd
 import urllib
 import io
+from keras.models import load_model
+
+model = load_model('../model/my_model.h5')
 
 from flask import url_for, redirect, flash
 
@@ -114,21 +117,36 @@ def main_page():
         # print (df)
         df[ df == np.argmax(np.bincount(df))]= 255 #找出背景最多的數字，再指定成255
         # print(df)
-        df = df.reshape(100, 100)
-        print(df)
-        img_encoded2 = cv2.imencode('.jpg', df)[1]
-        img_encoded3 = io.BytesIO(img_encoded2).read()
-
-        # pic_out = open('img.jpg', 'wb')
-        # pic_out.write(img_encoded3)
-        # pic_out.close()
-    
+        img_re = df.reshape(-1,100,100,1)
+        img_pre = model.predict(img_re)
+        no = np.argmax(img_pre[0]) #得到最相近的照片index
+        print(no)
         
-        # imgGraySmall = []
-        # imgGraySmall.insert(0, img_01)
-        # result = img_gray.shape
-        # print(img_gray.shape)
-        return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded)
+        cursor = db.cursor()
+        select_sql = f"""SELECT `category`.`numbers`,`category`.`id`,`category`.`name`,`category`.`text`,`category`.`price`,`productid_imgurl`.`imgURL`
+                        FROM ((`productid_imgurl` 
+                        LEFT JOIN `category`
+                        ON `category`.`numbers`= `productid_imgurl`.`numbers`) 
+                        RIGHT JOIN `model_label` ON `model_label`.`numbers`= `productid_imgurl`.`numbers`)
+                        WHERE `model_label`.`label`= {no}"""
+        cursor.execute(select_sql)
+        if cursor.rowcount > 0:
+            results = cursor.fetchall()
+            print(results)
+
+            result_list = []
+            for i in results:
+                numbers = i[0]
+                ids = i[1]
+                # names = " ".join(re.findall("\w+\s+", i[2]))
+                names = i[2]
+                text = i[3]
+                price = i[4]
+                url = i[5]
+
+                result_list.append({"numbers": numbers,"ids": ids, "names": names,"text":text, "price":price, "url": url})
+        cursor.close()
+        return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded,result_list = result_list)
 
 @app.route('/product_page',methods=['GET', "POST"])
 def product_page():
@@ -222,12 +240,17 @@ def collection_page():
         cursor.close()
         return render_template('collection_page.html', collection_list=collection_list)
 
+# @app.route('/result_page',methods=['GET', 'POST'])
+# def result_page():
+#     if request.method == 'GET':
+#         return render_template('result_page.html', slick_list=slick_list , result_list = result_list)
+
 if __name__ == '__main__':
    app.run()
    db.close()
 
 
-
+# 
 
 #http://127.0.0.1:5000 = http://localhost:5000
 

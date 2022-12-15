@@ -169,44 +169,6 @@ img{
 .active-link{
   color: var(--first-color);
 }
-/* 搜尋 */
-.search-overlay{
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0,0,0,.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 102;
-}
-.search-overlay form{
-  padding: 0px 300px;
-  margin-top: 380px;
-  display: flex;
-}
-.search-overlay input{
-  width: 100%;
-  padding: 15px 20px;
-  border: none;
-  outline: none;
-  font-size: var(--small-font-size);
-}
-.search-overlay button{
-  background-color: #393939;
-  font-size: var(--normal-font-size);
-  font-weight:hold;
-  padding: 10px 20px;
-  color: #FFFFFF;
-  cursor: pointer;
-  border: none;
-}
-.fa-x{
-  position: absolute;
-  top: calc(var(--header-height) + 0.8rem);
-  right: 5%;
-}
-
 /*========== RWD ==========*/
 @media screen and (min-width: 576px){
   .contact__container{
@@ -348,6 +310,17 @@ img{
     height: 250px;
     object-fit: cover;
 }
+.popup {
+    position: relative;
+    cursor: pointer;
+    width: 95%;
+    height: 300px;
+    border: 3px solid black;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .result{
     height: 400px;
     width: 90%;
@@ -387,33 +360,6 @@ img{
     align-items: center;
     font-family: 'Caveat', cursive;
 }
-/*.recommendation{*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    margin: 50px 0px;*/
-/*}*/
-/*table{*/
-/*    border: 0;*/
-/*    border-collapse: collapse;*/
-/*    border-radius: 8px;*/
-/*    width: 95%;*/
-/*}*/
-/*caption{*/
-/*    font-size: 30px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-/*th{*/
-/*    border: solid 5px #5ceffe;*/
-/*    padding: 16px 8px;*/
-/*}*/
-/*td{*/
-/*    border: solid 3px #5ceffe;*/
-/*    text-align: center;*/
-/*    padding: 8px;*/
-/*    color: #757575;*/
-/*}*/
-
 /* ====footer style==== */
 .footer{
     width: 95%;
@@ -493,101 +439,76 @@ img{
     height: 100%;
 }
 
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup*/
-/* Popup container - can be anything you want */
-.popup {
-    position: relative;
-    cursor: pointer;
-    width: 95%;
-    height: 300px;
-    border: 3px solid black;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*search*/
+.search-overlay{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(173, 216, 230, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 102;
+  justify-items: center;
 }
-/* The actual popup */
-.popup .popuptext {
-    visibility: hidden;
-    width: 80%; /*格式不動*/
-    height: 600px; /*格式不動*/
-    background-color: lightblue;
-    color: #fff;
-    border-radius: 60px;
-    padding: 0;
-    position: absolute;
-    z-index: 100000;
-    margin: auto;
-    top: -145%; /*格式不動*/
-    left: 10%; /*格式不動*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    font-family: 'Caveat', cursive;
-    border: 20px solid grey;
-
+.search_box{
+  padding-top: 50px;
+  margin:100px 30%;
+  background-color: #FFFFFF;
+  width: 45%;
+  height: 80%;
+  border-radius: 20px;
 }
-.popup #big_form{
-    font-size: 30px;
-    text-align: center;
-    padding-top: 50px;
+.form_header{
+  height: 15%;
+  display: flex;
+  justify-content: center;
 }
 .form_header label{
-  /*!* justify-content: center;*/
-  /*text-align: center;*/
-  /*text-justify: auto;*/
-  /*justify-items: center;*/
-  /*display: flex; *!*/
-    font-size: 50px;
+    font-size: 40px;
     color: grey;
-    border: 1px solid red;
-    padding-left: 5%;
+    padding-left: 7%;
 }
 .form_header input{
     visibility: hidden;
     font-size: 0px;
 }
-.popup img{
-    border: 1px solid red;
+.img_outer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 450px;
+  width: 100%;
+  color: rgb(100, 100, 100);
+  border: solid gray;
+}
+#preview_search_img{
     visibility: hidden;
-    height: 300px;
-    width: 300px;
-    margin: 20px;
 }
+/*.search_text{*/
+/*  padding: 0px 300px;*/
+/*  margin:100px 30%;*/
+/*  display: flex;*/
+/*}*/
+/*.search-overlay button{*/
+/*  background-color: #393939;*/
+/*  font-size: var(--normal-font-size);*/
+/*  font-weight:hold;*/
+/*  padding: 10px 20px;*/
+/*  color: #FFFFFF;*/
+/*  cursor: pointer;*/
+/*  border: none;*/
+/*}*/
 .form_btns{
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    /*padding-top: 25px;*/
-    border: 1px solid red;
+  display: flex;
+  margin-top: 15px;
+  gap: 5%;
+  height: 20%;
+  width: 100%;
+  justify-content: center;
 }
-.form_btns input{
-  /*font-size: var(--small-font-size);*/
-    font-size: 30px;
-}
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
+.fa-x{
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-/* Toggle this class - hide and show the popup */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+  top: calc(var(--header-height) + 0.8rem);
+  right: 5%;
 }
