@@ -126,7 +126,7 @@ img{
   font-size: var(--big-font-size);
 }
 
-.nav img{
+.nav__menu img{
   height: 50px;
   width:50px;
 }
@@ -169,24 +169,38 @@ img{
 .search-overlay{
   width: 100%;
   height: 100vh;
-  background-color: rgba(0,0,0,.7);
+  background-color: rgba(173, 216, 230, 0.7);
   position: absolute;
   top: 0;
   left: 0;
   display: none;
   z-index: 102;
+  justify-items: center;
 }
-.search-overlay form{
+.search_text{
   padding: 0px 300px;
-  margin-top: 380px;
+  margin:100px 30%;
   display: flex;
+  /* background-color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px; */
 }
-.search-overlay input{
+/* .search-overlay input{
   width: 100%;
   padding: 15px 20px;
-  border: none;
+  border: solid black;
   outline: none;
   font-size: var(--small-font-size);
+} */
+.search_box{
+  padding-top: 50px;
+  margin:100px 30%;
+  /* display: flex; */
+  background-color: #FFFFFF;
+  width: 45%;
+  height: 70%;
+  border-radius: 20px;
 }
 .search-overlay button{
   background-color: #393939;
@@ -197,11 +211,75 @@ img{
   cursor: pointer;
   border: none;
 }
+.form_header{
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+.form_btns{
+  display: flex;
+  margin-top: 30px;
+  gap: 5%;
+  height: 20%;
+  width: 100%;
+  justify-content: center;
+
+}
+.img_outer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  color: rgb(100, 100, 100);
+  border: solid gray;
+}
+/* .preview_img:after
+{
+  content: "\f1c5" " " attr(alt);
+  margin: auto;
+  font-size: 16px;
+  font-family: FontAwesome;
+
+  display: block;
+  position: relative;
+  z-index: 2;
+  top: -27px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+} */
+.preview_img {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  line-height: 2;  
+  text-align: center;
+  
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+.preview_img:before { 
+  content: "請加入圖片搜尋";
+  display: block;
+  margin-bottom: 1000px;
+}
+
+.preview_img:after { 
+  content: "(url: " attr(src) ")";
+  display: block;
+  font-size: 12px;
+}
+
 .fa-x{
   position: absolute;
   top: calc(var(--header-height) + 0.8rem);
   right: 5%;
 }
+
 
 /*========== RWD ==========*/
 @media screen and (min-width: 576px){
