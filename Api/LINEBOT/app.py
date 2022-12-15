@@ -70,7 +70,6 @@ def index():
                     payload["messages"] = [turnPicnDelete()]
                 # elif text == "灰階/翻轉/rescale/刪除圖片":
                 #     payload["messages"] = [pushMessagePIC()]
-
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -83,13 +82,13 @@ def index():
                                   "actions": [
                                       {
                                         "type": "message",
-                                        "label": "負片",
-                                        "text": "負片"
+                                        "label": "以圖搜圖",
+                                        "text": "以圖搜圖"
                                         },
                                         {
                                         "type": "message",
-                                        "label": "灰階",
-                                        "text": "灰階"
+                                        "label": "處理圖片",
+                                        "text": "處理圖片"
                                         },
                                         {
                                         "type": "message",
@@ -98,14 +97,39 @@ def index():
                                         },
                                         {
                                         "type": "message",
-                                        "label": "rescale",
+                                        "label": "刪除圖片",
+                                        "text": "刪除圖片"
+                                        }]}}]    
+                elif text == "處理圖片":
+                    payload["messages"] = [
+                            {
+                                "type": "template",
+                                "altText": "This is a buttons template",
+                                "template": {
+                                  "type": "buttons",
+                                  "title": "圖片選單",
+                                  "text": "Please select",
+                                  "actions": [
+                                      {
+                                        "type": "message",
+                                        "label": "負片",
+                                        "text": "負片"
+                                        },
+                                        {
+                                        "type": "message",
+                                        "label": "灰階",
+                                        "text": "灰階"
+                                        },
+                                        # {
+                                        # "type": "message",
+                                        # "label": "翻轉",
+                                        # "text": "翻轉"
+                                        # },
+                                        {
+                                        "type": "message",
+                                        "label": "縮放",
                                         "text": "rescale"
-                                        }
-                                
-                                  ]
-                              }
-                            }
-                        ]
+                                        }]}}]
                 else:
                     payload["messages"] = [
                             {
