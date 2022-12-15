@@ -68,8 +68,8 @@ def index():
                     payload["messages"] = [turnPicnRescale()]
                 elif text == "刪除圖片":
                     payload["messages"] = [turnPicnDelete()]
-                elif text == "灰階/翻轉/rescale/刪除圖片":
-                    payload["messages"] = [pushMessagePIC()]
+                # elif text == "灰階/翻轉/rescale/刪除圖片":
+                #     payload["messages"] = [pushMessagePIC()]
 
                 elif text == "主選單":
                     payload["messages"] = [
@@ -83,24 +83,25 @@ def index():
                                   "actions": [
                                       {
                                         "type": "message",
-                                        "label": "以圖搜圖",
-                                        "text": "以圖搜圖"
-                                      },
-                                      {
+                                        "label": "負片",
+                                        "text": "負片"
+                                        },
+                                        {
                                         "type": "message",
-                                        "label": "官網",
-                                        "text": "官網"
-                                      },
-                                      {
+                                        "label": "灰階",
+                                        "text": "灰階"
+                                        },
+                                        {
                                         "type": "message",
-                                        "label": "Contact Us",
-                                        "text": "Contact Us"
-                                      },
-                                      {
+                                        "label": "翻轉",
+                                        "text": "翻轉"
+                                        },
+                                        {
                                         "type": "message",
-                                        "label": "About Us",
-                                        "text": "About Us"
-                                      }
+                                        "label": "rescale",
+                                        "text": "rescale"
+                                        }
+                                
                                   ]
                               }
                             }
@@ -350,13 +351,14 @@ def backgroundDelete():
 def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "".join()
+    message['text'] = '踏破鐵鞋無覓處，只為幫你找到你最愛的一雙鞋'
+
     return message
 
 def getMessageContactUs():
     message = dict()
     message['type'] = 'text'
-    message['text'] = ""
+    message['text'] = "電話：0912345678"
     return message
 
 def getMessagePIC():
@@ -368,7 +370,7 @@ def getMessagePIC():
 def getMessageSite():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "".join()
+    message['text'] = "主選單"
     return message
 
 
