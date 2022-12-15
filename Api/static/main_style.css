@@ -510,46 +510,56 @@ img{
     background-color: lightblue;
     color: #fff;
     border-radius: 60px;
-    padding: 8px 0;
+    padding: 0;
     position: absolute;
     z-index: 100000;
     margin: auto;
     top: -145%; /*格式不動*/
     left: 10%; /*格式不動*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     font-family: 'Caveat', cursive;
+    border: 20px solid grey;
+
 }
-.popup form{
+.popup #big_form{
     font-size: 30px;
-    border: 3px solid red;
     text-align: center;
+    padding-top: 50px;
 }
-.form_header{
-  /* justify-content: center;
-  text-align: center;
-  text-justify: auto;
-  justify-items: center;
-  display: flex; */
-  width: 50%;
+.form_header label{
+  /*!* justify-content: center;*/
+  /*text-align: center;*/
+  /*text-justify: auto;*/
+  /*justify-items: center;*/
+  /*display: flex; *!*/
+    font-size: 50px;
+    color: grey;
+    border: 1px solid red;
+    padding-left: 5%;
 }
-.popup input{
-    font-size: 30px;
+.form_header input{
+    visibility: hidden;
+    font-size: 0px;
 }
 .popup img{
-    height: 30%;
-    width: 30%;
+    border: 1px solid red;
+    visibility: hidden;
+    height: 300px;
+    width: 300px;
+    margin: 20px;
 }
 .form_btns{
-  display: flex;
-  justify-content: center;
-  gap: 5% ;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    /*padding-top: 25px;*/
+    border: 1px solid red;
 }
 .form_btns input{
-  width: 50px;
-  height: 30px;
-  font-size: var(--small-font-size);
+  /*font-size: var(--small-font-size);*/
+    font-size: 30px;
 }
 /* Popup arrow */
 .popup .popuptext::after {
