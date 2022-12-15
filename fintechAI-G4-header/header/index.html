@@ -32,7 +32,7 @@
               <a href="#services" class="nav_link">收藏</a>
             </li>
             <li class="nav_item">
-              <a href="#menu" class="nav_link" id="search-btn"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt=""></a>
+              <a href="#menu" class="nav_link" id="search-btn">搜尋</a>
             </li>
             <li class="nav_item">
               <a href="#contact" class="nav_link">登入</a>
@@ -48,11 +48,31 @@
 
 
         <div class="search-overlay" id="overlay">
-          <form>
+          <!-- <form>
             <input type="search" placeholder="search...">
-            <button type="submit">search</button>
+            <button type="submit" class="search_text">search</button>
+          </form> -->
           <i class="fa-solid fa-x" id="close"></i>
-          </form>
+          <form action="main_page" method="post" enctype="multipart/form-data" class="search_box">
+            <div class="form_header">
+                請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
+            </div>
+            <div class="img_outer">
+                <img id="preview_img" class="preview_img"  src="#" />
+            </div>
+            <div class="form_btns">
+                <div>
+                    <input type="submit" name="" id="submit">
+                </div>
+                <div>
+                    <input type="reset" name="" id="reset">
+                </div>
+                <div>
+                    <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
+                </div>
+            </div>
+        </form>
+
 
 
         </div>
