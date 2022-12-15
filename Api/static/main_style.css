@@ -314,12 +314,13 @@ img{
 .main{
     margin-top: 10px;
     padding: 0px;
-    background-color: #ECEDEF; /*格式不能改 #ECEDEF */
+    background-image: url(./main_background.jpg);
+    /* background-color: #ECEDEF; 格式不能改 #ECEDEF */
 }
 .main li{
     margin: auto;
     padding: 5px;
-    border: 25px solid lightblue;
+    border: 25px solid rgba(173,216,230,0);
 }
 .main li div{
     display: flex;
@@ -441,7 +442,7 @@ img{
     align-items: center;
     display: flex;
     /* flex-direction: column; */
-    border-top: solid #555;
+    /* border-top: solid #555; */
     border-bottom: solid #555;
 }
 .footer_logo img{
@@ -473,11 +474,12 @@ img{
     line-height: 3rem;
     font-family: 'Caveat Brush','Noto Sans TC', sans-serif;
 }
-.footer_sec2 img{
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
+.footer_sec2{
+  display: grid;
+  padding-top: 2%;
+}
+.footer_sec2 #line_code{
+    margin: auto;
 }
 .footer_sec3{
     display: flex;
