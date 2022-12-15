@@ -218,6 +218,7 @@ def collection_page():
                 url = i[2]
                 collection_list.append({"id": ids, "name": names, "url": url})
 
+        db.commit()
         cursor.close()
         return render_template('collection_page.html', collection_list=collection_list)
 
