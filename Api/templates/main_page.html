@@ -21,7 +21,7 @@
           <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
                 <li class="nav_item">
-                    <img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()">
+                    <img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon">
                 </li>
                 <li class="nav_item">
                     <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
@@ -34,34 +34,36 @@
                 </li>
             </ul>
           </div>
-  
-          <div class="nav_toggle" id="nav-toggle">
-            <iconify-icon icon="bx:menu"></iconify-icon>
-          </div>
-  
-  
-          <div class="search-overlay" id="overlay">
-            <form>
-              <input type="search" placeholder="search...">
-              <button type="submit">search</button>
-            <i class="fa-solid fa-x" id="close"></i>
-            </form>
-  
-  
-          </div>
         </nav>
-      </header><br><br><br><br>
-    <!-- <div class="header">
-        <div class="box_logo">
-            <img src="{{url_for('static', filename = 'colourme logo.png')}}" alt="" id="logo">
+        <div class="search-overlay" id="overlay">
+            <i class="fa-solid fa-x" id="close"></i>
+            <form action="main_page" method="post" enctype="multipart/form-data" class="search_box">
+              <div class="form_header">
+                <label for="input_pics">Click me to upload your pictures~</label>
+                  <input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="preview()" targetID="preview_img">
+              </div>
+              <div class="img_outer">
+                  <img id="preview_search_img" class="preview_img"  src="#"/>
+              </div>
+              <div class="form_btns">
+                  <div>
+                      <input type="submit" name="" id="submit">
+                  </div>
+                  <div>
+                      <input type="reset" name="" id="reset" onclick="reset_img()">
+                  </div>
+                  <div>
+                      <input type="button" name="" id="cancel" value="取消">
+                  </div>
+              </div>
+          </form>
         </div>
-        <div class="box_icon"><img src="{{url_for('static', filename = 'search_icon.png')}}" alt="" id="search_icon" onclick="popup_search()"></div>
-        <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
-        <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
-        <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
-    </div> -->
+    </header><br><br><br><br>
+
+    <div class="popup">點擊我去搜尋！！！</div>
+    
     <div class = "hot">
-        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
+        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt="">熱門款式</h1>
         <ul class="main">
             {% for i in slick_list %}
                 <li>
@@ -75,68 +77,6 @@
         </ul>
     </div><br><br><br>
 
-    <div class="popup" onclick="popup_search()">點擊我去搜尋！！！
-        <span class="popuptext" id="search" onclick="popup_search()">
-            <form action="main_page" method="post" enctype="multipart/form-data" id="big_form">
-                <div class="form_header">
-                    <span><label for="input_pics">Choose images to upload (PNG, JPG)</label></span>
-                    <input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="preview()">
-                </div>
-                <div>
-                    <img id="preview_img" src="#" />
-                </div>            
-                <div class="form_btns">
-                    <div>
-                        <input type="submit" name="" id="submit">
-                    </div>
-                    <div>
-                        <input type="reset" name="" id="reset" onclick="reset_img()">
-                    </div>
-                    <div>
-                        <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
-                    </div>
-                </div>
-            </form>
-        </span>
-    </div>
-
-    <!-- <div class="input_files">
-        <form action="main_page" method="post" enctype="multipart/form-data">
-            請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png">
-            <input type="submit" name="" id="submit">
-        </form>
-    </div> -->
-
-    <!-- <div class="recommendation">
-        <table>
-            <caption>熱門鞋款</caption>
-            <tr>
-                <th></th>
-                <th>鞋款１</th>
-                <th>鞋款２</th>
-                <th>鞋款３</th>
-            </tr>
-            <tr>
-                <td>圖片</td>
-                <td>35</td>
-                <td>467</td>
-                <td>467</td>
-            </tr>
-            <tr>
-                <td>說明</td>
-                <td>35</td>
-                <td>467</td>
-                <td>467</td>
-            </tr>
-            <tr>
-                <td>導購</td>
-                <td>35</td>
-                <td>467</td>
-                <td>467</td>
-            </tr>
-          </table>
-    </div> -->
-
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">
@@ -149,8 +89,7 @@
                 <p>日期： 週一至週五<br>電話： (02)-2737-7300<br>時間： 9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM<br>地址： 台北市大安區復興南路二段237號4樓</p>
             </div>
             <div class="footer_sec2">
-                <img src="{{url_for('static',filename = 'Line@_add.png')}}" width="250px" height="100px">
-                <img src="{{url_for('static', filename = 'Linebot QRcode.png')}}" width="150px" height="150px" id="line_code">
+                <img src="{{url_for('static', filename = 'Linebot QRcode.png')}}" alt="">
             </div>
             <div class="footer_sec3">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115687.73633497348!2d121.47363185395893!3d25.025868290442194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a98c743d3bb5%3A0x93fb4e641c4e5ed6!2z5bel56CU6Zmi55Si5qWt5Lq65omN6KiT57e05LiA6YOoLeWPsOWMlyAo5Y-w5YyX5a2457-S5Lit5b-DKQ!5e0!3m2!1sen!2stw!4v1670309831994!5m2!1sen!2stw" width="400" height="300" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -188,13 +127,13 @@
             }
         })
     </script> -->
-    <script>
+    <!-- <script>
         // When the user clicks on div, open the popup
         function popup_search() {
           const search = document.querySelector("#search");
           search.classList.toggle("show");
         }
-    </script>
+    </script> -->
     <!-- <script>
         function readURL(input){
           if(input.files && input.files[0]){
@@ -211,20 +150,33 @@
     </script> -->
     <script>
         function preview() {
-            preview_img.src=URL.createObjectURL(event.target.files[0]);
-            preview_img.style.visibility = 'revert'
-            // preview_img.style.height = '30%'
-            // preview_img.style.width = '30%'
+            preview_search_img.src=URL.createObjectURL(event.target.files[0]);
+            preview_search_img.style.visibility = 'revert'
+            preview_search_img.style.height = '100%'
+            preview_search_img.style.width = '100%'
         }
     </script>
     <script>
         function reset_img() {
-            preview_img.style.visibility = 'hidden'
-            // preview_img.style.height = '0px'
-            // preview_img.style.width = '0px'
+            preview_search_img.style.visibility = 'hidden'
+            // preview_search_img.style.height = '0px'
+            // preview_search_img.style.width = '0px'
         }
     </script>
-    <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#search_icon").click(function(){
+            $("#overlay").show(500);
+         })
+         $(".popup").click(function(){
+            $("#overlay").show(500);
+         })
+          $("#cancel").click(function(){
+            $("#overlay").hide(500);
+         })
+        })
+      </script>
+    <!-- <script src="../static/main.js"></script> -->
     <!-- 手機板選單按鈕圖的來源 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
