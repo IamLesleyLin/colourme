@@ -49,44 +49,33 @@
           <div class="nav_toggle" id="nav-toggle">
             <iconify-icon icon="bx:menu"></iconify-icon>
           </div>
-  
-  
-          <!-- <div class="search-overlay" id="overlay">
-            <form>
-              <input type="search" placeholder="search...">
-              <button type="submit">search</button>
-            <i class="fa-solid fa-x" id="close"></i>
-            </form>
-  
-  
-          </div> -->
         </nav>
+        <div class="search-overlay" id="overlay">
+            <i class="fa-solid fa-x" id="close"></i>
+            <form action="main_page" method="post" enctype="multipart/form-data" class="search_box">
+              <div class="form_header">
+                <label for="input_pics">Click me to upload your pictures~</label>
+                  <input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="preview()" targetID="preview_img">
+              </div>
+              <div class="img_outer">
+                  <img id="preview_search_img" class="preview_img"  src="#"/>
+              </div>
+              <div class="form_btns">
+                  <div>
+                      <input type="submit" name="" id="submit">
+                  </div>
+                  <div>
+                      <input type="reset" name="" id="reset" onclick="reset_img()">
+                  </div>
+                  <div>
+                      <input type="button" name="" id="cancel" value="取消">
+                  </div>
+              </div>
+          </form>
+        </div>
     </header><br><br><br><br>
-    <div class = "hot">
-        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
-        <ul class="main">
-            {% for i in slick_list %}
-                <li>
-                    <img src="{{i['url']}}" alt="">
-                    <div>
-                        <p>{{i['name']}}</p>
-                        <!-- <img src="{{url_for('static', filename = 'collection.png')}}" alt=""> -->
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </div><br><br><br>
-
-    <div class="popup" onclick="popup_search()">點擊我去搜尋！！！
-        <span class="popuptext" id="search" onclick="popup_search()">
-            <form action="main_page" method="post" enctype="multipart/form-data">
-                請上傳圖片：<input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="readURL(this)" targetID="preview_img">
-                <img id="preview_img" src="#" alt=""/>
-                <input type="submit" name="" id="submit">
-                <input type="reset" name="" id="reset">
-                <input type="button" name="" id="cancel" value="取消" onclick="popup_search()">
-            </form>
-        </span>
+    <div class="popup">
+        <p>點擊我去搜尋！！！</p>
     </div>
 
     <div class="result">
@@ -105,6 +94,20 @@
                 
         </div>
     </div>
+    <div class = "hot">
+        <h1><img src="{{url_for('static', filename = 'hot_icon.png')}}" alt=""> 熱門款式</h1>
+        <ul class="main">
+            {% for i in slick_list %}
+                <li>
+                    <img src="{{i['url']}}" alt="">
+                    <div>
+                        <p>{{i['name']}}</p>
+                        <!-- <img src="{{url_for('static', filename = 'collection.png')}}" alt=""> -->
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div><br><br><br>
 
     <!-- <div class="recommendation">
         <table>
