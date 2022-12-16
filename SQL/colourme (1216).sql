@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-12-16 04:31:36
+-- 產生時間： 2022-12-16 04:37:48
 -- 伺服器版本： 10.4.25-MariaDB
 -- PHP 版本： 8.1.10
 
@@ -170,7 +170,7 @@ CREATE TABLE `parser_text` (
   `numbers` char(8) NOT NULL,
   `id` char(6) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `text` varchar(100) DEFAULT NULL,
+  `text` varchar(500) DEFAULT NULL,
   `price` int(5) NOT NULL,
   `url` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -181,7 +181,7 @@ CREATE TABLE `parser_text` (
 
 INSERT INTO `parser_text` (`numbers`, `id`, `name`, `text`, `price`, `url`) VALUES
 ('50082382', 'GY1034', 'Retropy E5 經典鞋', '\'鞋帶設計\', \'網布鞋面搭配車縫麂皮表層\', \'合成皮內裡\', \'Boost 中底\', \'橡膠大底\'', 2099, 'https://www.adidas.com.tw/product/50082382'),
-('50083566', 'GY6058', 'NMD_R1 經典鞋', '\'鞋帶設計\', \'彈性針織鞋面\', \'包覆腳感\', \'網布內裡\', \'Boost 中底\', \'橡膠大底\', \'鞋面中的紗線含有至少 50% Parley Ocean Plastic 和 50% 再生聚', 3699, 'https://www.adidas.com.tw/product/50083566'),
+('50083566', 'GY6058', 'NMD_R1 經典鞋', '\'鞋帶設計\', \'彈性針織鞋面\', \'包覆腳感\', \'網布內裡\', \'Boost 中底\', \'橡膠大底\', \'鞋面中的紗線含有至少 50% Parley Ocean Plastic 和 50% 再生聚酯\'', 3699, 'https://www.adidas.com.tw/product/50083566'),
 ('50099400', 'GZ5231', 'OZWEEGO Celox 經典鞋', '\'襪套式設計\', \'鞋帶設計\', \'網布鞋面\', \'包覆腳感\', \'合成皮內裡\', \'EVA 中底搭配 Adiprene 和 Adiprene+ 避震設計\', \'橡膠大底\'', 3099, 'https://www.adidas.com.tw/product/50099400'),
 ('50099596', 'GW0559', 'Retropy E5 經典鞋', '\'鞋帶設計\', \'織物鞋面配縫製絨面革飾面\', \'織物襯裡\', \'Boost中底\', \'橡膠外底\'', 2559, 'https://www.adidas.com.tw/product/50099596'),
 ('50105590', 'GW5472', 'Retropy F2 經典鞋', '\'鞋帶設計\', \'網布鞋面搭配車縫麂皮表層\', \'網布內裡\', \'EVA 中底\', \'橡膠大底\'', 2472, 'https://www.adidas.com.tw/product/50105590'),
@@ -189,7 +189,7 @@ INSERT INTO `parser_text` (`numbers`, `id`, `name`, `text`, `price`, `url`) VALU
 ('50106054', 'GW9740', 'OZWEEGO Meta 經典鞋', '\'鞋帶設計\', \'鞋面採用麂皮和網布拼接而成\', \'網布內裡\', \'Adiprene 避震科技\', \'橡膠大底\', \'25% 的鞋面結構以至少 50% 的再生材質製成\'', 2559, 'https://www.adidas.com.tw/product/50106054'),
 ('50106866', 'GV7615', 'Superstar Parley 經典鞋', '\'鞋帶設計\', \'合成材質鞋面\', \'BOOST 中底\', \'網布內裡\', \'橡膠大底\', \'鞋面採用超過 50% 的再生材質\'', 2559, 'https://www.adidas.com.tw/product/50106866'),
 ('50106926', 'GV7610', 'Superstar PARLEY 經典鞋', '\'一般版型\', \'鞋帶設計\', \'合成材質鞋面\', \'網布內裡\', \'橡膠大底\', \'鞋面採用超過 50% 的再生材質\'', 2299, 'https://www.adidas.com.tw/product/50106926'),
-('50108334', 'GY6067', 'NMD_R1 PARLEY 經典鞋', '\'鞋帶設計\', \'彈性針織鞋面\', \'包覆腳感\', \'網布內裡\', \'BOOST 中底\', \'橡膠大底\', \'鞋面中的紗線含有至少 50% Parley Ocean Plastic 和 50% 再生聚', 3699, 'https://www.adidas.com.tw/product/50108334'),
+('50108334', 'GY6067', 'NMD_R1 PARLEY 經典鞋', '\'鞋帶設計\', \'彈性針織鞋面\', \'包覆腳感\', \'網布內裡\', \'BOOST 中底\', \'橡膠大底\', \'鞋面中的紗線含有至少 50% Parley Ocean Plastic 和 50% 再生聚酯纖維\'', 3699, 'https://www.adidas.com.tw/product/50108334'),
 ('50108922', 'GY6697', 'ZX 22 BOOST 經典鞋', '\'一般版型\', \'鞋帶設計\', \'網布鞋面搭配麂皮表層\', \'EVA 中底搭配 JET BOOST 科技\', \'網布內裡\', \'橡膠大底\', \'25% 的鞋面結構以至少 50% 的再生材質製成\'', 2799, 'https://www.adidas.com.tw/product/50108922'),
 ('50116870', 'FX5119', 'Multix 經典鞋', '\'一般版型\', \'鞋帶設計\', \'網布鞋面\', \'EVA 中底\', \'橡膠大底\'', 2890, 'https://www.adidas.com.tw/product/50116870'),
 ('50124222', 'GV9116', 'Pride X Retropy E5 經典鞋', '\'鞋帶設計\', \'皮革鞋面\', \'網布內裡\', \'BOOST 中底\', \'橡膠大底\'', 2999, 'https://www.adidas.com.tw/product/50124222'),
