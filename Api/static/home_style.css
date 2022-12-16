@@ -95,6 +95,7 @@ img{
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
+  background-image: url("../static/snowflake.gif");
 }
 
 /*========== NAV ==========*/
