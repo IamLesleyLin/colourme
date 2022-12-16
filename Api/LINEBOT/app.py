@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from flask import Flask, request, abort, render_template
+from flask_cors import CORS
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -14,11 +15,25 @@ import numpy as np
 import base64
 import io
 from urllib import parse
+from keras.models import load_model
+import pymysql
+
+
+
 app = Flask(__name__, static_url_path='/static')
+
+
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-
+db = pymysql.connect(
+            host='localhost',
+            port=3306,
+            user='root',
+            passwd='',
+            database='colourme',
+            charset='utf8mb4',
+        )
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -70,6 +85,9 @@ def index():
                     payload["messages"] = [turnPicnDelete()]
                 elif text == "圖片大小":
                     payload["messages"] = [sizeMessagePIC()]
+                elif text == "搜尋結果":
+                    payload["messages"] = [searchMessagePIC()]
+                    
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -127,7 +145,7 @@ def index():
                                         },
                                         {
                                         "type": "message",
-                                        "label": "縮放",
+                                        "label": "縮小圖片",
                                         "text": "rescale"
                                         }]}}]
                 else:
@@ -264,23 +282,18 @@ def getMessageImage():
                     "text": "Please select",
                     "actions": [{
                                 "type": "message",
-                                "label": "負片",
-                                "text": "負片"
+                                "label": "搜尋結果",
+                                "text": "搜尋結果"
                                 },
                                 {
                                 "type": "message",
-                                "label": "灰階",
-                                "text": "灰階"
+                                "label": "處理圖片",
+                                "text": "處理圖片"
                                 },
                                 {
                                 "type": "message",
-                                "label": "翻轉",
-                                "text": "翻轉"
-                                },
-                                {
-                                "type": "message",
-                                "label": "rescale",
-                                "text": "rescale"
+                                "label": "刪除圖片",
+                                "text": "刪除圖片"
                                 }]}
     return message
 
@@ -320,11 +333,16 @@ def sizeMessagePIC():
     img_data = json.loads(img)
     image_name = str(img_data['events'][0]['source']['userId'])
     imgg = cv2.imread(f'./static/{image_name}.jpg')
-
-    img_decoded = cv2.imdecode(np.frombuffer(image_content, np.uint8), 1)
-    img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
+    img_gray = cv2.cvtColor(imgg, cv2.COLOR_BGR2GRAY)
+    print('222')
     print(img_gray.shape)
-    return f'像素尺寸為：{str(img_gray.shape)}'
+    print('222')
+    message = dict()
+    message['type'] = 'text'
+    message['text'] =f'圖片尺寸為：{(img_gray.shape)}'
+    
+    return message
+
 def turnPicnGray():
     img = request.get_data(as_text=True)
     img_data = json.loads(img)
@@ -366,6 +384,7 @@ def turnPicnRescale():
 
 def turnPicnDelete():
     img = request.get_data(as_text=True)
+    
     img_data = json.loads(img)
     image_name = str(img_data['events'][0]['source']['userId'])
     imgg = cv2.imread(f'./static/{image_name}.jpg')
@@ -375,18 +394,59 @@ def turnPicnDelete():
     else :
         print('刪除失敗')
 
-def backgroundDelete():
+def searchMessagePIC():
+    app = Flask(__name__)
+    model = load_model('../../model/my_model.h5')
+    CORS(app, resources={r"./*":{"origins":["*"]}})
     img = request.get_data(as_text=True)
     img_data = json.loads(img)
     image_name = str(img_data['events'][0]['source']['userId'])
     imgg = cv2.imread(f'./static/{image_name}.jpg')
-    img_decoded = cv2.imdecode(np.frombuffer(imgg, np.uint8), 1) 
+    img_gray = cv2.cvtColor(imgg, cv2.COLOR_BGR2GRAY)
+    imagg = cv2.resize(img_gray, (100 , 100) , interpolation=cv2.INTER_AREA)
+    imgggg = imagg.flatten()
+    df=imgggg
+    df[ df == np.argmax(np.bincount(df))]= 255
+    img_re = df.reshape(-1,100,100,1)
+    img_pre = model.predict(img_re)
+    no = np.argmax(img_pre[0])
+    print(no)
+    cursor = db.cursor()
+    select_sql = f"""SELECT `category`.`numbers`,`category`.`id`,`category`.`name`,`category`.`text`,`category`.`price`,`productid_imgurl`.`imgURL`
+                        FROM ((`productid_imgurl` 
+                        LEFT JOIN `category`
+                        ON `category`.`numbers`= `productid_imgurl`.`numbers`) 
+                        RIGHT JOIN `model_label` ON `model_label`.`numbers`= `productid_imgurl`.`numbers`)
+                        WHERE `model_label`.`label`= {no}"""
+    cursor.execute(select_sql)
+    if cursor.rowcount > 0:
+        results = cursor.fetchall()
+        # print(results)
 
+        result_list = []
+        for i in results:
+            numbers = i[0]
+            ids = i[1]
+            # names = " ".join(re.findall("\w+\s+", i[2]))
+            names = i[2]
+            text = i[3]
+            price = i[4]
+            url = i[5]
+
+            result_list.append({"numbers": numbers,"ids": ids, "names": names,"text":text, "price":price, "url": url})
+        a = result_list[0]['url']
+        print(a)
+    cursor.close()
+    message = dict()
+    message['type'] = 'image'
+    message['originalContentUrl'] =  f"{a}"
+    message['previewImageUrl'] =  f"{a}"
+    return  message
+    
 def getMessageAboutUS():
     message = dict()
     message['type'] = 'text'
     message['text'] = '踏破鐵鞋無覓處，只為幫你找到你最愛的一雙鞋'
-
     return message
 
 def getMessageContactUs():
