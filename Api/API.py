@@ -30,11 +30,11 @@ db = pymysql.connect(
 
 ################
 cursor = db.cursor()
-slick_sql = """SELECT `parser_hot_list`.`numbers`, `parser_hot_list`.`id`, `parser_text`.`name`, 
-        `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list` 
-        INNER JOIN `productid_imgurl` ON `parser_hot_list`.`id` = `productid_imgurl`.`id` 
-        INNER JOIN `parser_text` ON `parser_hot_list`.`id` = `parser_text`.`id` 
-        WHERE Hot > 0 
+slick_sql = """SELECT DISTINCT(`parser_hot_list`.`numbers`), `parser_hot_list`.`id`, `parser_text`.`name`,
+        `parser_hot_list`.`Hot`, `productid_imgurl`.`imgURL` FROM `parser_hot_list`
+        INNER JOIN `productid_imgurl` ON `parser_hot_list`.`id` = `productid_imgurl`.`id`
+        INNER JOIN `parser_text` ON `parser_hot_list`.`id` = `parser_text`.`id`
+        WHERE Hot > 0
         ORDER BY Hot DESC"""
 cursor.execute(slick_sql)
 
@@ -154,7 +154,8 @@ def product_page():
         return render_template('product_page.html', product_list=product_list)
 
     if request.method == 'POST':
-        cat_list = ['', 'OZWEEGO', 'Superstar', 'Stan', 'Smith', 'others', 'Retropy', 'Forum', 'Campus', 'Puffylette']
+        cat_list = ['', 'Retropy', 'Superstar', 'Others', 'Campus', 'Ozweego', 'Sneaker', 'Gazelle', 'NMD', 'Abaca',
+                    'Centennial', 'Puffylette', 'Adiease']
 
         cursor = db.cursor()
         cllection_insert = """INSERT INTO `collection` VALUES (%s);"""

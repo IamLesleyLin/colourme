@@ -320,6 +320,12 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../static/christmas.jpg");
+    background-size: contain;
+}
+.popup p{
+    font-size: 30px;
+    color: beige;
 }
 .result{
     height: 400px;
