@@ -11,7 +11,7 @@ df_50
 
 select_list=[]
 for i in range(len(df_50)):
-    df_50.iat[i,0]
+    df_50.iat[i,3]
     select_list.append(df_50.iat[i,0])
 select_list
 
