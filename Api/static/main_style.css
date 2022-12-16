@@ -369,7 +369,6 @@ img{
 .footer div{
     width: 100%;
     min-height: 100px;
-    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
 }
@@ -398,11 +397,11 @@ img{
     max-width: 150px;
     object-fit: contain;
 }
-#BrandName{
+/* #BrandName{
     font-size: 80px;
     font-family:'Cookie', cursive;
     margin-left: 30px;
-}
+} */
 .footer_sections{
     /* margin-bottom: 4vw; */
     justify-content: space-between;
@@ -433,7 +432,6 @@ img{
 }
 .footer_sec3{
     display: flex;
-
     justify-content: center;
     align-items: center;
     height: 100%;
