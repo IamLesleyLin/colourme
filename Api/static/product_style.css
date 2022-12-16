@@ -405,6 +405,8 @@ img{
     color: red;
     pointer-events: none;
 }
+
+/* ====footer style==== */
 .footer{
     width: 95%;
     margin: auto;
@@ -412,19 +414,18 @@ img{
 .footer div{
     width: 100%;
     min-height: 100px;
-    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
 }
 .footer_box{
     margin-top: 1vw;
-    padding: 1.5vw 0;
+    padding: 1.5vw 0 0 0;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     /* width: 100%; */
-    height: 50px;
+    /* height: 50px; */
 }
 .footer_logo{
     height: 80%;
@@ -432,8 +433,8 @@ img{
     align-items: center;
     display: flex;
     flex-direction: column;
-    border-top: solid #555;
-    border-bottom: solid #555;
+    /* border-top: solid #555;
+    border-bottom: solid #555; */
 }
 .footer_logo img{
     display: flex;
@@ -466,8 +467,13 @@ img{
 .footer_sec2 #line_code{
     margin: auto;
 }
+.sec2_img{
+  margin-bottom: 20px;
+}
 .footer_sec3{
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    height: 100%;
+    /* margin: 50px; */
 }
