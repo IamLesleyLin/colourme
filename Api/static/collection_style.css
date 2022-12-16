@@ -160,7 +160,7 @@ img{
   cursor: pointer;
 }
 
-/*==== Show menu ====*/
+/* Show menu */
 .show-menu{
   top: var(--header-height);
 }
