@@ -83,7 +83,18 @@
             {% for i in product_list %}
                 <tr>
                     <td class="a">{{i['id']}}</td>
-                    <td class="b">{{i['name']}}</td>
+                    <td class="b">
+                        <ul>{{i['name']}}
+                        {% for u in i['text'] %}
+                            <li>{{u['text0']}}</li>
+                            <li>{{u['text1']}}</li>
+                            <li>{{u['text2']}}</li>
+                            <li>{{u['text3']}}</li>
+                            <li>{{u['text4']}}</li>  
+                            <li>{{u['text5']}}</li>
+                        {% endfor %}   
+                        </ul>                   
+                    </td>
                     <td class="c"><img src="{{i['url']}}" alt="" class="image"></td>
                     <td class="d">
                         <!-- <form action="product_page" method="post"> -->

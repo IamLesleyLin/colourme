@@ -95,6 +95,7 @@ img{
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
+    background-image: url("../static/snowflake.gif");
 }
 
 /*========== NAV ==========*/
@@ -137,34 +138,27 @@ img{
   width:50px;
   margin-bottom: 1rem;
 }
-
 .nav_link, .nav_logo, .nav_toggle{
   color: var(--text-color);
   font-weight: 500;
 }
-
 .nav_logo:hover{
   color: var(--first-color);
 }
-
 .nav_link{
   transition: .3s;
 }
-
 .nav_link:hover{
   color: var(--first-color);
 }
-
 .nav_toggle{
   font-size: 1.3rem;
   cursor: pointer;
 }
-
 /* Show menu */
 .show-menu{
   top: var(--header-height);
 }
-
 /* Active menu */
 .active-link{
   color: var(--first-color);
@@ -324,8 +318,17 @@ img{
     background-size: contain;
 }
 .popup p{
-    font-size: 30px;
+    font-size: 80px;
     color: beige;
+}
+.popup img{
+    height: 80px;
+    width: 80px;
+}
+.popup img:hover{
+    height: 120px;
+    width: 120px;
+    transform: scale(1.25);
 }
 .result{
     height: 400px;
@@ -350,6 +353,7 @@ img{
     height: 100%;
     width: 50%;
     border: 1px solid red;
+    background-image: url("../static/santa.gif");
 }
 .result .comparison .img{
     height: 50%;

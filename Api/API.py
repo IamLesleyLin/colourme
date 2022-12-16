@@ -45,7 +45,8 @@ if cursor.rowcount > 0:
     for i in results:
         numbers = i[0]
         ids = i[1]
-        names = " ".join(re.findall("\w+\s+", i[2]))
+        names = i[2]
+        # names = " ".join(re.findall("\w+\s+", i[2]))
         hot = i[3]
         url = i[4]
         slick_list.append({"numbers": numbers, "id": ids, "name": names, "hot": hot, "url": url})
@@ -54,7 +55,7 @@ cursor.close()
 
 ################
 cursor = db.cursor()
-product_sql = """SELECT `category`.`id`, `category`.`name`, `productid_imgurl`.`imgURL` 
+product_sql = """SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` 
             FROM `category` 
             INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`"""
 cursor.execute(product_sql)
@@ -65,11 +66,13 @@ if cursor.rowcount > 0:
     product_list = []
     for i in results:
         ids = i[0]
-        # names = " ".join(re.findall("\w+\s+", i[2]))
         names = i[1]
-        url = i[2]
-        product_list.append({"id": ids, "name": names, "url": url})
-
+        text = i[2].replace("'", "").split(sep=",")
+        text_list = []
+        for index, u in enumerate(text):
+            text_list.append({f"text{index}":u})
+        url = i[3]
+        product_list.append({"id": ids, "name": names, "text": text_list, "url": url})
 cursor.close()
 
 ################
@@ -143,9 +146,9 @@ def main_page():
                 text = i[3]
                 price = i[4]
                 url = i[5]
-
                 result_list.append({"numbers": numbers,"ids": ids, "names": names,"text":text, "price":price, "url": url})
         cursor.close()
+
         return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded,result_list = result_list)
 
 @app.route('/product_page',methods=['GET', "POST"])
@@ -167,7 +170,7 @@ def product_page():
         except:
             print('selection process')
 
-        selection_sql = f"""SELECT `category`.`id`, `category`.`name`, `productid_imgurl`.`imgURL` FROM `category` 
+        selection_sql = f"""SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` FROM `category` 
                             INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`
                             WHERE `category`.`category` = '{request.values.get('c_id')}'"""
         cursor.execute(selection_sql)
@@ -179,10 +182,13 @@ def product_page():
             product_list1 = []
             for i in results:
                 ids = i[0]
-                # names = " ".join(re.findall("\w+\s+", i[2]))
                 names = i[1]
-                url = i[2]
-                product_list1.append({"id": ids, "name": names, "url": url})
+                text = i[2].replace("'", "").split(sep=",")
+                text_list = []
+                for index, u in enumerate(text):
+                    text_list.append({f"text{index}": u})
+                url = i[3]
+                product_list1.append({"id": ids, "name": names, "text": text_list, "url": url})
 
         cursor.close()
         return render_template('product_page.html', product_list=product_list1)
