@@ -94,15 +94,15 @@
             <img id="preview_img" src="data:;base64,{{img_encoded}}"/>
         </div>
         <div class="comparison">
-            <div class="img">123</div>
-            <div class="text">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
+            {% for i in result_list %}
+            <ul>
+                <li>名稱：{{i['names']}}</li>
+                <li>價格：{{i['price']}}</li>
+                <li><img src="{{i['url']}}" alt="" class="image"></li>
+                <li></li>
+            </ul>
+            {% endfor %}
+                
         </div>
     </div>
 
@@ -135,7 +135,6 @@
             </tr>
           </table>
     </div> -->
-
     <div class="footer">
         <div class="footer_box">
             <div class="footer_logo">

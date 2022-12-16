@@ -406,22 +406,22 @@ img{
 }
 .footer_box{
     margin-top: 1vw;
-    padding: 1.5vw 0;
+    padding: 1.5vw 0 0 0;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     /* width: 100%; */
-    height: 50px;
+    /* height: 50px; */
 }
 .footer_logo{
     height: 80%;
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     border-top: solid #555;
-    border-bottom: solid #555;
+    border-bottom: solid #555; */
 }
 .footer_logo img{
     display: flex;
@@ -454,8 +454,12 @@ img{
 .footer_sec2 #line_code{
     margin: auto;
 }
+.sec2_img{
+  margin-bottom: 20px;
+}
 .footer_sec3{
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
