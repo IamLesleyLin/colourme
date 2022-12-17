@@ -332,10 +332,11 @@ img{
     transform: scale(1.25);
 }
 .result{
-    height: 400px;
+    height: 420px;
     width: 90%;
     margin: auto;
     display: flex;
+    background-color: #ECEDEF;
 }
 .result .original{
     height: 100%;
@@ -343,11 +344,10 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 25px;
 }
 .result .original #preview_img{
-    height: 350px;
-    width: 350px;
+    height: 400px;
+    width: 400px;
 }
 .result .comparison{
     height: 100%;
@@ -358,20 +358,17 @@ img{
     padding-top: 30px;
 }
 .result .comparison p{
+    font-size: 40px;
+}
+.result .comparison li{
     font-size: 30px;
+    padding-top: 10px;
 }
 .result .comparison img{
-    height: 100px;
-    width: 100px;
+    padding-top: 0px;
+    height: 200px;
+    width: 200px;
     text-align: center;
-}
-.result .comparison .text{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Caveat', cursive;
 }
 /* ====footer style==== */
 .footer{

@@ -77,11 +77,11 @@
     <div class="popup">
         <p>CLICK!!!</p>
         <img src="{{url_for('static', filename = 'click.png')}}" alt="">
-    </div>
+    </div><br>
 
     <div class="result">
         <div class="original">
-            <img id="preview_img" src="data:;base64,{{img_encoded}}"/>
+            <img id="preview_img" src="data:;base64,{{img_encoded}}">
         </div>
         <div class="comparison">
             {% for i_12 in result_list_12 %}
@@ -91,7 +91,7 @@
                 {% for i_50 in result_list_50 %}
                 <li>代號：{{i_50['ids']}}</li>
                 <li>品名：{{i_50['names']}}</li>
-                <ul>說明：
+                <!-- <ul>說明：
                     {% for u in i_50['text'] %}
                     <li>{{u['text0']}}</li>
                     <li>{{u['text1']}}</li>
@@ -100,7 +100,7 @@
                     <li>{{u['text4']}}</li>  
                     <li>{{u['text5']}}</li>
                     {% endfor %}
-                </ul>
+                </ul> -->
                 <li><img src="{{i_50['url']}}" alt="" class="image"></li>
                 {% endfor %}   
             </ul>
