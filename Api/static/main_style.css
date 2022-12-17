@@ -256,6 +256,7 @@ img{
     margin: auto;
     padding: 0px;
     text-align: center;
+    padding-top: 20px;
 }
 .hot h1{
     margin-top: 10px;
@@ -342,25 +343,27 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    padding-top: 25px;
 }
 .result .original #preview_img{
-    height: 80%;
-    width: 80%;
-    border: 1px solid blue;
+    height: 350px;
+    width: 350px;
 }
 .result .comparison{
     height: 100%;
     width: 50%;
-    border: 1px solid red;
     background-image: url("../static/santa.gif");
+    background-repeat: round;
+    text-align: center;
+    padding-top: 30px;
 }
-.result .comparison .img{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.result .comparison p{
+    font-size: 30px;
+}
+.result .comparison img{
+    height: 100px;
+    width: 100px;
+    text-align: center;
 }
 .result .comparison .text{
     height: 50%;
