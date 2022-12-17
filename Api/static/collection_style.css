@@ -95,6 +95,7 @@ img{
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
+    background-image: url("../static/snowflake.gif");
 }
 
 /*========== NAV ==========*/
@@ -321,7 +322,7 @@ img{
 }
 .product th{
     font-size: 40px;
-    color: lightsteelblue;
+    color: whitesmoke;
     background-color: #393939;
 }
 .product th.a{
