@@ -5,14 +5,10 @@ from flask_cors import CORS
 import pymysql
 import cv2
 import numpy as np
-import re
-import pandas as pd
-import urllib
-import io
 from keras.models import load_model
 
 model_12 = load_model('./static/model_forweb.h5')
-model_50 = load_model('../model/my_model.h5')
+model_50 = load_model('./LINEBOT/static/model_forLINE.h5')
 
 from flask import url_for, redirect, flash
 
@@ -127,10 +123,10 @@ def main_page():
         cursor.execute(select_sql_12)
 
         if cursor.rowcount > 0:
-            results = cursor.fetchall()
+            results_12 = cursor.fetchall()
 
             result_list_12 = []
-            for i in results:
+            for i in results_12:
                 label = i[0]
                 result_list_12.append({"label":label})
         cursor.close()
@@ -149,10 +145,10 @@ def main_page():
         cursor.execute(select_sql_50)
 
         if cursor.rowcount > 0:
-            results = cursor.fetchall()
+            results_50 = cursor.fetchall()
 
             result_list_50 = []
-            for i in results:
+            for i in results_50:
                 numbers = i[0]
                 ids = i[1]
                 names = i[2]
