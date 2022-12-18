@@ -452,7 +452,7 @@ def getMessageAboutUS():
 def getMessageContactUs():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "日期： 週一至週五 \n 電話： (02)-2737-7300 \n  時間： 9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM \n 地址： 台北市大安區復興南路二段237號4樓"
+    message['text'] = "日期： 週一至週五 \n電話： (02)-2737-7300 \n時間： 9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM \n地址： 台北市大安區復興南路二段237號4樓"
     return message
 
 def getMessagePIC():
