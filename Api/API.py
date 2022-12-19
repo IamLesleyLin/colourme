@@ -185,7 +185,11 @@ def product_page():
         selection_sql = f"""SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` FROM `category` 
                             INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`
                             WHERE `category`.`category` = '{request.values.get('c_id')}'"""
-        cursor.execute(selection_sql)
+        if request.values.get('c_id') != "":
+            cursor.execute(selection_sql)
+        else:
+            cursor.execute("""SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` FROM `category` 
+                            INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`""")
 
         product_list1 = []
         if cursor.rowcount > 0:
