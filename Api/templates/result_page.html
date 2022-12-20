@@ -54,7 +54,7 @@
             <i class="fa-solid fa-x" id="close"></i>
             <form action="main_page" method="post" enctype="multipart/form-data" class="search_box">
               <div class="form_header">
-                <label for="input_pics">Click me to upload your pictures~</label>
+                <label for="input_pics">點擊我上傳照片</label>
                   <input type="file" id="input_pics" name = 'photo' accept=".jpg, .jpeg, .png" onchange="preview()" targetID="preview_img">
               </div>
               <div class="img_outer">
@@ -73,25 +73,37 @@
               </div>
           </form>
         </div>
-    </header><br><br><br><br>
+    </header><br><br><br><br><br>
     <div class="popup">
         <p>CLICK!!!</p>
         <img src="{{url_for('static', filename = 'click.png')}}" alt="">
-    </div>
+    </div><br>
 
     <div class="result">
         <div class="original">
-            <img id="preview_img" src="data:;base64,{{img_encoded}}"/>
+            <img id="preview_img" src="data:;base64,{{img_encoded}}">
         </div>
         <div class="comparison">
-            {% for i in result_list %}
-            <ul>
-                <li>名稱：{{i['names']}}</li>
-                <li>價格：{{i['price']}}</li>
-                <li><img src="{{i['url']}}" alt="" class="image"></li>
-                <li></li>
-            </ul>
+            {% for i_12 in result_list_12 %}
+            <p>最相似的鞋款為：{{i_12['label']}}</p>
             {% endfor %}
+            <ul>
+                {% for i_50 in result_list_50 %}
+                <li>代號：{{i_50['ids']}}</li>
+                <li>品名：{{i_50['names']}}</li>
+                <!-- <ul>說明：
+                    {% for u in i_50['text'] %}
+                    <li>{{u['text0']}}</li>
+                    <li>{{u['text1']}}</li>
+                    <li>{{u['text2']}}</li>
+                    <li>{{u['text3']}}</li>
+                    <li>{{u['text4']}}</li>  
+                    <li>{{u['text5']}}</li>
+                    {% endfor %}
+                </ul> -->
+                <li><img src="{{i_50['url']}}" alt="" class="image"></li>
+                {% endfor %}   
+            </ul>
                 
         </div>
     </div>

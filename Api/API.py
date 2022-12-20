@@ -5,13 +5,10 @@ from flask_cors import CORS
 import pymysql
 import cv2
 import numpy as np
-import re
-import pandas as pd
-import urllib
-import io
 from keras.models import load_model
 
-model = load_model('../model/my_model.h5')
+model_12 = load_model('./static/model_forweb.h5')
+model_50 = load_model('./LINEBOT/static/model_forLINE.h5')
 
 from flask import url_for, redirect, flash
 
@@ -111,45 +108,60 @@ def main_page():
 
         # execute back-end operations
         img_decoded = cv2.imdecode(np.frombuffer(img_read, np.uint8), 1)
-        # print(img_decoded)
         img_gray = cv2.cvtColor(img_decoded, cv2.COLOR_BGR2GRAY)
-        imagg = cv2.resize(img_gray, (100 , 100) , interpolation=cv2.INTER_AREA)
-        imgggg = imagg.flatten()
-        df=imgggg
-        # df = pd.DataFrame(imgggg)
-        # print (df)
-        df[ df == np.argmax(np.bincount(df))]= 255 #找出背景最多的數字，再指定成255
-        # print(df)
-        img_re = df.reshape(-1,100,100,1)
-        img_pre = model.predict(img_re)
-        no = np.argmax(img_pre[0]) #得到最相近的照片index
-        print(no)
-        
-        cursor = db.cursor()
-        select_sql = f"""SELECT `category`.`numbers`,`category`.`id`,`category`.`name`,`category`.`text`,`category`.`price`,`productid_imgurl`.`imgURL`
-                        FROM ((`productid_imgurl` 
-                        LEFT JOIN `category`
-                        ON `category`.`numbers`= `productid_imgurl`.`numbers`) 
-                        RIGHT JOIN `model_label` ON `model_label`.`numbers`= `productid_imgurl`.`numbers`)
-                        WHERE `model_label`.`label`= {no}"""
-        cursor.execute(select_sql)
-        if cursor.rowcount > 0:
-            results = cursor.fetchall()
-            print(results)
+        img_resized = cv2.resize(img_gray, (100 , 100) , interpolation=cv2.INTER_AREA)
+        img_flat = img_resized.flatten()
+        img_flat[img_flat == np.argmax(np.bincount(img_flat))]= 255 #找出背景最多的數字，再指定成255
+        img_reshaped = img_flat.reshape(-1,100,100,1)
 
-            result_list = []
-            for i in results:
-                numbers = i[0]
-                ids = i[1]
-                # names = " ".join(re.findall("\w+\s+", i[2]))
-                names = i[2]
-                text = i[3]
-                price = i[4]
-                url = i[5]
-                result_list.append({"numbers": numbers,"ids": ids, "names": names,"text":text, "price":price, "url": url})
+        # model_12
+        img_pre12 = model_12.predict(img_reshaped)
+        no_12 = np.argmax(img_pre12[0]) #得到最相近的照片組別index
+
+        cursor = db.cursor()
+        select_sql_12 = f"""SELECT `category` FROM `category_label_12` WHERE `category_num`= {no_12}"""
+        cursor.execute(select_sql_12)
+
+        if cursor.rowcount > 0:
+            results_12 = cursor.fetchall()
+
+            result_list_12 = []
+            for i in results_12:
+                label = i[0]
+                result_list_12.append({"label":label})
         cursor.close()
 
-        return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded,result_list = result_list)
+        # model_50
+        img_pre50 = model_50.predict(img_reshaped)
+        no_50 = np.argmax(img_pre50[0])  # 得到最相近的照片index
+
+        cursor = db.cursor()
+        select_sql_50 = f"""SELECT `category`.`numbers`,`category`.`id`,`category`.`name`,`category`.`text`,`category`.`price`,`productid_imgurl`.`imgURL`
+                        FROM ((`productid_imgurl`
+                        LEFT JOIN `category`
+                        ON `category`.`numbers`= `productid_imgurl`.`numbers`)
+                        RIGHT JOIN `model_label_50` ON `model_label_50`.`numbers`= `productid_imgurl`.`numbers`)
+                        WHERE `model_label_50`.`label`= {no_50}"""
+        cursor.execute(select_sql_50)
+
+        if cursor.rowcount > 0:
+            results_50 = cursor.fetchall()
+
+            result_list_50 = []
+            for i in results_50:
+                numbers = i[0]
+                ids = i[1]
+                names = i[2]
+                text = i[3].replace("'", "").split(sep=",")
+                text_list = []
+                for index, u in enumerate(text):
+                    text_list.append({f"text{index}": u})
+                price = i[4]
+                url = i[5]
+                result_list_50.append({"numbers": numbers,"ids": ids, "names": names,"text":text_list, "price":price, "url": url})
+        cursor.close()
+
+        return render_template('result_page.html', slick_list=slick_list, img_encoded=img_encoded,result_list_12 = result_list_12, result_list_50 = result_list_50)
 
 @app.route('/product_page',methods=['GET', "POST"])
 def product_page():
@@ -173,7 +185,11 @@ def product_page():
         selection_sql = f"""SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` FROM `category` 
                             INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`
                             WHERE `category`.`category` = '{request.values.get('c_id')}'"""
-        cursor.execute(selection_sql)
+        if request.values.get('c_id') != "":
+            cursor.execute(selection_sql)
+        else:
+            cursor.execute("""SELECT `category`.`id`, `category`.`name`, `category`.`text`, `productid_imgurl`.`imgURL` FROM `category` 
+                            INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`""")
 
         product_list1 = []
         if cursor.rowcount > 0:

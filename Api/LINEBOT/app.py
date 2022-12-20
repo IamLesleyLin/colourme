@@ -396,7 +396,7 @@ def turnPicnDelete():
 
 def searchMessagePIC():
     app = Flask(__name__)
-    model = load_model('../../model/my_model.h5')
+    model = load_model('./static/model_forLINE.h5')
     CORS(app, resources={r"./*":{"origins":["*"]}})
     img = request.get_data(as_text=True)
     img_data = json.loads(img)
@@ -416,8 +416,8 @@ def searchMessagePIC():
                         FROM ((`productid_imgurl` 
                         LEFT JOIN `category`
                         ON `category`.`numbers`= `productid_imgurl`.`numbers`) 
-                        RIGHT JOIN `model_label` ON `model_label`.`numbers`= `productid_imgurl`.`numbers`)
-                        WHERE `model_label`.`label`= {no}"""
+                        RIGHT JOIN `model_label_50` ON `model_label_50`.`numbers`= `productid_imgurl`.`numbers`)
+                        WHERE `model_label_50`.`label`= {no}"""
     cursor.execute(select_sql)
     if cursor.rowcount > 0:
         results = cursor.fetchall()
@@ -452,7 +452,7 @@ def getMessageAboutUS():
 def getMessageContactUs():
     message = dict()
     message['type'] = 'text'
-    message['text'] = "電話：0912345678"
+    message['text'] = "日期： 週一至週五 \n電話： (02)-2737-7300 \n時間： 9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM \n地址： 台北市大安區復興南路二段237號4樓"
     return message
 
 def getMessagePIC():
